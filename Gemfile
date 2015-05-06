@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Use OAuth
 gem 'omniauth'
 # Use Facebook OAuth
-gem 'omniauth-faccebook'
+gem 'omniauth-facebook'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
