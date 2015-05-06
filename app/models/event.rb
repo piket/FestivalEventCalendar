@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   # Organizer_id represents the organization that created the events and thus the festival the event falls under
-  belongs_to :user, as: :organizer
+  belongs_to :organizer, class_name: 'User', foreign_key: :organizer_id
   # Allows commenting
   has_many :comments, as: :commentable
   # Allows having many tags
