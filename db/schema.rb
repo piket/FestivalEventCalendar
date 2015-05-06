@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506151432) do
+ActiveRecord::Schema.define(version: 20150506184239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,26 @@ ActiveRecord::Schema.define(version: 20150506151432) do
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "event_occurrences", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "location"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_occurrences", ["event_id"], name: "index_event_occurrences_on_event_id", using: :btree
+
+  create_table "event_occurrences_users", force: :cascade do |t|
+    t.integer  "event_occurrence_id"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "event_occurrences_users", ["event_occurrence_id"], name: "index_event_occurrences_users_on_event_occurrence_id", using: :btree
+  add_index "event_occurrences_users", ["user_id"], name: "index_event_occurrences_users_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -57,16 +77,6 @@ ActiveRecord::Schema.define(version: 20150506151432) do
   add_index "events_tags", ["event_id"], name: "index_events_tags_on_event_id", using: :btree
   add_index "events_tags", ["tag_id"], name: "index_events_tags_on_tag_id", using: :btree
 
-  create_table "events_users", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "events_users", ["event_id"], name: "index_events_users_on_event_id", using: :btree
-  add_index "events_users", ["user_id"], name: "index_events_users_on_user_id", using: :btree
-
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -89,8 +99,9 @@ ActiveRecord::Schema.define(version: 20150506151432) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "event_occurrences", "events"
+  add_foreign_key "event_occurrences_users", "event_occurrences"
+  add_foreign_key "event_occurrences_users", "users"
   add_foreign_key "events_tags", "events"
   add_foreign_key "events_tags", "tags"
-  add_foreign_key "events_users", "events"
-  add_foreign_key "events_users", "users"
 end
