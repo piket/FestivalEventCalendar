@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :is_authenticated?, except: [:new, :create]
+
     def show
     end
 
@@ -9,8 +11,8 @@ class UsersController < ApplicationController
     def update
         user_info = user_params_extended
         user = User.find session[:user_id]
-        for field in user_info do
-            user[field] = user_info[field]
+       user_info.each_pair do |field, value|
+            user[field] = value
         end
         user.save
         redirect_to user
