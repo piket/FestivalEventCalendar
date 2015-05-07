@@ -1,5 +1,10 @@
 class SiteController < ApplicationController
 
-    # routes
+    def index
+
+    end
+
+
+
 
 end
