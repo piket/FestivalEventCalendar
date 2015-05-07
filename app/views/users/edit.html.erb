@@ -1,0 +1,29 @@
+<%= form_for @current_user, :class => "uk-form uk-from-stacked" do |f| %>
+    <div class="uk-form-row">
+        <%= f.text_field :name, placeholder: "Enter your name", wrapper: "uk-form-controls" %>
+    </div>
+    <div class="uk-form-row">
+        <%= f.text_field :email, placeholder: "Enter your email", wrapper: "uk-form-controls" %>
+    </div>
+    <div class="uk-form-row">
+        <%= f.text_field :location, placeholder: "Enter your location", wrapper: "uk-form-controls" %>
+    </div>
+    <!-- Only display age and gender fields to consumers, not to hosts -->
+    <% if @current_user.user_type == 'consumer' %>
+    <div class="uk-form-row">
+        <%= f.text_field :gender, placeholder: "Enter your gender", wrapper: "uk-form-controls" %>
+    </div>
+    <div class="uk-form-row">
+        <%= f.text_field :age, placeholder: "Enter your age", wrapper: "uk-form-controls" %>
+    </div>
+    <% end %>
+    <!-- Allows for file uploads -->
+    <div class="uk-form-row">
+        <div id="upload-drop" class="uk-placeholder uk-text-center">
+            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Use a new profile picture by dropping it here or <a class="uk-form-file">selecting one<%= f.file_field :image, id: "upload-select"%></a>.
+        </div>
+        <div id="progressbar" class="uk-progress uk-hidden">
+            <div class="uk-progress-bar" style="width: 0%;">0%</div>
+        </div>
+    </div>
+<% end %>

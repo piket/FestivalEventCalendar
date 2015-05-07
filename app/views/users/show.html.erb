@@ -1,0 +1,14 @@
+<h1 class="uk-text-center"><%= @current_user.name || "N/A" %>'s Profile</h1>
+<h3 class="uk-text-center">Email: <%= @current_user.email || "N/A" %></h3>
+
+<% if @current_user.user_type == 'consumer' %>
+    <h3 class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></h3>
+    <h3 class="uk-text-center">Age: <%= @current_user.age || "N/A" %></h3>
+<% end %>
+
+<h3 class="uk-text-center">Location: <%= @current_user.location || "N/A" %></h3>
+<%= link_to "Edit Profile", @current_user, :class => "uk-button uk-button-primary" %>
+<% if @current_user.user_type == 'host' %>
+    <%= link_to "View Your Events", events_path, :class => "uk-button uk-button-primary" %>
+    <%= link_to "Add Event", new_event_path, :class => "uk-button uk-button-primary" %>
+<% end %>
