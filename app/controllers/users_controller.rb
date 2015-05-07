@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     end
 
     def user_params_extended
-        params.require(:user).permit(:email, :name, :gender, :location, :age, :image)
+        params.require(:user).permit(:email, :name, :gender, :location, :age, :image, :about)
     end
 
 end

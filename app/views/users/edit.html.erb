@@ -16,6 +16,11 @@
     <div class="uk-form-row">
         <%= f.text_field :age, placeholder: "Enter your age", wrapper: "uk-form-controls" %>
     </div>
+    <% else %>
+    <div class="uk-form-row">
+        <%= f.text_area :about, placeholder: "Enter a description.", wrapper: "uk-form-controls" %>
+    </div>
+
     <% end %>
     <!-- Allows for file uploads -->
     <div class="uk-form-row">
