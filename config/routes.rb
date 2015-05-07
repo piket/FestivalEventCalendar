@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'site#index'
 
   resources :users
+  resources :events
 
 
 #BASIC AUTH
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
 
 get 'auth/failure' => 'auth#failure'
 get 'auth/:provider/callback' => 'auth#callback'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
