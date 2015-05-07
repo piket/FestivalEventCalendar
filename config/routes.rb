@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :events
-
+  resources :tags, :only => [:new, :create, :index]
 
 #BASIC AUTH
   get '/login' => 'sessions#new'
@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
 get 'auth/failure' => 'auth#failure'
 get 'auth/:provider/callback' => 'auth#callback'
+
+#TAGS
+
+
 
 
 
