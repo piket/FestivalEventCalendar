@@ -10,10 +10,14 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/timepicker.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/button.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/grid.min.js"></script>
+  <script type="text/javascript" sec="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/dropdown.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/placeholder.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/uikit.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/uikit.almost-flat.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/placeholder.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/dotnav.almost-flat.min.css">
+
+
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/uikit.gradient.min.css"> -->
 
 
@@ -34,15 +38,34 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/">HOME</a>
+  <nav class = "uk-navbar">
+
+    <a class="uk-navbar-brand" href="/">HOME</a>
+   <ul class="uk-navbar-nav">
 
    <% if @current_user %>
-    <a href = "/logout">LOGOUT</a>
+    <li class="uk-parent">
+        <a href="#">MY ACCOUNT</a>
+      <div class="data-uk-dropdown">
+        <div class="uk-dropdown uk-dropdown-navbar">
+          <ul class="uk-nav uk-nav-navbar">
+            <li>TEST</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+     <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
+        <li class="uk-parent"><a href = "/events/new">ADD EVENT</a></li>
+        <li class="uk-parent"><a href = "/tags/new">ADD TAGS</a></li>
+
+
+    <li class="uk-parent"><a href = "/logout">LOGOUT</a></li>
    <% else %>
-    <a href="/users/new">SIGN UP</a>
-    <a href = "/login">LOGIN</a>
+    <li class="uk-parent"><a href="/users/new">SIGN UP</a></li>
+    <li class="uk-parent"><a href = "/login">LOGIN</a></li>
     <% end %>
+
+   </ul>
   </nav>
 
   <%= render "/layouts/alerts" %>
