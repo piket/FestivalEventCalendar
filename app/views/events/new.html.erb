@@ -1,34 +1,46 @@
 
-<div class="uk-container uk-container-center"
+<div class="uk-container uk-container-center">
 <%= form_for @event, :class=>"uk-form uk-form-stacked" do |f|%>
   <div class="uk-form-row">
-    <%= f.text_field :name, :placeholder => "Enter event name.", :wrapper =>"uk-form-controls" %>
-  </div>
-
-  <div class="uk-form-row">
-    <%= f.text_field :location, :placeholder => "Enter event location.", :wrapper =>"uk-form-controls" %>
-  </div>
-  <div class="uk-form-row">
     <div class="uk-form-controls">
-      <i class="uk-icon-calendar"></i>
-      <input type="" data-uk-datepicker="{format:'MM.DD.YYYY'}" placeholder = "Select a date.">
-      <i class="uk-icon-clock-o"></i>
-      <input type="text" data-uk-timepicker="{format: '12h'}" placeholder = "Select a time.">
+      <%= f.text_field :name, :placeholder => "Enter event name." %>
     </div>
   </div>
 
   <div class="uk-form-row">
-    <%= f.text_field :link, :placeholder => "Enter a link for your event.", :wrapper =>"uk-form-controls" %>
+    <div class="uk-form-controls">
+      <input type="text" name="event[location]" placeholder="Enter event location" id="event_location">
+    </div>
+    <%# f.text_field :location, :placeholder => "Enter event location.", :wrapper =>"uk-form-controls" %>
   </div>
   <div class="uk-form-row">
-    <%= f.text_field :price, :placeholder => "Enter a ticket price for your event.", :wrapper =>"uk-form-controls" %>
+    <div class="uk-form-controls">
+      <i class="uk-icon-calendar"></i>
+      <input type="" data-uk-datepicker="{format:'MM.DD.YYYY'}" placeholder = "Select a date." name="event[date]">
+      <i class="uk-icon-clock-o"></i>
+      <input type="text" data-uk-timepicker="{format: '12h'}" placeholder = "Select a time." name="event[time]">
+    </div>
   </div>
   <div class="uk-form-row">
-    <%= f.text_field :purchase, :placeholder => "Enter a link to purchase tickets for your event.", :wrapper =>"uk-form-controls" %>
+    <div class="uk-form-controls">
+      <%= f.text_field :link, :placeholder => "Enter a link for your event." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_field :price, :placeholder => "Enter a ticket price for your event." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_field :purchase, :placeholder => "Enter a link to purchase tickets for your event." %>
+    </div>
   </div>
 
   <div class="uk-form-row">
-    <%= f.text_area :description, :placeholder => "Enter details about your event.", :wrapper =>"uk-form-controls" %>
+    <div class="uk-form-controls">
+      <%= f.text_area :description, :placeholder => "Enter details about your event." %>
+    </div>
   </div>
   <div class="uk-form-row">
     <%= f.submit "Submit", :class=>"uk-button uk-button-primary" %>
