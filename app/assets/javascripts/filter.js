@@ -7,19 +7,32 @@ $(function(){
     e.preventDefault();
     arr= $(this).children().val().toLowerCase().split(/[ ,-\/:\&"']/)
 
-    festivals = $('.each-festival')
-    unmatches = festivals.filter(function(j,festival){
+    var formId = $(this).attr('id');
+
+    if(formId == 'event_filter') {
+      items = $('.each-event')
+    } else {
+      items = $('.each-festival')
+    }
+
+    if(arr.length == 1 && arr[0] == "") {
+      items.show();
+    } else {
+
+    unmatches = items.filter(function(j,item){
+      var classes = $(item).attr('data-tags').toLowerCase()
       for (var i=0; i<arr.length; i++) {
-        if ($(festival).hasClass(arr[i]) || $(festival).children('.location').text().toLowerCase().indexOf(arr[i]) !== -1 || $(festival).children('.name').text().toLowerCase().indexOf(arr[i]) !== -1) {
+        if (classes.indexOf(arr[i]) !== -1 || $(item).children('.location').text().toLowerCase().indexOf(arr[i]) !== -1 || $(item).children('.name').text().toLowerCase().indexOf(arr[i]) !== -1) {
           return false
-        }
+        } //else if (formId == 'event_filter' && new Date($(item).children('.date').text())
       }
       return true
     })
     console.log(unmatches);
-    // $(festivals).hide();
+    // $(items).hide();
     $(unmatches).hide();
 
+    }
   })
 
 

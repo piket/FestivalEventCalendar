@@ -1,0 +1,19 @@
+THIS IS THE <%=@festival.name%> LIST PAGE
+
+<form class="uk-search" data-uk-search id="event_filter">
+    <input class="uk-search-field" type="search" placeholder="">
+</form>
+
+<% @event_dates.each_pair do |date,events| %>
+    <% events.each do |event| %>
+    <div class="each-event" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
+        <div class="name"><%=event[:name]%></div>
+        <div class="date"><%=date%></div>
+        <img class="image" src=<%=event[:image]%>>
+        <% event[:occurrences].each do |occurrence| %>
+            <div class="location"><%=occurrence[:location]%></div>
+            <div class="time"><%=occurrence[:time]%></div>
+        <% end %>
+    </div>
+    <% end %>
+<% end %>
