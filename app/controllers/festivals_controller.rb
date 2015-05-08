@@ -9,7 +9,10 @@ class FestivalsController < ApplicationController
                    event.tags
                end
         # Create an array of tags in strings and put dashes in between tags with multiple words. Also filter out multiple occurrences of tags.
-         tags = tags.flatten.reduce([]) {|arr,tag|arr << tag.name.gsub(" ", "-") unless arr.include? tag.name}
+         tags = tags.flatten.reduce([]) do |arr,tag|
+            arr << tag.name.gsub(" ", "-") unless arr.include? tag.name.gsub(" ", "-")
+            arr
+          end
          # Create a hash of pertinent data.
           temp_hash = {
             id: f.id,

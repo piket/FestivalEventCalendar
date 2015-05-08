@@ -54,6 +54,7 @@ class EventsController < ApplicationController
             @event.event_occurrences.create({location: occurrences[i][:location], date: occurrences[i][:date]})
          end
       end
+      @event.save
       redirect_to user_path(@current_user)
    end
 

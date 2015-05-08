@@ -1,6 +1,6 @@
 THIS IS THE <%=@festival.name%> LIST PAGE
 
-<form class="uk-search" data-uk-search id="event_filter">
+<form class="uk-search filter-form" data-uk-search id="event_filter">
     <input class="uk-search-field" type="search" placeholder="">
 </form>
 
@@ -8,7 +8,7 @@ THIS IS THE <%=@festival.name%> LIST PAGE
     <% events.each do |event| %>
     <div class="each-event" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
         <div class="name"><%=event[:name]%></div>
-        <div class="date"><%=date%></div>
+        <div class="date"><%=date.strftime("%B %d, %Y")%></div>
         <img class="image" src=<%=event[:image]%>>
         <% event[:occurrences].each do |occurrence| %>
             <div class="location"><%=occurrence[:location]%></div>

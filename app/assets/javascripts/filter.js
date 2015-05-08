@@ -1,13 +1,31 @@
 $(function(){
 
+  var dateComp = function(date,input) {
+    var dateStr = date.split(' ');
+    dateStr[1] = parseInt(dateStr[1]);
+    dateStr[2] = parseInt(dateStr[2]);
+    // console.log(dateStr[2] == input,dateStr[2],input)
+    if (dateStr[0].indexOf(input) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input)) {
+      // console.log("month match")
+      return true;
+    } else if (dateStr[1] == input || dateStr[2] == input) {
+      // console.log("day/year match")
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  $('.uk-search').submit(function(e){
+    var filter = function(e){
 
-    console.log("inside search field function")
+      var filterForm = $('.filter-form');
+
+    // console.log("start filter")
+
     e.preventDefault();
-    arr= $(this).children().val().toLowerCase().split(/[ ,-\/:\&"']/)
+    arr = filterForm.children().val().toLowerCase().split(/[ ,-\/:\&"']/)
 
-    var formId = $(this).attr('id');
+    var formId = filterForm.attr('id');
 
     if(formId == 'event_filter') {
       items = $('.each-event')
@@ -15,25 +33,27 @@ $(function(){
       items = $('.each-festival')
     }
 
-    if(arr.length == 1 && arr[0] == "") {
+
       items.show();
-    } else {
 
     unmatches = items.filter(function(j,item){
       var classes = $(item).attr('data-tags').toLowerCase()
       for (var i=0; i<arr.length; i++) {
         if (classes.indexOf(arr[i]) !== -1 || $(item).children('.location').text().toLowerCase().indexOf(arr[i]) !== -1 || $(item).children('.name').text().toLowerCase().indexOf(arr[i]) !== -1) {
           return false
-        } //else if (formId == 'event_filter' && new Date($(item).children('.date').text())
+        } else if (formId == 'event_filter' && dateComp($(item).children('.date').text().toLowerCase(), arr[i])) {
+          return false
+        }
       }
       return true
     })
-    console.log(unmatches);
-    // $(items).hide();
+
     $(unmatches).hide();
 
-    }
-  })
+  }
+
+  $('.filter-form').on('keyup',filter);
+  $('.filter-form').submit(filter);
 
 
 
