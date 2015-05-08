@@ -7,4 +7,53 @@ class Event < ActiveRecord::Base
   # Allows having many tags
   has_and_belongs_to_many :tags
 
+  def self.import(file)
+    spreadsheet = open_spreadsheet(file)
+    header = spreadsheet.row(1)
+    imported = []
+    (2..spreadsheet.last_row).each do |i|
+        row = Hash[[header, spreadsheet.row(i)].transpose]
+        # event = Event.new
+        # event.attributes = row.to_hash.slice(*accessible_attributes)
+        # event.save!
+        row_hash = row.to_hash
+        row_hash['dates'] = row_hash['dates'].split(',').map do |date|
+            date.strip!
+            date.split('/')
+        end
+        row_hash['times'] = row_hash['times'].split(',').map do |time|
+            time.strip!
+            t_arr = time.split(/[: ]/)
+            if t_arr.length == 1
+                t_arr[0] = time[0...time.index(/[ap]/)]
+                t_arr[1] = '0'
+                t_arr[2] = time[time.index(/[ap]/)...time.length].upcase
+            elsif t_arr.length == 2
+                t_arr[2] = t_arr[1][t_arr[1].index(/[ap]/)...t_arr[1].length].upcase
+                t_arr[1] = t_arr[1][0...t_arr[1].index(/[ap]/)]
+            end
+            t_arr
+        end
+        row_hash['locations'] = row_hash['locations'].split(',').map do |l|
+            l.strip!
+            l
+        end
+        row_hash['tags'] = row_hash['tags'].split(',').map do |tag|
+            tag.strip!
+            tag.downcase
+        end
+        imported << row_hash
+    end
+    imported
+  end
+
+  def self.open_spreadsheet(file)
+    case File.extname(file.original_filename)
+        when ".csv" then Roo::Csv.new(file.path)
+        when ".xls" then Roo::Excel.new(file.path)
+        when ".xlsx" then Roo::Excelx.new(file.path)
+        else raise "Unknown file type: #{file.original_filename}"
+    end
+  end
+
 end

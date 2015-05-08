@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# Allows for importing from file
+gem 'roo', '~> 2.0.0'
+gem 'roo-xls'
+gem "iconv", "~> 1.0.3"
 # Use OAuth
 gem 'omniauth'
 # Use Facebook OAuth

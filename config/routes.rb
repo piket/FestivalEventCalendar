@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root 'site#index'
 
   resources :users
-  resources :events
+  resources :events do
+    collection { post :import }
+  end
   resources :tags, :only => [:new, :create, :index]
 
 #BASIC AUTH
