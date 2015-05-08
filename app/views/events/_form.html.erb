@@ -1,0 +1,94 @@
+<% def parse_datetime datetime %>
+  <% date_str = datetime.strftime("%m.%d.%Y") %>
+  <% time_str = datetime.strftime("%I:%M %p") %>
+  <% {date:date_str,time:time_str} %>
+<% end %>
+
+
+<div class="uk-container uk-container-center">
+<%= form_for @event, :class=>"uk-form uk-form-stacked" do |f|%>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_field :name, :placeholder => "Enter event name." %>
+    </div>
+  </div>
+
+  <div class="uk-form-row">
+    <label for="multiple">Does this event occur more than once?</label>
+    <input type="radio" value="true" name="multiple" <%= 'checked' unless @event.new_record? || @event.event_occurrences.length == 1 %>>Yes
+    <input type="radio" value="false" name="multiple" <%= 'checked' if @event.new_record? || @event.event_occurrences.length == 1 %>>No
+  </div>
+  <!-- Begin multiple entry section -->
+  <div id="multiple">
+    <!-- <div class="uk-form-row">
+      <div class="uk-form-controls">
+        <input type="text" name="event[location]" placeholder="Enter event location" id="event_location">
+      </div>
+      <%# f.text_field :location, :placeholder => "Enter event location.", :wrapper =>"uk-form-controls" %>
+    </div>
+    <div class="uk-form-row">
+      <div class="uk-form-controls">
+        <i class="uk-icon-calendar"></i>
+        <input type="" data-uk-datepicker="{format:'MM.DD.YYYY'}" placeholder = "Select a date." name="event[date]">
+        <i class="uk-icon-clock-o"></i>
+        <input type="text" data-uk-timepicker="{format: '12h'}" placeholder = "Select a time." name="event[time]">
+      </div>
+    </div> -->
+    <% if !@event.new_record? %>
+      <% count = 0 %>
+      <% occurrences = @event.event_occurrences.sort { |a,b| a.id - b.id } %>
+      <% occurrences.each do |occurrence| %>
+        <% datetime = parse_datetime(occurrence.date) %>
+
+        <div class="occurrence-block<%='-first' if count == 0%>" id="<%=count%>">
+          <div class="uk-form-row">
+            <div class="uk-form-controls">
+              <input type="text" name="event[location][<%=count%>]" placeholder="Enter event location" id="event_location_<%=count%>" value="<%=occurrence.location%>">
+              <button class="uk-button uk-button-danger uk-button-mini" id="remove-<%=count%>">Delete</button>
+            </div>
+          </div>
+          <div class="uk-form-row">
+            <div class="uk-form-controls">
+              <i class="uk-icon-calendar"></i>
+              <input type="" data-uk-datepicker="{format:'MM.DD.YYYY'}" placeholder = "Select a date." name="event[date][<%=count%>]" value="<%=datetime[:date]%>">
+              <i class="uk-icon-clock-o"></i>
+              <input type="text" data-uk-timepicker="{format: '12h'}" placeholder = "Select a time." name="event[time][<%=count%>]" value="<%=datetime[:time]%>">
+            </div>
+          </div>
+        </div>
+        <% count+= 1 %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="uk-form-row">
+    <button class="uk-button uk-button-primary uk-button-mini" id="add-occurrence">Add Another Occurrence</button>
+  </div>
+  <!-- End mulitple div -->
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_field :link, :placeholder => "Enter a link for your event." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_field :price, :placeholder => "Enter a ticket price for your event." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_field :purchase, :placeholder => "Enter a link to purchase tickets for your event." %>
+    </div>
+  </div>
+
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+      <%= f.text_area :description, :placeholder => "Enter details about your event." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <%= f.submit "Submit", :class=>"uk-button uk-button-primary" %>
+
+  </div>
+
+<% end %>
+</div>
