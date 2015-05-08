@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ .uk-navbar-nav {
+  font-family: 'Quicksand', sans-serif;
+ }
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-weight:400;
+}
