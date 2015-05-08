@@ -28,6 +28,9 @@ class Event < ActiveRecord::Base
                 t_arr[0] = time[0...time.index(/[ap]/)]
                 t_arr[1] = '0'
                 t_arr[2] = time[time.index(/[ap]/)...time.length].upcase
+            elsif t_arr.length == 2
+                t_arr[2] = t_arr[1][t_arr[1].index(/[ap]/)...t_arr[1].length].upcase
+                t_arr[1] = t_arr[1][0...t_arr[1].index(/[ap]/)]
             end
             t_arr
         end
