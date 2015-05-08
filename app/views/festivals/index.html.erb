@@ -1,0 +1,15 @@
+THIS IS MY FESTIVALS LIST PAGE
+
+<form class="uk-search" data-uk-search>
+    <input id="festival_filter" class="uk-search-field" type="search" placeholder="">
+</form>
+
+  <% @festival_details.each do |detail| %>
+   <div class="each-festival <%= detail[:tags] %>">
+    <div class="name"><%= detail[:name] %></div>
+    <div class="location"><%= detail[:location] %></div>
+    <div class="image"><img src=<%= detail[:image] %>></div>
+    <div class="about"><%= detail[:about] %></div>
+   </div>
+
+  <% end %>

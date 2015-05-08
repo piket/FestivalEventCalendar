@@ -16,10 +16,13 @@ Rails.application.routes.draw do
 
 #OAUTH
 
-get 'auth/failure' => 'auth#failure'
-get 'auth/:provider/callback' => 'auth#callback'
+get '/auth/failure' => 'auth#failure'
+get '/auth/:provider/callback' => 'auth#callback'
 
-#TAGS
+#FESTIVAL ROUTE
+
+get '/festivals' => 'festivals#index'
+get '/festivals/:id' => 'festivals#show'
 
 
 
