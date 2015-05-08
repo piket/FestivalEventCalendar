@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'tagsinput-rails'
 # Allows for importing from file
 gem 'roo', '~> 2.0.0'
 gem 'roo-xls'

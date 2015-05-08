@@ -2,11 +2,17 @@ class EventsController < ApplicationController
 
    def new
       @event = Event.new
+      @tags = ""
    end
 
    def create
       @event = Event.create(event_params)
       @event.price = params[:event][:price].to_f
+      params[:event][:tags].split(',').each do |tag|
+         tag.strip!
+         tag.downcase!
+         @event.tags << Tag.find_or_create_by(name: tag) unless tag.blank?
+      end
       # Create each occurrence
       occurrence_params.each do |occurrence|
          @event.event_occurrences.create({location: occurrence[:location], date: occurrence[:date]}) unless occurrence[:deleted]
@@ -17,11 +23,18 @@ class EventsController < ApplicationController
 
    def edit
       @event = Event.find params[:id]
+      @tags = @event.tags.reduce("") { |str,tag| str == "" ? str + tag.name : str + "," + tag.name }
    end
 
    def update
       @event = Event.update params[:id], event_params
       @event.price = params[:event][:price].to_f
+      @event.tags.clear
+      params[:event][:tags].split(',').each do |tag|
+         tag.strip!
+         tag.downcase!
+         @event.tags << Tag.find_or_create_by(name: tag) unless tag.blank?
+      end
       # Create each occurrence
 
       occurrences = occurrence_params
