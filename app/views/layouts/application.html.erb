@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/autocomplete.almost-flat.min.css">
   <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/form-file.almost-flat.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/core.min.js"></script>
@@ -57,8 +57,24 @@
       <!-- </div> -->
     </li>
      <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
-        <li class="uk-parent"><a href = "/events/new">ADD EVENT</a></li>
+        <li class="uk-parent" data-uk-dropdown>
+        <a href="/events">MY EVENTS</a>
+      <!-- <div class="data-uk-dropdown"> -->
+        <div class="uk-dropdown uk-dropdown-navbar">
+          <ul class="uk-nav uk-nav-navbar">
+            <li>
+                <a href="/events/new">ADD A NEW EVENT</a>
+            </li>
+          </ul>
+        </div>
+      <!-- </div> -->
+    </li>
+
+
+
         <li class="uk-parent"><a href = "/tags/new">ADD TAGS</a></li>
+
+        <!-- FOR CONSUMER  -->
          <li class="uk-parent"><a href = "/festivals">SEARCH FOR A FESTIVAL</a></li>
 
 
