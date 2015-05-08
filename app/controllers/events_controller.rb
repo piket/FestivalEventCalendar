@@ -1,5 +1,17 @@
 class EventsController < ApplicationController
 
+   def index
+
+      @events = Event.where(:host_id => @current_user.id)
+      # render :json => @events
+   end
+
+   def show
+      @event = Event.find_by_id(params[:id])
+      # occurrence = @event.occurrence
+      # render :json => @event
+   end
+
    def new
       @event = Event.new
    end
@@ -101,7 +113,7 @@ class EventsController < ApplicationController
    private
 
    def event_params
-      params.require(:event).permit([:name, :description, :image, :video, :link, :purchase])
+      params.require(:event).permit([:name, :description, :image, :video, :link, :purchase, :host_id, :location, :date])
 
    end
 

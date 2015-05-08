@@ -25,6 +25,7 @@ get '/auth/:provider/callback' => 'auth#callback'
 
 get '/festivals' => 'festivals#index'
 get '/festivals/:id' => 'festivals#show'
+get '/festivals/myfestivals' => 'festivals#myfestivals'
 
 
 

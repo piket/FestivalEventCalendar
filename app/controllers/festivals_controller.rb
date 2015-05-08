@@ -1,5 +1,10 @@
 class FestivalsController < ApplicationController
 
+    def myfestivals
+
+    end
+
+
     def index
       #Find all festivals (users that are both type host and verified)
       festivals = User.where(user_type:'host',status:true)
