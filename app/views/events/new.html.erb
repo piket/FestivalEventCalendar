@@ -1,6 +1,6 @@
 
 <div class="uk-container uk-container-center">
-<%= form_for @event, :class=>"uk-form uk-form-stacked" do |f|%>
+<%= form_for @event, :html=>{:class=>"uk-form uk-form-stacked"} do |f|%>
   <div class="uk-form-row">
     <div class="uk-form-controls">
       <%= f.text_field :name, :placeholder => "Enter event name." %>
