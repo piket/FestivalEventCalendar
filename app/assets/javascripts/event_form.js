@@ -7,7 +7,7 @@ $(function() {
         var timeFormat = '12h'
 
         var locationRow = '<div class="occurrence-block'+classMod+'" id="'+count+'"><div class="uk-form-row"><div class="uk-form-controls"><input type="text" name="event[location]['+count+']" placeholder="Enter event location" id="event_location_'+count+'"><button class="uk-button uk-button-danger uk-button-mini" id="remove-'+count+'">Delete</button></div></div>';
-        var dateTimeRow = '<div class="uk-form-row"><div class="uk-form-controls"><i class="uk-icon-calendar"></i><input type="" data-uk-datepicker="{format:'+dateFormat+'}" placeholder = "Select a date." name="event[date]['+count+']"><i class="uk-icon-clock-o"></i><input type="text" data-uk-timepicker="{format: \''+timeFormat+'\'}" placeholder = "Select a time." name="event[time]['+count+']"></div></div></div>';
+        var dateTimeRow = '<div class="uk-form-row"><div class="uk-form-controls"><i class="uk-icon-calendar"></i><input type="" data-uk-datepicker="{format:\''+dateFormat+'\'}" placeholder = "Select a date." name="event[date]['+count+']"><i class="uk-icon-clock-o"></i><input type="text" data-uk-timepicker="{format: \''+timeFormat+'\'}" placeholder = "Select a time." name="event[time]['+count+']"></div></div></div>';
         var multiDiv = $('div#multiple');
 
         multiDiv.append(locationRow+dateTimeRow);
@@ -22,7 +22,21 @@ $(function() {
         count++;
     }
 
+    var cleanTag = function(tag) {
+        tag = tag.toLowerCase()
+        console.log(tag);
+        // tag.text(tag.text().toLowerCase())
+        // return tag.toLowerCase();
+    }
+
     console.log('Page loaded');
+
+    $('#tags').tagsInput({
+        // 'width': '100px',
+        // 'delimiter': ',',
+        // 'onAddTag': cleanTag
+    });
+
     if ($(":radio").eq(1).attr('checked')) {
         $('#add-occurrence').hide();
     }
