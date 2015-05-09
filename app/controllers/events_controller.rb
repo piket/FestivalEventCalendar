@@ -44,6 +44,8 @@ class EventsController < ApplicationController
       @event = Event.update params[:id], event_params
       @event.price = params[:event][:price].to_f
       @event.duration = proccess_duration params[:event][:duration]
+      Cloudinary::Uploader.destroy(@event.image) unless @event.image.nil?
+      @event.image = params[:event][:image]
       @event.tags.clear
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
@@ -82,7 +84,8 @@ class EventsController < ApplicationController
      # render json: rows
      # return
      rows.each do |row|
-         event = Event.create({name:row['name'], description: row['description'], image: row['image'], video: row['video'], link: row['link'], purchase: row['purchase'], price: row['price']})
+         event = Event.create({name:row['name'], description: row['description'], video: row['video'], link: row['link'], purchase: row['purchase'], price: row['price']})
+         event.image = Cloudinary::Uploader.upload(row['image'], crop: :limit, width: '500', hieght: '500', eager: [{crop: :fill, width: '150', height: '150'}])
          event.duration = proccess_duration(row['duration'])
 
          if row['dates'].length == row['times'].length && row['dates'].length == row['locations'].length
@@ -133,7 +136,7 @@ class EventsController < ApplicationController
    private
 
    def event_params
-      params.require(:event).permit([:name, :description, :image, :video, :link, :purchase, :host_id, :location, :date])
+      params.require(:event).permit([:name, :description, :video, :link, :purchase, :host_id, :location, :date])
 
    end
 
