@@ -20,6 +20,7 @@ class EventsController < ApplicationController
    def create
       @event = Event.create(event_params)
       @event.price = params[:event][:price].to_f
+      @event.duration = proccess_duration params[:event][:duration]
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
          tag.downcase!
@@ -29,6 +30,7 @@ class EventsController < ApplicationController
       occurrence_params.each do |occurrence|
          @event.event_occurrences.create({location: occurrence[:location], date: occurrence[:date]}) unless occurrence[:deleted]
       end
+      @event.save
       @current_user.hosted_events << @event
       redirect_to user_path(@current_user)
    end
@@ -41,6 +43,7 @@ class EventsController < ApplicationController
    def update
       @event = Event.update params[:id], event_params
       @event.price = params[:event][:price].to_f
+      @event.duration = proccess_duration params[:event][:duration]
       @event.tags.clear
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
@@ -71,6 +74,7 @@ class EventsController < ApplicationController
    end
 
    def destroy
+      Event.find(params[:id]).destroy
    end
 
    def import
@@ -79,6 +83,7 @@ class EventsController < ApplicationController
      # return
      rows.each do |row|
          event = Event.create({name:row['name'], description: row['description'], image: row['image'], video: row['video'], link: row['link'], purchase: row['purchase'], price: row['price']})
+         event.duration = proccess_duration(row['duration'])
 
          if row['dates'].length == row['times'].length && row['dates'].length == row['locations'].length
             for x in 0...row['dates'].length
@@ -116,6 +121,7 @@ class EventsController < ApplicationController
             event.tags << Tag.find_or_create_by(name: tag)
          end
 
+         event.save
          @current_user.hosted_events << event
       end
       # render json: @current_user.hosted_events
@@ -169,6 +175,17 @@ class EventsController < ApplicationController
       occurrence
    end
 
+   def proccess_duration duration_str
+      duration_str.downcase!
 
+      if duration_str.include? ':'
+         duration_arr = duration_str.split(':')
+         duration_arr[0].to_i * 60 + duration_arr[1].to_i
+      elsif duration_str.include? 'h'
+         duration_str.to_f * 60
+      else
+         duration_str.to_i
+      end
+   end
 
 end
