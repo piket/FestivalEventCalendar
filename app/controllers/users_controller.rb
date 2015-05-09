@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :is_authenticated?, except: [:new, :create]
 
     def calendar
-
     end
 
     def addevent
@@ -29,9 +28,6 @@ class UsersController < ApplicationController
 
       end
     end
-
-
-
 
     def show
     end

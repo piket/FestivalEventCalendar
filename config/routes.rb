@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'site#index'
 
+
 #USERS
   get 'users/:id/calendar' => 'users#calendar'
   get 'users/calendar' => 'users#calendar'
