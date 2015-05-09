@@ -6,7 +6,7 @@ THIS IS MY FESTIVALS LIST PAGE
 
   <% @festival_details.each do |detail| %>
    <div class="each-festival" data-tags="<%= detail[:tags] %>">
-    <div class="name"><a href="/festivals/<%=detail[:id]%>"><%= detail[:name] %></a></div>
+    <div class="name"><%= link_to detail[:name], festival_path(detail[:id]) %></div>
     <div class="location"><%= detail[:location] %></div>
     <div class="image"><img src=<%= detail[:image] %>></div>
     <div class="about"><%= detail[:about] %></div>

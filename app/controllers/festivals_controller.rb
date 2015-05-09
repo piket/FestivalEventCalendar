@@ -1,7 +1,10 @@
 class FestivalsController < ApplicationController
 
     def myfestivals
-
+      @festivals = @current_user.event_occurrences.order(date: 'ASC').reduce([]) do |arr,occur|
+        arr << occur.event.host unless arr.include? occur.event.host
+        arr
+      end
     end
 
 

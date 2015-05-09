@@ -32,8 +32,8 @@ get '/auth/:provider/callback' => 'auth#callback'
 #FESTIVAL ROUTE
 
 get '/festivals' => 'festivals#index'
-get '/festivals/:id' => 'festivals#show'
 get '/festivals/myfestivals' => 'festivals#myfestivals'
+get '/festivals/:id' => 'festivals#show', as: 'festival'
 
 
 

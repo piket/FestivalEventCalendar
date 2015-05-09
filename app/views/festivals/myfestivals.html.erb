@@ -1,0 +1,9 @@
+MY FESTIVALS PAGE
+
+<% @festivals.each do |fest| %>
+<div class="each-festival">
+    <div class="name"><%= link_to fest.name, festival_path(fest.id) %></div>
+    <div class="location"><%=fest.location%></div>
+    <div class="image"><img src="<%=fest.image%>"></div>
+</div>
+<% end %>
