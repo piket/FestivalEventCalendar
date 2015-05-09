@@ -54,13 +54,16 @@ class FestivalsController < ApplicationController
             @event_dates[occur.date.to_date] = [info] unless @event_dates.has_key? occur.date.to_date
             # Find if the event info already exists in the hash
             i = @event_dates[occur.date.to_date].index { |e| e[:id] == occur.event_id }
+
+            added = occur.users.include? User.find(@current_user.id)
+
             # If the info is not there, add it to the date key
             if i.nil?
-              info[:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location}
+              info[:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.id, added:added}
               @event_dates[occur.date.to_date] << info
             # If the info is there, push the new occurrence into the data
             else
-              @event_dates[occur.date.to_date][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location}
+              @event_dates[occur.date.to_date][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.id, added:added}
             end
           end
       end
