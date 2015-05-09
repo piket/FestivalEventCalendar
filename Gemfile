@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Allows for uploading images to the cloud
+gem 'cloudinary'
 #gem 'fullcalendar-rails'
 gem 'tagsinput-rails'
 # Allows for importing from file
