@@ -1,0 +1,13 @@
+THIS IS MY CALENDAR PAGE
+
+<% @current_user.event_occurrences.order(date: 'ASC').each do |event| %>
+  <div>
+
+    <%= event.event.name %>
+     <%= event.event.image %>
+      <%= event.date %>
+       <%= event.location %>
+
+  </div>
+
+<% end %>

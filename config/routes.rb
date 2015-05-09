@@ -5,7 +5,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'site#index'
 
+#USERS
+  get 'users/:id/calendar' => 'users#calendar'
+  get 'users/calendar' => 'users#calendar'
+  patch '/addevent/:id' => 'users#addevent', as: "addevent"
+  delete '/deleteevent/:id' => 'users#deleteevent', as: "deleteevent"
   resources :users
+
+
   resources :events do
     collection { post :import }
   end

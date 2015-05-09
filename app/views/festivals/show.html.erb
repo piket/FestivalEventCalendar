@@ -7,12 +7,18 @@ THIS IS THE <%=@festival.name%> LIST PAGE
 <% @event_dates.each_pair do |date,events| %>
     <% events.each do |event| %>
     <div class="each-event" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
-        <div class="name"><%=event[:name]%></div>
+        <a href="/events/<%=event[:id]%>"><div class="name"><%=event[:name]%></div></a>
         <div class="date"><%=date.strftime("%B %d, %Y")%></div>
         <img class="image" src=<%=event[:image]%>>
         <% event[:occurrences].each do |occurrence| %>
             <div class="location"><%=occurrence[:location]%></div>
             <div class="time"><%=occurrence[:time]%></div>
+
+             <% if occurrence[:added] %>
+                <%= link_to "x", deleteevent_path(occurrence[:id]), :class => "del-btn uk-button" %>
+            <% else %>
+                <%= link_to "+", addevent_path(occurrence[:id]), :class => "add-btn uk-button" %>
+            <% end %>
         <% end %>
     </div>
     <% end %>

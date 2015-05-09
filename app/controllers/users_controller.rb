@@ -2,6 +2,37 @@ class UsersController < ApplicationController
 
   before_action :is_authenticated?, except: [:new, :create]
 
+    def calendar
+
+    end
+
+    def addevent
+      result = EventOccurrence.find(params[:id])
+
+      if result.users.include? User.find(@current_user.id)
+        render :json => {result:false}
+      else
+        @current_user.event_occurrences << result
+        render :json => {result:params[:id]}
+      end
+    end
+
+
+    def deleteevent
+        result = EventOccurrence.find(params[:id])
+
+      if result.users.include? User.find(@current_user.id)
+        @current_user.event_occurrences.delete(result)
+        render :json => {result:params[:id]}
+      else
+        render :json => {result:false}
+
+      end
+    end
+
+
+
+
     def show
     end
 
