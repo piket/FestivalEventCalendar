@@ -42,6 +42,7 @@ class FestivalsController < ApplicationController
         # Generate a hash with the event info
           info = {
             name: event.name,
+            duration: event.duration,
             image: event.image,
             id:event.id,
             tags: (event.tags.map { |tag| tag.name }).join(' '),
