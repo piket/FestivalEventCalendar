@@ -38,7 +38,12 @@ class UsersController < ApplicationController
     def update
         user_info = user_params_extended
         user = User.find session[:user_id]
-       user_info.each_pair do |field, value|
+        if params[:user][:image].present?
+          preloaded = Cloudinary::PreloadedFile.new(params[:user][:image])
+          raise "Invalid upload signature" if !preloaded.valid?
+          user.image = preloaded.identifier
+        end
+        user_info.each_pair do |field, value|
             user[field] = value
         end
         user.save
@@ -87,7 +92,7 @@ class UsersController < ApplicationController
     end
 
     def user_params_extended
-        params.require(:user).permit(:email, :name, :gender, :location, :age, :image, :about)
+        params.require(:user).permit(:email, :name, :gender, :location, :age, :about)
     end
 
 end

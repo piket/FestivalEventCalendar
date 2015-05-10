@@ -3,7 +3,7 @@ THIS IS THE EVENT SHOW PAGE
 <!-- <div class="uk-grid"> -->
 
     <div class="each-host-event uk-container">
-      <img src=<%= @event.image %>>
+      <%= cl_image_tag @event.image %>
      <%= @event.name %>
       <a href="<%= @event.link %>">LINK</a>
       <%= @event.description %>

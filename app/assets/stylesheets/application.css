@@ -13,8 +13,6 @@
  *= require_tree .
  *= require_self
  *= require jquery.tagsinput
- *= require fullcalendar
- *= require fullcalendar.print
  */
 
  .uk-navbar-nav {

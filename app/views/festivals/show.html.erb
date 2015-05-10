@@ -10,7 +10,7 @@ THIS IS THE <%=@festival.name%> LIST PAGE
         <a href="/events/<%=event[:id]%>"><div class="name"><%=event[:name]%></div></a>
         <div class="date"><%=date.strftime("%B %d, %Y")%></div>
         <div class="duration"><%=event[:duration]%></div>
-        <img class="image" src=<%=event[:image]%>>
+        <%= cl_image_tag event[:image]%>
         <% event[:occurrences].each do |occurrence| %>
             <div class="location"><%=occurrence[:location]%></div>
             <div class="time"><%=occurrence[:time]%></div>
