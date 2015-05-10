@@ -90,44 +90,45 @@ class EventsController < ApplicationController
 
    def import
      rows = Event.import(params[:file])
-     # render json: rows
-     # return
      rows.each do |row|
+     # render json: row['image']
+     # return
          event = Event.create({name:row['name'], description: row['description'], video: row['video'], link: row['link'], purchase: row['purchase'], price: row['price']})
-         event.image = Cloudinary::Uploader.upload(row['image'], crop: :limit, width: '500', hieght: '500', eager: [{crop: :fill, width: '150', height: '150'}])
-         event.duration = proccess_duration(row['duration'])
 
          if row['dates'].length == row['times'].length && row['dates'].length == row['locations'].length
             for x in 0...row['dates'].length
-               row['times'][x][0] = row['times'][x][0].to_i
                row['times'][x][0] += 12 if row['times'][x][2].casecmp('pm') == 0 && row['times'][x][0] != 12
-               datetime = DateTime.new(row['dates'][x][2].to_i,row['dates'][x][0].to_i,row['dates'][x][1].to_i,row['times'][x][0],row['times'][x][1].to_i)
+               datetime = DateTime.new(row['dates'][x][2],row['dates'][x][0],row['dates'][x][1],row['times'][x][0],row['times'][x][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][x]})
             end
          elsif row['dates'].length >= row['times'].length && row['dates'].length >= row['locations'].length
             for x in 0...row['dates'].length
-               row['times'][0][0] = row['times'][0][0].to_i
                row['times'][0][0] += 12 if row['times'][0][2].casecmp('pm') == 0 && row['times'][0][0] != 12
-               datetime = DateTime.new(row['dates'][x][2].to_i,row['dates'][x][0].to_i,row['dates'][x][1].to_i,row['times'][0][0],row['times'][0][1].to_i)
+               datetime = DateTime.new(row['dates'][x][2],row['dates'][x][0],row['dates'][x][1],row['times'][0][0],row['times'][0][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][0]})
-               # render json: {row:row,occurrences:event.event_occurrences}
+               # render json: {title:row['name'],dates:row['dates'],times:row['times']}
                # return
             end
          elsif row['times'].length >= row['dates'].length && row['times'].length >= row['locations'].length
             for x in 0...row['times'].length
-               row['times'][x][0] = row['times'][x][0].to_i
                row['times'][x][0] += 12 if row['times'][x][2].casecmp('pm') == 0 && row['times'][x][0] != 12
-               datetime = DateTime.new(row['dates'][0][2].to_i,row['dates'][0][0].to_i,row['dates'][0][1].to_i,row['times'][x][0],row['times'][x][1].to_i)
+               datetime = DateTime.new(row['dates'][0][2],row['dates'][0][0],row['dates'][0][1],row['times'][x][0],row['times'][x][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][0]})
             end
          elsif row['locations'].length >= row['times'].length && row['locations'].length >= row['dates'].length
             for x in 0...row['locations'].length
-               row['times'][0][0] = row['times'][0][0].to_i
                row['times'][0][0] += 12 if row['times'][0][2].casecmp('pm') == 0 && row['times'][0][0] != 12
-               datetime = DateTime.new(row['dates'][0][2].to_i,row['dates'][0][0].to_i,row['dates'][0][1].to_i,row['times'][0][0],row['times'][0][1].to_i)
+               datetime = DateTime.new(row['dates'][0][2],row['dates'][0][0],row['dates'][0][1],row['times'][0][0],row['times'][0][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][x]})
             end
          end
+
+         if !row['image'].empty?
+            event.image = Cloudinary::Uploader.upload(row['image'])['public_id']
+            # render json: event.image
+            # return
+         end
+         event.duration = proccess_duration(row['duration'])
 
          row['tags'].each do |tag|
             event.tags << Tag.find_or_create_by(name: tag)
@@ -188,6 +189,10 @@ class EventsController < ApplicationController
    end
 
    def proccess_duration duration_str
+      if duration_str.nil?
+         return nil
+      end
+
       duration_str.downcase!
 
       if duration_str.include? ':'

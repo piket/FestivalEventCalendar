@@ -19,18 +19,22 @@ class Event < ActiveRecord::Base
         row_hash = row.to_hash
         row_hash['dates'] = row_hash['dates'].split(',').map do |date|
             date.strip!
-            date.split('/')
+            date.split('/').map { |d| d.to_i }
         end
         row_hash['times'] = row_hash['times'].split(',').map do |time|
             time.strip!
             t_arr = time.split(/[: ]/)
             if t_arr.length == 1
-                t_arr[0] = time[0...time.index(/[ap]/)]
-                t_arr[1] = '0'
+                t_arr[0] = time[0...time.index(/[ap]/)].to_i
+                t_arr[1] = 0
                 t_arr[2] = time[time.index(/[ap]/)...time.length].upcase
             elsif t_arr.length == 2
                 t_arr[2] = t_arr[1][t_arr[1].index(/[ap]/)...t_arr[1].length].upcase
-                t_arr[1] = t_arr[1][0...t_arr[1].index(/[ap]/)]
+                t_arr[1] = t_arr[1][0...t_arr[1].index(/[ap]/)].to_i
+                t_arr[0] = t_arr[0].to_i
+              else
+                t_arr[0] = t_arr[0].to_i
+                t_arr[1] = t_arr[1].to_i
             end
             t_arr
         end
