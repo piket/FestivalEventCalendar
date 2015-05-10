@@ -3,7 +3,7 @@ THIS IS THE HOST EVENTS PAGE
 <!-- <div class="uk-grid"> -->
     <% @events.each do |event| %>
     <div class="each-host-event uk-container">
-      <img src=<%= event.image %>>
+      <%= cl_image_tag event.image %>
       <a href="/events/<%=event.id%>"><%= event.name %></a>
       <a href="<%= event.link %>">LINK</a>
 

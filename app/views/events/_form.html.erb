@@ -73,6 +73,18 @@
     </div>
     <!-- End mulitple div -->
     <div class="uk-form-row">
+        <div id="upload-drop" class="uk-placeholder uk-text-center">
+            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Upload a picture by dropping it here or
+            <a class="uk-form-file">select one<%= f.cl_image_upload :image, crop: :limit, width: '500', hieght: '500', eager: [{crop: :fill, width: '150', height: '150'}], id: "upload-select" %></a>.
+        </div>
+        <div id="progressbar" class="uk-progress uk-hidden">
+            <div class="uk-progress-bar" style="width: 0%;">0%</div>
+        </div>
+    </div>
+    <div class="uk-form-row">
+        <div class="preview"></div>
+    </div>
+    <div class="uk-form-row">
       <div class="uk-form-controls">
         <%= f.text_field :link, :placeholder => "Enter a link for your event." %>
       </div>

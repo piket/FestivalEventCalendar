@@ -1,13 +1,12 @@
 <h1 class="uk-text-center"><%= @current_user.name || "N/A" %>'s Profile</h1>
 <h3 class="uk-text-center">Email: <%= @current_user.email || "N/A" %></h3>
-
 <% if @current_user.user_type == 'consumer' %>
     <h3 class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></h3>
     <h3 class="uk-text-center">Age: <%= @current_user.age || "N/A" %></h3>
 <% end %>
 
 <h3 class="uk-text-center">Location: <%= @current_user.location || "N/A" %></h3>
-  <img src=<%= @current_user.image %>>
+<%= cl_image_tag @current_user.image %>
 
 <% if @current_user.user_type == 'host' %>
   <h3><%=@current_user.about %></h3>
