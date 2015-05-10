@@ -21,6 +21,11 @@ class EventsController < ApplicationController
       @event = Event.create(event_params)
       @event.price = params[:event][:price].to_f
       @event.duration = proccess_duration params[:event][:duration]
+      if params[:event][:image].present?
+         preloaded = Cloudinary::PreloadedFile.new(params[:event][:image])
+         raise "Invalid upload signature" if !preloaded.valid?
+         @event.image = preloaded.identifier
+      end
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
          tag.downcase!
@@ -44,8 +49,12 @@ class EventsController < ApplicationController
       @event = Event.update params[:id], event_params
       @event.price = params[:event][:price].to_f
       @event.duration = proccess_duration params[:event][:duration]
-      Cloudinary::Uploader.destroy(@event.image) unless @event.image.nil?
-      @event.image = params[:event][:image]
+      if params[:event][:image].present?
+         Cloudinary::Uploader.destroy(@event.image[@event.image.index('/')+1...@event.image.length], :invalidate => true) unless @event.image.nil?
+         preloaded = Cloudinary::PreloadedFile.new(params[:event][:image])
+         raise "Invalid upload signature" if !preloaded.valid?
+         @event.image = preloaded.identifier
+      end
       @event.tags.clear
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
