@@ -1,0 +1,30 @@
+<div class="friends">MY FRIENDS
+    <% @current_user.friends.each do |friend| %>
+        <div class="each-friend">
+            <div class="name"><%= friend.name %></div>
+            <%= link_to "Remove", friend_remove_path(friend), :class => "uk-button uk-button-danger remove-friend-btn" %>
+        </div>
+    <% end %>
+</div>
+
+<hr>
+
+<div class="pending-invites">MY PENDING INVITATIONS
+    <% @current_user.pending_invited_by.each do |invited| %>
+        <div class="each-invited">
+            <div class="name"><%=invited.name%></div>
+            <%= link_to "Accept", friend_invite_path(invited), :class => "uk-button uk-button-success accept-friend-btn" %>
+            <%= link_to "Decline", friend_invite_path(invited), :class => "uk-button uk-button-danger decline-friend-btn" %>
+        </div>
+    <% end %>
+</div>
+
+<hr>
+
+<div class="sent-invites">MY SENT INVITITAIONS
+    <% @current_user.pending_invited.each do |sent| %>
+        <div class="each-sent">
+            <div class="name"><%=sent.name%></div>
+        </div>
+    <% end %>
+</div>

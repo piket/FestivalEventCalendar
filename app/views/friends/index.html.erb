@@ -1,49 +1,21 @@
 MY FRIENDS PAGE
 
-<div class="friends">MY FRIENDS
-    <% @current_user.friends.each do |friend| %>
-        <div class="each-friend">
-            <div class="name"><%= friend.name %></div>
-            <%= link_to "Remove", friends_remove(friend), :class => "uk-button uk-button-danger" %>
-        </div>
-    <% end %>
+<div id="friends-dashboard">
+    <%= render partial: 'friends_dashboard' %>
 </div>
-
-<hr>
-
-<div class="invites">MY PENDING INVITATIONS
-    <% @current_user.invited_by.each do |invited| %>
-        <div class="each-invited">
-            <div class="name"><%=invited.name%></div>
-            <%= link_to "Accept", friends_invite(invited), method: 'PATCH', :class => "uk-button uk-button-success" %>
-            <%= link_to "Decline", friends_invite(invited), method: 'DELETE', :class => "uk-button uk-button-danger" %>
-        </div>
-    <% end %>
-</div>
-
-<hr>
-
-<div class="invites">MY SENT INVITITAIONS
-    <% @current_user.invited.each do |sent| %>
-        <div class="each-sent">
-            <div class="name"><%=sent.name%></div>
-        </div>
-    <% end %>
-</div>
-
 <hr>
 
 <div class="send-invite">SEND AN INVITE
     <div class="uk-form">
-    <%= form_for :friend do |f| %>
+    <%= form_tag friends_invite_path, id: 'invite-form' do %>
         <div class="uk-form-row">
             <div class="uk-form-controls">
-                <%= f.text_field :name, placeholder: "Enter username or email address" %>
+                <%= text_field_tag :name %>
             </div>
         </div>
         <div class="uk-form-row">
             <div class="uk-form-controls">
-                <%= f.submit "Send Invite", :class => "uk-button uk-button-primary" %>
+                <%= submit_tag "Send Invite", :class => "uk-button uk-button-primary" %>
             </div>
         </div>
     <% end %>

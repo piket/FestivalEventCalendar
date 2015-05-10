@@ -15,5 +15,4 @@
 //= require_tree .
 //= require jquery.tagsinput
 
-//= require fullcalendar
 

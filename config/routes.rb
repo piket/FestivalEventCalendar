@@ -38,9 +38,9 @@ get '/festivals/:id' => 'festivals#show', as: 'festival'
 # FRIEND RELATIONS ROUTES
 get '/friends' => 'friends#index'
 post '/friends/invite' => 'friends#invite'
-patch '/friends/invite/:id' => 'friends#accept'
+patch '/friends/invite/:id' => 'friends#accept', as: 'friend_invite'
 delete '/friends/invite/:id' => 'friends#decline'
-delete '/friends/delete/:id' => 'friends#destroy', as: 'friends_remove'
+delete '/friends/delete/:id' => 'friends#destroy', as: 'friend_remove'
 
 
 
