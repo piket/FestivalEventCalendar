@@ -78,7 +78,7 @@ class FestivalsController < ApplicationController
           end
       end
 
-      render json: @event_dates
+      # render json: @event_dates
     end
 
 
