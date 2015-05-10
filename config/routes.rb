@@ -35,7 +35,12 @@ get '/festivals' => 'festivals#index'
 get '/festivals/myfestivals' => 'festivals#myfestivals'
 get '/festivals/:id' => 'festivals#show', as: 'festival'
 
-
+# FRIEND RELATIONS ROUTES
+get '/friends' => 'friends#index'
+post '/friends/invite' => 'friends#invite'
+patch '/friends/invite/:id' => 'friends#accept'
+delete '/friends/invite/:id' => 'friends#decline'
+delete '/friends/delete/:id' => 'friends#destroy', as: 'friends_remove'
 
 
 

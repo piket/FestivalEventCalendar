@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509160447) do
+ActiveRecord::Schema.define(version: 20150509181122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 20150509160447) do
 
   add_index "events_tags", ["event_id"], name: "index_events_tags_on_event_id", using: :btree
   add_index "events_tags", ["tag_id"], name: "index_events_tags_on_tag_id", using: :btree
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.integer "blocker_id"
+    t.boolean "pending",       default: true
+  end
+
+  add_index "friendships", ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true, using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"

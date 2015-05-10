@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+    include Amistad::FriendModel
+
     # Creates a bcrypted password
     has_secure_password
     # An organizer has many events, they are called organized_events

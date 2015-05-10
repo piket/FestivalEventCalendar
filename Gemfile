@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-#gem 'fullcalendar-rails'
+gem 'amistad'
+# gem 'fullcalendar-rails'
 gem 'tagsinput-rails'
 # Allows for importing from file
 gem 'roo', '~> 2.0.0'
