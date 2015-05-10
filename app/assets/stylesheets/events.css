@@ -5,3 +5,25 @@
   margin-bottom:40px;
   font-size:40px;
 }
+
+
+
+/*INDIVIDUAL EVENT SHOW PAGES*/
+
+.event-img {
+  margin-top: 40px;
+  width: 320px;
+  height:250px;
+  border-radius: 5px;
+}
+
+.event-name {
+  display:inline;
+  font-size: 40px;
+  margin-top: 100px;
+
+}
+
+.event-headings {
+  display:inline;
+}

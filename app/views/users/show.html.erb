@@ -1,21 +1,24 @@
-<h1 class="uk-text-center"><%= @current_user.name || "N/A" %>'s Profile</h1>
-<h3 class="uk-text-center">Email: <%= @current_user.email || "N/A" %></h3>
+<div class= "uk-grid">
+  <div class=".uk-container-center uk-width-1-1">
+    <div id="prof-name" class="uk-text-center"><%= @current_user.name || "N/A" %>'s Profile</div>
+    <div id="prof-email" class="uk-text-center">Email: <%= @current_user.email || "N/A" %></div>
 
-<% if @current_user.user_type == 'consumer' %>
-    <h3 class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></h3>
-    <h3 class="uk-text-center">Age: <%= @current_user.age || "N/A" %></h3>
-<% end %>
+    <% if @current_user.user_type == 'consumer' %>
+        <div class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></div>
+        <div class="uk-text-center">Age: <%= @current_user.age || "N/A" %></div>
+    <% end %>
 
-<h3 class="uk-text-center">Location: <%= @current_user.location || "N/A" %></h3>
-  <img src=<%= @current_user.image %>>
+    <div class="uk-text-center">Location: <%= @current_user.location || "N/A" %></div>
+      <%= cl_image_tag @current_user.image %>
 
-<% if @current_user.user_type == 'host' %>
-  <h3><%=@current_user.about %></h3>
-<% end %>
+    <% if @current_user.user_type == 'host' %>
+      <div><%=@current_user.about %></div>
+    <% end %>
 
 
-<%= link_to "Edit Profile", edit_user_path(@current_user), :class => "uk-button uk-button-primary" %>
-<% if @current_user.user_type == 'host' %>
-    <%= link_to "View Your Events", events_path, :class => "uk-button uk-button-primary" %>
-    <%= link_to "Add Event", new_event_path, :class => "uk-button uk-button-primary" %>
-<% end %>
+    <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "Edit Profile", edit_user_path(@current_user), :class => "uk-icon-pencil"%></div>
+    <% if @current_user.user_type == 'host' %>
+
+    <% end %>
+  </div>
+</div>

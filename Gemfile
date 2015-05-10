@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
+# Allows friending
 gem 'amistad'
-# gem 'fullcalendar-rails'
+# Allows for uploading images to the cloud
+gem 'cloudinary'
+#gem 'fullcalendar-rails'
 gem 'tagsinput-rails'
 # Allows for importing from file
 gem 'roo', '~> 2.0.0'
