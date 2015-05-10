@@ -48,31 +48,37 @@ class FestivalsController < ApplicationController
             duration: event.duration,
             image: event.image,
             id:event.id,
-            tags: (event.tags.map { |tag| tag.name }).join(' '),
-            occurrences: []
+            tags: (event.tags.map { |tag| tag.name }).join(' ')
           }
 
           # Loop through each occurrence of the event
           event.event_occurrences.each do |occur|
+            date_key = occur.date.to_date
+
             # Populate the date key if it is empty
-            @event_dates[occur.date.to_date] = [info] unless @event_dates.has_key? occur.date.to_date
             # Find if the event info already exists in the hash
-            i = @event_dates[occur.date.to_date].index { |e| e[:id] == occur.event_id }
+            if @event_dates.has_key? date_key
+              i = @event_dates[date_key].index { |e| e[:id] == occur.event_id }
+            else
+              @event_dates[date_key] = []
+              i = nil
+            end
 
             added = occur.users.include? User.find(@current_user.id)
 
             # If the info is not there, add it to the date key
             if i.nil?
-              info[:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.id, added:added}
-              @event_dates[occur.date.to_date] << info
+              @event_dates[date_key] << info
+              @event_dates[date_key][-1][:occurrences] = []
+              @event_dates[date_key][-1][:occurrences]  << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}
             # If the info is there, push the new occurrence into the data
             else
-              @event_dates[occur.date.to_date][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.id, added:added}
+              @event_dates[date_key][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}
             end
           end
       end
 
-      # render json: @event_dates
+      render json: @event_dates
     end
 
 
