@@ -1,0 +1,26 @@
+/*FESTIVAL SEARCH PAGE*/
+
+.image {
+  width:200px;
+  height:200px;
+}
+
+.festival-img {
+  width:100%;
+  height:100%;
+  margin: 0 auto;
+}
+
+#festival-field {
+
+  width:90%;
+}
+
+.each-festival {
+  width:20%;
+  display:inline-block;
+  margin-left:5px;
+  margin-right:5px;
+  padding: 10px;
+  text-align:center;
+}

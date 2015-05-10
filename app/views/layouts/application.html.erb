@@ -19,40 +19,47 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.3/jquery.tagsinput.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css">
-<link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.print.css">
-
+  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css">
+  <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.print.css">
+  <!-- <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="small-device.css"> -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/core.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/grid.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/utility.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/datepicker.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/autocomplete.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/timepicker.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/button.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/grid.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/dropdown.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.3/jquery.tagsinput.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.js"></script>
 
 
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-  <nav class = "uk-navbar">
+<!-- DESKTOP NAV -->
+  <button id="hamburger-menu" type="hidden" class="uk-button" data-uk-offcanvas="{target:'#mobile-nav'}"><a class="uk-icon-bars"></a></button>
+
+  <nav id="desktop-nav" class = "uk-navbar">
 
     <a class="uk-navbar-brand" href="/">HOME</a>
+
+
    <ul class="uk-navbar-nav">
 
    <% if @current_user %>
     <li class="uk-parent" data-uk-dropdown>
         <a href="#">MY ACCOUNT</a>
-      <!-- <div class="data-uk-dropdown"> -->
+
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
             <li>
@@ -61,14 +68,17 @@
             <li>
                 <a href="/users/calendar">MY CALENDAR</a>
             </li>
+            <li>
+                <a id="logout-btn" href = "/logout">LOGOUT</a>
+            </li>
           </ul>
         </div>
-      <!-- </div> -->
+
     </li>
      <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
         <li class="uk-parent" data-uk-dropdown>
         <a href="/events">MY EVENTS</a>
-      <!-- <div class="data-uk-dropdown"> -->
+
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
             <li>
@@ -76,18 +86,16 @@
             </li>
           </ul>
         </div>
-      <!-- </div> -->
+
     </li>
 
-
-
-        <li class="uk-parent"><a href = "/tags/new">ADD TAGS</a></li>
-
         <!-- FOR CONSUMER  -->
-         <li class="uk-parent"><a href = "/festivals">SEARCH FOR A FESTIVAL</a></li>
+         <li class="uk-parent">
+            <a href = "/festivals">SEARCH FOR A FESTIVAL</a>
+         </li>
 
 
-    <li class="uk-parent"><a href = "/logout">LOGOUT</a></li>
+          <li class="uk-parent"></li>
    <% else %>
     <li class="uk-parent"><a href="/users/new">SIGN UP</a></li>
     <li class="uk-parent"><a href = "/login">LOGIN</a></li>
@@ -95,6 +103,68 @@
 
    </ul>
   </nav>
+
+<!-- MOBILE NAV -->
+
+<div id="mobile-nav" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
+
+          <% if @current_user %>
+            <li class="uk-parent">
+              <a href="#">MY ACCOUNT</a>
+            <!-- <div class="data-uk-dropdown"> -->
+              <!-- <div class="uk-dropdown uk-dropdown-navbar"> -->
+                <ul class="uk-nav-sub">
+                  <li>
+                      <a href="/users/:id">PROFILE</a>
+                  </li>
+                  <li>
+                      <a href="/users/calendar">MY CALENDAR</a>
+                  </li>
+                  <li>
+                      <a id="logout-btn" href = "/logout">LOGOUT</a>
+                  </li>
+                </ul>
+
+            <!-- </div> -->
+            </li>
+             <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
+            <li class="uk-parent">
+                <a href="#">MY EVENTS</a>
+              <!-- <div class="data-uk-dropdown"> -->
+                <!-- <div class="uk-dropdown uk-dropdown-navbar"> -->
+                  <ul class="uk-nav-sub">
+                    <li>
+                        <a href="/events">MY EVENT</a>
+                    </li>
+                    <li>
+                        <a href="/events/new">ADD A NEW EVENT</a>
+                    </li>
+                  </ul>
+                <!-- </div> -->
+              <!-- </div> -->
+            </li>
+
+        <!-- FOR CONSUMER  -->
+            <li class="uk-parent">
+              <a href = "/festivals">SEARCH FOR A FESTIVAL</a>
+            </li>
+
+
+    <li class="uk-parent"></li>
+   <% else %>
+    <li class="uk-parent"><a href="/users/new">SIGN UP</a></li>
+    <li class="uk-parent"><a href = "/login">LOGIN</a></li>
+    <% end %>
+
+
+            </div>
+        </ul>
+    </div>
+</div>
+
+
 
   <%= render "/layouts/alerts" %>
 

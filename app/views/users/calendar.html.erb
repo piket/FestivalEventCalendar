@@ -1,13 +1,18 @@
 THIS IS MY CALENDAR PAGE
+<!-- <div class="uk-grid"> -->
+  <% @current_user.event_occurrences.order(date: 'ASC').each do |event| %>
+    <div>
 
-<% @current_user.event_occurrences.order(date: 'ASC').each do |event| %>
-  <div>
+      <%= event.event.name %>
+       <%= event.event.image %>
+        <%= event.date %>
+         <%= event.location %>
 
-    <%= event.event.name %>
-     <%= event.event.image %>
-      <%= event.date %>
-       <%= event.location %>
+    </div>
 
+  <% end %>
+
+  <div id="cal-div" class="ux-container ux-container-center">
+    <div id='calendar'></div>
   </div>
-
-<% end %>
+<!-- </div> -->
