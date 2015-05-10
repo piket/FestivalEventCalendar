@@ -1,18 +1,22 @@
-THIS IS THE EVENT SHOW PAGE
 
-<!-- <div class="uk-grid"> -->
 
-    <div class="each-host-event uk-container">
-      <%= cl_image_tag @event.image %>
-     <%= @event.name %>
-      <a href="<%= @event.link %>">LINK</a>
-      <%= @event.description %>
-      <%= @event.video %>
-      <%= @event.purchase %>
-      <%= @event.price %>
+<div class="uk-grid">
 
-      <%= link_to "EDIT", edit_event_path %>
+    <div class="each-host-event uk-container uk-width-1-1 uk-container-center">
+      <!-- <div class="event-headings"> -->
+          <img class="event-img" src=<%= @event.image %>>
+          <div class="event-name"><%= @event.name %></div>
+          <%= link_to "EDIT", edit_event_path %>
+      <!-- </div> -->
+      <div class="event-details">
+          <a href="<%= @event.link %>">LINK</a>
+          <div class="event-desc"><%= @event.description %></div>
+          <div class="event-video"><%= @event.video %></div>
+          <div class="event-purchase"><%= @event.purchase %></div>
+          <div class="event-price"><%= @event.price %></div>
+      </div>
+
 
     </div>
 
-<!-- </div> -->
+</div>

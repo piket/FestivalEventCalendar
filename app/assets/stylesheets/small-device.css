@@ -1,0 +1,27 @@
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+
+
+  body {
+      /*background:red;*/
+  }
+
+  nav {
+    display:none;
+  }
+
+  #hamburger-menu {
+    display:inline-block;
+  }
+
+
+
+  /*CREATE NEW EVENT PAGE*/
+
+
+  #create-event-header {
+  margin: 20px auto;
+  font-size:25px;
+
+  }
+
+}

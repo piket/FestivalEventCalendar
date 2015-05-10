@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 # Allows for uploading images to the cloud
 gem 'cloudinary'
 #gem 'fullcalendar-rails'

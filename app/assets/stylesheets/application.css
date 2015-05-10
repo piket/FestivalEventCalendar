@@ -15,11 +15,3 @@
  *= require jquery.tagsinput
  */
 
- .uk-navbar-nav {
-  font-family: 'Quicksand', sans-serif;
- }
-
-body {
-  font-family: 'Quicksand', sans-serif;
-  font-weight:400;
-}

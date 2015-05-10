@@ -1,15 +1,18 @@
-THIS IS MY FESTIVALS LIST PAGE
+<div class="uk-grid">
+  <div id = "festival-search">
+    <form class="uk-search filter-form" data-uk-search>
+        <input id="festival_filter" class="uk-search-field" type="search" placeholder="">
+    </form>
+  </div>
+  <div id="festival-field" class="uk-container uk-container-center">
 
-<form class="uk-search filter-form" data-uk-search>
-    <input id="festival_filter" class="uk-search-field" type="search" placeholder="">
-</form>
+      <% @festival_details.each do |detail| %>
+       <div class="each-festival uk-width-1-4" data-tags="<%= detail[:tags] %>">
+        <div class="name"><%= link_to detail[:name], festival_path(detail[:id]) %></div>
+        <div class="location"><%= detail[:location] %></div>
+        <div class="image"><%= cl_image_tag detail[:image], :class => 'festival-img' %></div>
+       </div>
 
-  <% @festival_details.each do |detail| %>
-   <div class="each-festival" data-tags="<%= detail[:tags] %>">
-    <div class="name"><%= link_to detail[:name], festival_path(detail[:id]) %></div>
-    <div class="location"><%= detail[:location] %></div>
-    <div class="image"><%= cl_image_tag detail[:image] %></div>
-    <div class="about"><%= detail[:about] %></div>
-   </div>
-
-  <% end %>
+      <% end %>
+  </div>
+</div>
