@@ -15,4 +15,3 @@
 //= require_tree .
 //= require jquery.tagsinput
 //= require cloudinary
-

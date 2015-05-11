@@ -21,11 +21,18 @@ class EventsController < ApplicationController
       @event = Event.create(event_params)
       @event.price = params[:event][:price].to_f
       @event.duration = proccess_duration params[:event][:duration]
+
       if params[:event][:image].present?
          preloaded = Cloudinary::PreloadedFile.new(params[:event][:image])
          raise "Invalid upload signature" if !preloaded.valid?
          @event.image = preloaded.identifier
       end
+
+      if params[:event][:video].include? 'youtube.com'
+         vid = params[:event][:video]
+         @event.video = vid[vid.index('?v=')+3...vid.length]
+      end
+
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
          tag.downcase!
@@ -55,6 +62,12 @@ class EventsController < ApplicationController
          raise "Invalid upload signature" if !preloaded.valid?
          @event.image = preloaded.identifier
       end
+
+      if params[:event][:video].include? 'youtube.com'
+         vid = params[:event][:video]
+         @event.video = vid[vid.index('?v=')+3...vid.length]
+      end
+
       @event.tags.clear
       params[:event][:tags].split(',').each do |tag|
          tag.strip!
@@ -128,6 +141,12 @@ class EventsController < ApplicationController
             # render json: event.image
             # return
          end
+
+         if row['video'].include? 'youtube.com'
+            vid = row['video']
+            @event.video = vid[vid.index('?v=')+3...vid.length]
+         end
+
          event.duration = proccess_duration(row['duration'])
 
          row['tags'].each do |tag|
@@ -146,7 +165,7 @@ class EventsController < ApplicationController
    private
 
    def event_params
-      params.require(:event).permit([:name, :description, :video, :link, :purchase, :host_id, :location, :date])
+      params.require(:event).permit([:name, :description, :link, :purchase, :host_id, :location, :date])
 
    end
 
