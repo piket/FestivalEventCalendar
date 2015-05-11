@@ -9,4 +9,19 @@ module ApplicationHelper
     end
   end
 
+    def any_unread message
+        puts "Checking unread: #{message.unread}"
+        if message.unread && @current_user.id == message.original_id
+            true
+        else
+            message.comments.each do |m|
+                if any_unread m
+                    true
+                    return
+                end
+            end
+            false
+        end
+    end
+
 end

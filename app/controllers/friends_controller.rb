@@ -6,8 +6,6 @@ class FriendsController < ApplicationController
     end
 
     def invite
-        render partial: 'friends_dashboard'
-        return
         friend = User.where("lower(name) = ?", params[:name].downcase).first
 
         if friend.nil?

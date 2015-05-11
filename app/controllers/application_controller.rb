@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :current_user
+  before_action :unread_count
 
   def is_authenticated?
     unless current_user
@@ -17,6 +18,10 @@ class ApplicationController < ActionController::Base
 
   end
 
-
+  def unread_count
+    if @current_user
+      @unread_count = Comment.where(commentable_id: @current_user.id, commentable_type: 'User').length
+    end
+  end
 
 end

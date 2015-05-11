@@ -59,13 +59,12 @@ $(function() {
         $.ajax({
             url: invite.attr('action'),
             method: 'POST',
-            dataType: 'json',
             data: invite.serialize()
         }).done(function(data) {
-            console.log(data);
+            $('#friends-dashboard').html(data);
+            $('#name').val()
         }).error(function(err) {
             console.log("Invite error:",err);
-            $('#friends-dashboard').html(err.responseText);
         });
     });
 

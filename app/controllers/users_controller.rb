@@ -30,6 +30,8 @@ class UsersController < ApplicationController
     end
 
     def show
+      @user = User.find params[:id]
+      @message = Comment.new
     end
 
     def edit

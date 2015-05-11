@@ -11,13 +11,17 @@ Rails.application.routes.draw do
   get 'users/calendar' => 'users#calendar'
   patch '/addevent/:id' => 'users#addevent', as: "addevent"
   delete '/deleteevent/:id' => 'users#deleteevent', as: "deleteevent"
-  resources :users
+  resources :users do
+    resources :comments, except: [:edit, :update, :index, :show] do
+      resources :comments, except: [:edit, :update, :index, :show]
+    end
+  end
 
 
   resources :events do
     collection { post :import }
-    resources :comments, except: [:edit, :update] do
-      resources :comments, except: [:edit, :update]
+    resources :comments, except: [:edit, :update, :index, :show] do
+      resources :comments, except: [:edit, :update, :index, :show]
     end
   end
   resources :tags, :only => [:new, :create, :index]
@@ -44,6 +48,8 @@ post '/friends/invite' => 'friends#invite'
 patch '/friends/invite/:id' => 'friends#accept', as: 'friend_invite'
 delete '/friends/invite/:id' => 'friends#decline'
 delete '/friends/delete/:id' => 'friends#destroy', as: 'friend_remove'
+get '/inbox' => 'comments#index'
+get '/inbox/message/:id' => 'comments#show', as: 'message'
 
 
 

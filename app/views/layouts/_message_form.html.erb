@@ -1,0 +1,29 @@
+<% if message_ref %>
+    <% arr = [user, message_ref, message] %>
+<% else %>
+  <% arr = [user,message] %>
+<% end %>
+
+
+<div class="uk-form">
+      <%= form_for arr do |f| %>
+        <div class="uk-form-row">
+          <div class="form-controls">
+            <%= f.text_field :subject, :placeholder => "Enter a subject" %>
+          </div>
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-controls">
+            <%= f.text_area :body, :placeholder => "Type your message here" %>
+          </div>
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-controls">
+            <%= f.submit "Send", :class => "uk-button uk-button-primary" %>
+          </div>
+        </div>
+        <input type="hidden" name="comment[original]" value=<%=params[:id]%>>
+
+        <input type="hidden" value="" id="default-action">
+      <% end %>
+</div>

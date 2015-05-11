@@ -1,0 +1,25 @@
+YOUR INBOX
+
+<div class="inbox container">
+Received Messages
+<ul>
+<% @messages.each do |message| %>
+    <li>
+        From: <%=message.user.name %>
+        Sent: <%=format_created_time message%>
+        <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+    </li>
+<% end %>
+</ul>
+</div>
+<div class="outbox container">
+Sent Messages
+<ul>
+<% @sent.each do |message| %>
+        <%= "!" if any_unread message %>
+        To: <%=message.commentable.name %>
+        Sent: <%=format_created_time message%>
+        <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+<% end %>
+</ul>
+</div>
