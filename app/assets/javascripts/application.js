@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require jquery.tagsinput
 //= require cloudinary
+//= require_tree .

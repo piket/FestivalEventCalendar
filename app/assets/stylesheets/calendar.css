@@ -1,8 +1,30 @@
-#cal-div {
-  margin-top:100px;
-  font-weight:200;
+#my-calendar {
+  font-size:45px;
+  margin-top:50px;
 }
 
-.fc-button-group {
-  display:inline-block;
+#calendar {
+  margin-top:60px;
+  font-weight:200;
+  /*width:70%;*/
+}
+
+div.fc-left h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 35px;
+
+}
+
+.fc-today-button {
+  display:none;
+}
+
+.fc-day-header {
+  font-size:30px;
+  font-weight:300;
+}
+
+tr .fc-day-header {
+  padding-top:12px;
+  height:35px;
 }
