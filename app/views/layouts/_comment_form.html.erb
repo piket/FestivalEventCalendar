@@ -1,0 +1,38 @@
+
+<% if @comment_ref %>
+
+    <%= form_for [@event, @comment_ref, @comment], html:{:class=>"uk-form uk-form-stacked"} do |f|%>
+      <div class="uk-form-row">
+        <div class="uk-form-controls">
+        <%= f.text_field :body, :placeholder => "Enter your comment.", :class=> "comment-input" %>
+        </div>
+      </div>
+      <div class="uk-form-row">
+        <div class="uk-form-controls">
+        <%= f.submit "Submit", :class=>"uk-button uk-button-primary" %>
+        </div>
+      </div>
+      <input type="hidden" value="" id="default-action">
+
+
+    <% end %>
+
+<% else %>
+
+
+    <%= form_for [@event, @comment], html:{:class=>"uk-form uk-form-stacked"} do |f|%>
+      <div class="uk-form-row">
+        <div class="uk-form-controls">
+        <%= f.text_field :body, :placeholder => "Enter your comment." %>
+        </div>
+      </div>
+      <div class="uk-form-row">
+        <div class="uk-form-controls">
+        <%= f.submit "Submit", :class=>"uk-button uk-button-primary" %>
+        </div>
+      </div>
+
+
+    <% end %>
+
+<% end %>
