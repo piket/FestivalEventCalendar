@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
 
   def is_authenticated?
-    unless current_user
+    unless @current_user
       flash[:warning] ="You must be logged in to access this page."
       redirect_to login_path
     end
@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
 
   end
 
-
+  def host_user?
+    is_authenticated?
+    unless @current_user.user_type == 'host' && @current_user.status
+      flash[:warning] = "You do not have access to this page."
+      redirect_to :back
+    end
+  end
 
 end

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Allows validation of an email
+gem 'validates_email_format_of'
+# Allows automatic generation of a seed file based on your current database
 gem 'seed_dump'
 # Allows friending
 gem 'amistad'

@@ -1,5 +1,7 @@
 class FestivalsController < ApplicationController
 
+  before_action :is_authenticated?
+
     def myfestivals
       @festivals = @current_user.event_occurrences.order(date: 'ASC').reduce([]) do |arr,occur|
         arr << occur.event.host unless arr.include? occur.event.host

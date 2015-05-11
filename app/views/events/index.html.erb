@@ -1,5 +1,6 @@
 THIS IS THE HOST EVENTS PAGE
 
+<% if @current_user.status %>
 <!-- <div class="uk-grid"> -->
     <% @events.each do |event| %>
     <div class="each-host-event uk-container">
@@ -10,3 +11,6 @@ THIS IS THE HOST EVENTS PAGE
     </div>
     <% end %>
 <!-- </div> -->
+<% else %>
+    Your status is pending
+<% end %>

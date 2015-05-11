@@ -6,8 +6,6 @@ class FriendsController < ApplicationController
     end
 
     def invite
-        render partial: 'friends_dashboard'
-        return
         friend = User.where("lower(name) = ?", params[:name].downcase).first
 
         if friend.nil?
@@ -19,7 +17,7 @@ class FriendsController < ApplicationController
             end
         end
 
-        if friend
+        if friend && friend.user_type == 'consumer' && @current_user.user_type == 'consumer'
             success = @current_user.invite friend
         else
             success = false
