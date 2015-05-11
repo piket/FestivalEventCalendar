@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'seed_dump'
 # Allows friending
 gem 'amistad'
 # Allows for uploading images to the cloud
