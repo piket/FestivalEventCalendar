@@ -10,7 +10,7 @@
        <div class="each-festival uk-width-1-4" data-tags="<%= detail[:tags] %>">
         <div class="name"><%= link_to detail[:name], festival_path(detail[:id]) %></div>
         <div class="location"><%= detail[:location] %></div>
-        <div class="image"><%= cl_image_tag detail[:image], :class => 'festival-img' %></div>
+        <div class="image"><%# cl_image_tag detail[:image], :class => 'festival-img' %></div>
        </div>
 
       <% end %>

@@ -14,6 +14,31 @@
   }
 
 
+  /*HOME*/
+
+  #title {
+    font-size:60px;
+  }
+
+  #your-personal {
+    margin-left:18px;
+  }
+
+  #conference {
+    font-size:20px;
+    display:block;
+  }
+
+  #companion {
+    margin-left:18px;
+  }
+
+  #slogan {
+    display:block;
+    text-align:center;
+    width:80%;
+  }
+
 
   /*CREATE NEW EVENT PAGE*/
 
@@ -23,5 +48,9 @@
   font-size:25px;
 
   }
+
+
+
+
 
 }

@@ -54,7 +54,7 @@
 
   <nav id="desktop-nav" class = "uk-navbar">
 
-    <a class="uk-navbar-brand" href="/">HOME</a>
+    <a class="uk-navbar-brand" href="/">FSTVL</a>
 
 
    <ul class="uk-navbar-nav">
@@ -66,13 +66,13 @@
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
             <li>
-                <a href="/users/:id">PROFILE</a>
+                <a class="sub-nav" href="/users/:id">PROFILE</a>
             </li>
             <li>
-                <a href="/users/calendar">MY CALENDAR</a>
+                <a class="sub-nav" href="/users/calendar">MY CALENDAR</a>
             </li>
             <li>
-                <a id="logout-btn" href = "/logout">LOGOUT</a>
+                <a class="sub-nav" id="logout-btn" href = "/logout">LOGOUT</a>
             </li>
           </ul>
         </div>
@@ -80,22 +80,33 @@
     </li>
      <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
         <li class="uk-parent" data-uk-dropdown>
-        <a href="/events">MY EVENTS</a>
+          <a href="/events">MY EVENTS</a>
 
-        <div class="uk-dropdown uk-dropdown-navbar">
-          <ul class="uk-nav uk-nav-navbar">
-            <li>
-                <a href="/events/new">ADD A NEW EVENT</a>
-            </li>
-          </ul>
-        </div>
+          <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/events/new">ADD A NEW EVENT</a>
+              </li>
+            </ul>
+          </div>
 
-    </li>
+        </li>
 
         <!-- FOR CONSUMER  -->
-         <li class="uk-parent">
-            <a href = "/festivals">SEARCH FOR A FESTIVAL</a>
-         </li>
+
+         <li class="uk-parent" data-uk-dropdown>
+          <a href="#">FESTIVALS</a>
+
+          <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/festivals">SEARCH FESTIVALS</a>
+              </li>
+            </ul>
+          </div>
+
+        </li>
+
 
 
           <li class="uk-parent"></li>
@@ -151,7 +162,13 @@
 
         <!-- FOR CONSUMER  -->
             <li class="uk-parent">
-              <a href = "/festivals">SEARCH FOR A FESTIVAL</a>
+              <a href = "#">FESTIVALS</a>
+
+              <ul class="uk-nav-sub">
+                    <li>
+                        <a href="/festivals">SEARCH FESTIVALS</a>
+                    </li>
+              </ul>
             </li>
 
 

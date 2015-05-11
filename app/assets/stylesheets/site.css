@@ -1,19 +1,130 @@
-
-#hamburger-menu {
-  display:none;
-}
-
-.uk-navbar-nav {
-  font-family: 'Quicksand', sans-serif;
- }
-
-
-
+/*GENERAL*/
 
 body {
   font-family: 'Quicksand', sans-serif;
   font-weight:400;
 }
+
+.uk-navbar{
+  background-color: rgb(44,44,46);
+  color:white;
+  border-radius:0;
+}
+
+.uk-navbar-nav li a {
+  color:white;
+  text-shadow: none;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 2px;
+}
+
+
+
+.uk-navbar-brand, .uk-navbar-content {
+  text-shadow: none;
+
+}
+
+#hamburger-menu {
+  display:none;
+  background-color:rgb(44,44,46);
+  border-radius:0;
+
+}
+
+.uk-icon-bars {
+  color:rgb(129,239,188);
+  text-shadow:none;
+}
+
+.uk-icon-bars:hover {
+  color:white;
+}
+
+.uk-navbar-nav {
+  font-family: 'Quicksand', sans-serif;
+
+ }
+
+.uk-navbar-brand {
+  font-size: 25px;
+  text-shadow: white;
+  color: rgb(129,239,188);
+  margin-top:3px;
+ }
+
+.uk-navbar-brand:hover {
+  color: white;
+}
+
+.uk-navbar-nav li a:hover {
+  border: 2px solid rgb(129,239,188);
+  background-color:transparent;
+  margin-top:2px;
+  color: rgb(129,239,188);
+}
+
+li .uk-parent:hover {
+  background-color:transparent;
+  color: rgb(129,239,188);
+}
+
+.uk-dropdown {
+  background:white;
+  border: 2px solid rgb(44,44,46);
+}
+
+.uk-navbar-nav li a.sub-nav{
+  color:rgb(44,44,46);
+  font-weight:600;
+}
+
+.uk-navbar-nav li a.sub-nav:hover {
+  color: rgb(129,239,188);
+  background-color: rgb(97,3,69);
+  font-weight:500;
+  margin-left:2px;
+  margin-right:2px;
+  border:2px solid rgb(44,44,46);
+
+}
+
+
+
+/*HOME PAGE*/
+
+#title {
+  font-size:100px;
+  margin-top:120px;
+  margin-bottom:60px;
+  text-align:center;
+}
+
+#your-personal {
+  display:inline;
+  font-size:18px;
+}
+
+#conference {
+  display:inline;
+  font-size:25px;
+  margin-right:10px;
+  margin-left:8px;
+  text-align:center;
+  color: rgb(97,3,69);
+
+}
+
+#companion {
+  display:inline;
+  font-size:18px;
+}
+
+#slogan {
+  width:80%;
+}
+
+
 
 
 /*USER PROFILE*/
