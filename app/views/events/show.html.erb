@@ -4,16 +4,16 @@
 
     <div class="each-host-event uk-container uk-width-1-1 uk-container-center">
       <!-- <div class="event-headings"> -->
-          <img class="event-img" src=<%= @event.image %>>
+          <%= cl_image_tag @event.image, :class => "event-image" %>
           <div class="event-name"><%= @event.name %></div>
           <%= link_to "EDIT", edit_event_path %>
       <!-- </div> -->
       <div class="event-details">
           <a href="<%= @event.link %>">LINK</a>
           <div class="event-desc"><%= @event.description %></div>
-          <div class="event-video"><%= @event.video %></div>
+          <div class="event-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen class="video-frame"></iframe></div>
           <div class="event-purchase"><%= @event.purchase %></div>
-          <div class="event-price"><%= @event.price %></div>
+          <div class="event-price"><%= @event.price == 0 ? 'Free' : @event.price %></div>
       </div>
 
 
