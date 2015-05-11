@@ -1,5 +1,27 @@
-THIS IS THE HOME PAGE
 
-  <% if @current_user %>
-    <h1>Hello, <%="#{@current_user.name}"%></h1>
-  <% end %>
+
+<div class="uk-grid">
+    <div class="uk-container uk-container-center uk-width-small">
+      <div class="uk-container-center" id="title"> FSTVL</div>
+      <div class="uk-container uk-container-center uk-width-large-1-1" id ="slogan">
+           <div id="your-personal">
+              YOUR PERSONAL
+           </div>
+
+           <div id="conference" class="uk-container-center">
+              CONFERENCE | FESTIVAL | CONVENTION
+           </div>
+
+           <div id="companion">
+              COMPANION
+           </div>
+
+           <!-- <iframe width="250" height = "200" src="https://www.youtube.com/embed/aa5F4rEWWR4">
+
+           </iframe> -->
+            <% if @current_user %>
+              <h1>Hello, <%="#{@current_user.name}"%></h1>
+            <% end %>
+      </div>
+    </div>
+</div>
