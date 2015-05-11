@@ -115,12 +115,71 @@
 
           <li class="uk-parent"></li>
    <% else %>
-    <li class="uk-parent"><a href="/users/new">SIGN UP</a></li>
-    <li class="uk-parent"><a href = "/login">LOGIN</a></li>
+    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}">SIGN UP</a></li>
+    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}">LOGIN</a></li>
     <% end %>
 
    </ul>
   </nav>
+
+
+  <!-- LOGIN MODAL -->
+
+
+<!-- This is the modal -->
+<div id="my-id" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
+        <%= form_for :user, html:{:class=>"uk-form uk-form-stacked"}, :url => login_path do |f|%>
+
+  <%= link_to "LOGIN WITH FACEBOOK", "/auth/facebook" %>
+
+
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.text_field :email, :placeholder => "Enter your email." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.password_field :password, :placeholder => "Enter your password." %>
+    </div>
+  </div>
+
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.submit "LOGIN", :class=>"uk-button uk-button-primary" %>
+    </div>
+  </div>
+
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- MOBILE NAV -->
 
