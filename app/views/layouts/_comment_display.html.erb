@@ -1,0 +1,18 @@
+
+  <div class="uk-container-center">
+
+      <li>
+        <%= comment_display.user.name %>
+        <%= comment_display.body %>
+        Created: <%= format_created_time comment_display %>
+        <%= link_to "REPLY", event_comment_comments_path(@event, comment_display), :class=>"uk-button uk-button-mini reply-btn" %>
+
+        <% unless comment_display.comments.empty? %>
+          <ul>
+          <%= render :partial => 'layouts/comment_display', :collection => comment_display.comments %>
+          </ul>
+        <% end %>
+      </li>
+
+
+  </div>

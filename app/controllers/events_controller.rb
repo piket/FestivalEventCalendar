@@ -10,6 +10,8 @@ class EventsController < ApplicationController
       @event = Event.find_by_id(params[:id])
       # occurrence = @event.occurrence
       # render :json => @event
+      @comment = Comment.new
+      @comment_ref = false
    end
 
    def new

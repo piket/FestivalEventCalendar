@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   resources :events do
     collection { post :import }
+    resources :comments, except: [:edit, :update] do
+      resources :comments, except: [:edit, :update]
+    end
   end
   resources :tags, :only => [:new, :create, :index]
 

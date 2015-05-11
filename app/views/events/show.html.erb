@@ -19,4 +19,15 @@
 
     </div>
 
+    <div class="comment-field">
+      <div class="form-container">
+        <%= render partial: 'layouts/comment_form' %>
+      </div>
+      <div class="display-container">
+        <ul>
+        <%= render partial: 'layouts/comment_display', :collection=> @event.comments %>
+        </ul>
+      </div>
+    </div>
+
 </div>
