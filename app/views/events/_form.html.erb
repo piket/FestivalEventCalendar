@@ -12,17 +12,19 @@
   <%= form_for @event, html:{:class=>"uk-form uk-form-stacked"} do |f|%>
     <div class="uk-form-row">
       <div class="uk-form-controls">
-        <%= f.text_field :name, :placeholder => "Enter event name." %>
+        EVENT NAME
+        <%= f.text_field :name, :placeholder => "Enter event name.", :class=>"name-input" %>
       </div>
     </div>
     <div class="uk-form-row">
       <div class="uk-form-controls">
-        <%= f.text_field :duration, :placeholder => "Enter duration in minutes or fractional hours prepended by 'hr'" %>
+        HOW LONG DOES THIS EVENT LAST?
+        <%= f.text_field :duration, :placeholder => "Enter duration in minutes or fractional hours prepended by 'hr'", :class=>"duration-input" %>
       </div>
     </div>
 
     <div class="uk-form-row">
-      <label for="multiple">Does this event occur more than once?</label>
+      <label for="multiple">DOES THIS EVENT OCCUR MORE THAN ONCE?</label>
       <input type="radio" value="true" name="multiple" <%= 'checked' unless @event.new_record? || @event.event_occurrences.length == 1 %>>Yes
       <input type="radio" value="false" name="multiple" <%= 'checked' if @event.new_record? || @event.event_occurrences.length == 1 %>>No
     </div>
@@ -72,6 +74,13 @@
       <button class="uk-button uk-button-primary uk-button-mini" id="add-occurrence">Add Another Occurrence</button>
     </div>
     <!-- End mulitple div -->
+
+    <div class="uk-form-row">
+      <div class="uk-form-controls">
+        <%= f.text_area :description, :placeholder => "Enter details about your event." %>
+      </div>
+    </div>
+
     <div class="uk-form-row">
         <div id="upload-drop" class="uk-placeholder uk-text-center">
             <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Upload a picture by dropping it here or
@@ -106,11 +115,7 @@
       </div>
     </div>
 
-    <div class="uk-form-row">
-      <div class="uk-form-controls">
-        <%= f.text_area :description, :placeholder => "Enter details about your event." %>
-      </div>
-    </div>
+
     <div class="uk-form-row">
       <div class="uk-form-controls">
         <%= f.text_field :tags, id: "tags", value: @tags %>
