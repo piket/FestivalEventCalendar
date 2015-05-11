@@ -61,7 +61,7 @@ body {
   border: 2px solid rgb(129,239,188);
   background-color:transparent;
   margin-top:2px;
-  color: rgb(129,239,188);
+  color: white;
 }
 
 li .uk-parent:hover {
@@ -80,18 +80,41 @@ li .uk-parent:hover {
 }
 
 .uk-navbar-nav li a.sub-nav:hover {
-  color: rgb(129,239,188);
+  color: white;
   background-color: rgb(97,3,69);
   font-weight:500;
   margin-left:2px;
   margin-right:2px;
-  border:2px solid rgb(44,44,46);
+  /*border:2px solid rgb(44,44,46);*/
+  border-radius:5px;
+  border-color: white;
 
+}
+
+.uk-link a {
+  color:white;
+}
+
+.uk-offcanvas-bar-show {
+  background-color:rgb(44,44,46);
+}
+
+.uk-nav-offcanvas>.uk-open>a, html:not(.uk-touch) .uk-nav-offcanvas>li>a:focus {
+   color: rgb(129,239,188);
+}
+
+li .uk-parent .uk-open {
+  background-color:red;
 }
 
 
 
 /*HOME PAGE*/
+
+#welcome-back {
+  font-size:45px;
+  margin-top:70px;
+}
 
 #title {
   font-size:100px;
@@ -111,7 +134,7 @@ li .uk-parent:hover {
   margin-right:10px;
   margin-left:8px;
   text-align:center;
-  color: rgb(97,3,69);
+  color: rgb(6,2,76);
 
 }
 
@@ -136,15 +159,38 @@ a.uk-icon-pencil{
 
 }
 
-.uk-icon-pencil{
-  margin-right:2px;
+
+
+#edit-prof-btn {
+   background-color:rgb(97,3,69);
+   opacity:0.8;
+   margin-top:5px;
+}
+
+#edit-prof-btn:hover {
+  opacity:1;
 }
 
 #prof-name {
-  font-size: 50px;
+  font-size: 70px;
+  background-color:rgb(129,239,188);
+  color: rgb(6,2,76);
+  text-shadow:white;
+  margin-top:50px;
+  margin-bottom:30px;
+  padding:40px;
+  padding-top:50px;
+  padding-left:38px;
+  opacity: 0.9;
+  width:50%;
+  border-radius: 8px;
 
-  margin-top:45px;
+}
 
+.prof-img {
+  height:280px;
+  width:280px;
+  border-radius: 50%;
 }
 
 

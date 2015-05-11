@@ -6,6 +6,20 @@
   font-size:40px;
 }
 
+#event_name {
+  width:100%;
+  margin-top: 6px;
+}
+
+.uk-dropdown-scrollable li.uk-active a{
+  background-color: rgb(97,3,69);
+}
+
+.uk-datepicker-table a.uk-active {
+  background-color: rgb(97,3,69);
+
+}
+
 
 
 /*INDIVIDUAL EVENT SHOW PAGES*/

@@ -1,6 +1,9 @@
 <div class= "uk-grid">
-  <div class=".uk-container-center uk-width-1-1">
-    <div id="prof-name" class="uk-text-center"><%= @current_user.name || "N/A" %>'s Profile</div>
+  <div class=".uk-container .uk-container-center uk-width-1-1">
+    <div id="prof-name" class="uk-text-center uk-container-center">
+      <%= @current_user.name || "N/A" %>
+      <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil"%></div>
+    </div>
     <div id="prof-email" class="uk-text-center">Email: <%= @current_user.email || "N/A" %></div>
 
     <% if @current_user.user_type == 'consumer' %>
@@ -9,14 +12,14 @@
     <% end %>
 
     <div class="uk-text-center">Location: <%= @current_user.location || "N/A" %></div>
-      <%= cl_image_tag @current_user.image %>
+      <div class="uk-container uk-container-center"><%= cl_image_tag @current_user.image, :class=>"prof-img" %></div>
 
     <% if @current_user.user_type == 'host' %>
       <div><%=@current_user.about %></div>
     <% end %>
 
 
-    <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "Edit Profile", edit_user_path(@current_user), :class => "uk-icon-pencil"%></div>
+
     <% if @current_user.user_type == 'host' %>
 
     <% end %>
