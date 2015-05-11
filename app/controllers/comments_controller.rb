@@ -44,6 +44,13 @@ class CommentsController < ApplicationController
 
 #delete messages
     def destroy
+      comment = Comment.find params[:id]
+
+      if comment.user_id == @current_user.id
+        comment.destroy
+      end
+      @messages = Comment.where(commentable_id: @current_user.id, commentable_type: 'User')
+      render :partial => 'layouts/messages'
     end
 
 

@@ -17,7 +17,7 @@ class FriendsController < ApplicationController
             end
         end
 
-        if friend
+        if friend && friend.user_type == 'consumer' && @current_user.user_type == 'consumer'
             success = @current_user.invite friend
         else
             success = false

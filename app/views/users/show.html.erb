@@ -2,7 +2,9 @@
   <div class=".uk-container .uk-container-center uk-width-1-1">
     <div id="prof-name" class="uk-text-center uk-container-center">
       <%= @user.name || "N/A" %>
+
       <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "", edit_user_path(@user), :class => "uk-icon-pencil"%></div>
+
     </div>
     <div id="prof-email" class="uk-text-center">Email: <%= @user.email || "N/A" %></div>
 
@@ -16,8 +18,8 @@
 
     <% if @user.user_type == 'host' %>
       <div><%=@user.about %></div>
+      <%= link_to "view #{@user.name}'s events", festival_path(@user), :class => "uk-button uk-button-success" %>
     <% end %>
-
 
 
     <% if @user.user_type == 'consumer' %>

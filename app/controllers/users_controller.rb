@@ -3,12 +3,15 @@ class UsersController < ApplicationController
   before_action :is_authenticated?, except: [:new, :create]
 
     def calendar
+      if @current_user.user_type == 'host'
+        redirect_to(:back)
+      end
     end
 
     def addevent
       result = EventOccurrence.find(params[:id])
 
-      if result.users.include? User.find(@current_user.id)
+      if @current_user.user_type != 'consumer' || result.users.include?(@current_user)
         render :json => {result:false}
       else
         @current_user.event_occurrences << result
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
     def deleteevent
         result = EventOccurrence.find(params[:id])
 
-      if result.users.include? User.find(@current_user.id)
+      if @current_user.user_type == 'consumer' && result.users.include?(@current_user)
         @current_user.event_occurrences.delete(result)
         render :json => {result:params[:id]}
       else
@@ -29,9 +32,17 @@ class UsersController < ApplicationController
       end
     end
 
+    def index
+    end
+
     def show
       @user = User.find params[:id]
       @message = Comment.new
+
+      unless @user.user_type == 'host' || @current_user.friends.include?(@user)
+        flash[:primary] = "You must be friends to view this profile."
+        redirect_to users_path
+      end
     end
 
     def edit
@@ -49,7 +60,7 @@ class UsersController < ApplicationController
             user[field] = value
         end
         user.save
-        redirect_to user
+        redirect_to users_path
     end
 
     # routes

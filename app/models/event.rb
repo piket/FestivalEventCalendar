@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   # Allows having many tags
   has_and_belongs_to_many :tags
 
+  # validates :host_id, presence: true
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)

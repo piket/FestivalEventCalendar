@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     # Allows a user to select many events for their calendar
     has_and_belongs_to_many :event_occurrences
 
+    validates :name, presence: true, uniqueness: {case_sensitive: false}
+    validates :email, presence: true, uniqueness: true
+    validates_email_format_of :email
+
     def self.authenticate email, password
       user= User.find_by_email(email)
 

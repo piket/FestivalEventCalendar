@@ -7,13 +7,11 @@ $(function() {
 
         $.ajax({
             url: btn.attr('href'),
-            method: 'DELETE',
-            dataType: 'json'
+            method: 'DELETE'
         }).done(function(data) {
             $('#friends-dashboard').html(data);
         }).error(function(err) {
             console.log("Delete error:",err);
-            $('#friends-dashboard').html(err.responseText);
         });
     });
 
@@ -24,13 +22,11 @@ $(function() {
 
         $.ajax({
             url: btn.attr('href'),
-            method: 'PATCH',
-            dataType: 'json'
+            method: 'PATCH'
         }).done(function(data) {
             $('#friends-dashboard').html(data);
         }).error(function(err) {
             console.log("Accept error:",err);
-            $('#friends-dashboard').html(err.responseText);
         });
     });
 
@@ -41,13 +37,11 @@ $(function() {
 
         $.ajax({
             url: btn.attr('href'),
-            method: 'DELETE',
-            dataType: 'json'
+            method: 'DELETE'
         }).done(function(data) {
             $('#friends-dashboard').html(data);
         }).error(function(err) {
             console.log("Accept error:",err);
-            $('#friends-dashboard').html(err.responseText);
         });
     });
 
