@@ -1,27 +1,26 @@
 <div class= "uk-grid">
   <div class=".uk-container .uk-container-center uk-width-1-1">
     <div id="prof-name" class="uk-text-center uk-container-center">
-      <%= @current_user.name || "N/A" %>
-      <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil"%></div>
+      <%= @user.name || "N/A" %>
     </div>
-    <div id="prof-email" class="uk-text-center">Email: <%= @current_user.email || "N/A" %></div>
+    <div id="prof-email" class="uk-text-center">Email: <%= @user.email || "N/A" %></div>
 
-    <% if @current_user.user_type == 'consumer' %>
-        <div class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></div>
-        <div class="uk-text-center">Age: <%= @current_user.age || "N/A" %></div>
+    <% if @user.user_type == 'consumer' %>
+        <div class="uk-text-center">Gender: <%= @user.gender || "N/A" %></div>
+        <div class="uk-text-center">Age: <%= @user.age || "N/A" %></div>
     <% end %>
 
-    <div class="uk-text-center">Location: <%= @current_user.location || "N/A" %></div>
-      <div class="uk-container uk-container-center"><%= cl_image_tag @current_user.image, :class=>"prof-img" %></div>
+    <div class="uk-text-center">Location: <%= @user.location || "N/A" %></div>
+      <div class="uk-container uk-container-center"><%= cl_image_tag @user.image, :class=>"prof-img" %></div>
 
-    <% if @current_user.user_type == 'host' %>
-      <div><%=@current_user.about %></div>
+    <% if @user.user_type == 'host' %>
+      <div><%=@user.about %></div>
     <% end %>
 
 
 
-    <% if @current_user.user_type == 'host' %>
-
+    <% if @user.user_type == 'host' %>
+      <%= link_to "view #{@user.name}'s events", festival_path(@user), :class => "uk-button uk-button-success" %>
     <% end %>
   </div>
 </div>

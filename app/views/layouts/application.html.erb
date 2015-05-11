@@ -66,19 +66,21 @@
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
             <li>
-                <a class="sub-nav" href="/users/:id">PROFILE</a>
+                <a class="sub-nav" href="/users/">PROFILE</a>
             </li>
+            <% if @current_user.user_type == 'consumer' %>
             <li>
                 <a class="sub-nav" href="/users/calendar">MY CALENDAR</a>
             </li>
+            <% end %>
             <li>
                 <a class="sub-nav" id="logout-btn" href = "/logout">LOGOUT</a>
             </li>
           </ul>
         </div>
 
+    <% if @current_user.user_type == 'host' %>
     </li>
-     <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
         <li class="uk-parent" data-uk-dropdown>
           <a href="/events">MY EVENTS</a>
 
@@ -91,7 +93,7 @@
           </div>
 
         </li>
-
+    <% else %>
         <!-- FOR CONSUMER  -->
 
          <li class="uk-parent" data-uk-dropdown>
@@ -106,7 +108,7 @@
           </div>
 
         </li>
-
+    <% end %>
 
 
           <li class="uk-parent"></li>

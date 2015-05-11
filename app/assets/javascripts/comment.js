@@ -11,18 +11,13 @@ $(function(){
         $.ajax({
           url: form.attr('action'),
           method: 'POST',
-          data: form.serialize(),
-          dataType: 'json'
+          data: form.serialize()
         }).done(function(data){
             form.trigger('reset');
             form.attr('action', default_action.val());
             $('.display-container').html(data)
         }).error(function(err){
           console.log(err)
-            form.trigger('reset');
-             form.attr('action', default_action.val());
-            $('.display-container').html(err.responseText)
-
         })
 
     })

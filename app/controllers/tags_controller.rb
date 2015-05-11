@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
 
+    before_action :host_user?, only: [:new, :create]
+
     def index
       @tags = Tag.all.order('name ASC')
     end
