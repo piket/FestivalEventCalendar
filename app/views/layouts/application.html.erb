@@ -158,34 +158,43 @@
 <div id="my-id" class="uk-modal">
     <div class="uk-modal-dialog">
         <a class="uk-modal-close uk-close"></a>
-        <%= form_for :user, html:{:class=>"uk-form uk-form-stacked"}, :url => login_path do |f|%>
 
-  <%= link_to "LOGIN WITH FACEBOOK", "/auth/facebook" %>
+        <div class="uk-container uk-container-center">
+          <%= form_for :user, html:{:class=>"uk-form uk-form-stacked"}, :url => login_path do |f|%>
+            <div class="uk-text-center" id="login-with-fb-div">
+              <!-- <i class="uk-icon-facebook"></i> -->
+              <%= link_to "LOGIN WITH FACEBOOK", "/auth/facebook", :class=>"uk-button login-with-fb", :type=>"button" %>
+            </div>
+
+            <div class="uk-text-center" id="or">
+              OR <br><br>
+            </div>
+
+            <div class="uk-form-row">
+              <div class="uk-text-center email-input-div uk-form-controls">
+                <label id="email-label">EMAIL</label>
+                <%= f.text_field :email, :placeholder => "Enter your email.", :class=>"email-input" %>
+              </div>
+            </div>
+            <div class="uk-form-row">
+              <div class="uk-text-center password-input-div uk-form-controls">
+                <label id="password-label">PASSWORD</label>
+                <%= f.password_field :password, :placeholder => "Enter your password.", :class=>"password-input" %>
+              </div>
+            </div>
+
+            <div class="uk-form-row">
+              <div class="uk-text-center login-btn-div uk-form-controls">
+                <%= f.button "LOGIN", :class=>"uk-button login-btn", :type=>"submit" %>
+              </div>
+            </div>
 
 
-  <div class="uk-form-row">
-    <div class="uk-form-controls">
-    <%= f.text_field :email, :placeholder => "Enter your email." %>
-    </div>
-  </div>
-  <div class="uk-form-row">
-    <div class="uk-form-controls">
-    <%= f.password_field :password, :placeholder => "Enter your password." %>
-    </div>
-  </div>
 
-  <div class="uk-form-row">
-    <div class="uk-form-controls">
-    <%= f.submit "LOGIN", :class=>"uk-button uk-button-primary" %>
-    </div>
-  </div>
+            <% end %>
 
 
-
-<% end %>
-
-
-
+        </div>
 
 
 
