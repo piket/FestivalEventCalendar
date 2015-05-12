@@ -20,7 +20,7 @@ $(document).ready(function() {
             // center: 'title',
             // right: 'month,agendaWeek,agendaDay'
         },
-        timeFormat: 'h(:mm)tt',
+        timeFormat: 'h(:mm)t',
         events: get_url
             })
 

@@ -86,10 +86,13 @@
     <% if @current_user.user_type == 'host' %>
     </li>
         <li class="uk-parent" data-uk-dropdown>
-          <a href="/events">MY EVENTS</a>
+          <a href="#">EVENTS</a>
 
           <div class="uk-dropdown uk-dropdown-navbar">
             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/events">MY EVENTS</a>
+              </li>
               <li>
                   <a class="sub-nav" href="/events/new">ADD A NEW EVENT</a>
               </li>
