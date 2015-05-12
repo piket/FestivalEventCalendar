@@ -13,7 +13,10 @@ $(function() {
           }
         }).done(function(form){
             $('.modal-body').html(form)
-            console.log(form)
+            // console.log(form)
+            if($(location).attr('pathname').indexOf('inbox') !== -1) {
+            $('#new_comment').attr('id','new_comment_inbox');
+          }
 
         }).error(function(err){
             console.log('ERROR:',err)
