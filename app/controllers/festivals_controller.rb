@@ -44,15 +44,6 @@ class FestivalsController < ApplicationController
       @event_dates = {}
       # Loop through each event under the festival
       @festival.hosted_events.each do |event|
-        # Generate a hash with the event info
-          info = {
-            name: event.name,
-            duration: event.duration,
-            image: event.image,
-            id:event.id,
-            tags: (event.tags.map { |tag| tag.name }).join(' ')
-          }
-
           # Loop through each occurrence of the event
           event.event_occurrences.each do |occur|
             date_key = occur.date.to_date
@@ -70,16 +61,21 @@ class FestivalsController < ApplicationController
 
             # If the info is not there, add it to the date key
             if i.nil?
-              @event_dates[date_key] << info
-              @event_dates[date_key][-1][:occurrences] = []
-              @event_dates[date_key][-1][:occurrences]  << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}
+              @event_dates[date_key] << {
+                  name: event.name,
+                  duration: event.duration,
+                  image: event.image,
+                  id:event.id,
+                  tags: (event.tags.map { |tag| tag.name }).join(' '),
+                  occurrences: [{time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}]
+                }
             # If the info is there, push the new occurrence into the data
             else
               @event_dates[date_key][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}
             end
           end
       end
-
+      @event_dates
       # render json: @event_dates
     end
 

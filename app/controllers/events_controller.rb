@@ -48,7 +48,7 @@ class EventsController < ApplicationController
       end
       @event.save
       @current_user.hosted_events << @event
-      redirect_to user_path(@current_user)
+      redirect_to users_path
    end
 
    def edit
@@ -98,7 +98,7 @@ class EventsController < ApplicationController
          end
       end
       @event.save
-      redirect_to user_path(@current_user)
+      redirect_to users_path
    end
 
    def destroy
@@ -164,7 +164,7 @@ class EventsController < ApplicationController
       end
       # render json: @current_user.hosted_events
      flash[:success] = "File imported and new events added"
-     redirect_to root_path
+     redirect_to users_path
    end
 
 
