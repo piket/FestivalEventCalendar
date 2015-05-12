@@ -5,10 +5,16 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'site#index'
 
+#CALENDAR
+
+  resources :calendars do
+    get '/all_events' => 'calendars#all_events', on: :collection
+    get '/get_events/:id' => 'calendars#get_events', on: :collection
+  end
+
 
 #USERS
-  get 'users/:id/calendar' => 'users#calendar'
-  get 'users/calendar' => 'users#calendar'
+
   patch '/addevent/:id' => 'users#addevent', as: "addevent"
   delete '/deleteevent/:id' => 'users#deleteevent', as: "deleteevent"
   resources :users do
