@@ -193,7 +193,81 @@ a.uk-icon-pencil{
   border-radius: 50%;
 }
 
+/*LOGIN MODAL*/
 
+.login-with-fb {
+  font-size: 22px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-right:10px;
+  padding-left:10px;
+  background-color: rgb(59,89,152);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.login-with-fb:hover {
+  background-color: rgb(59,89,152);
+  color:white;
+  font-weight:400;
+  opacity:0.8;
+}
+
+.uk-icon-facebook {
+  font-size:45px;
+  border:2px solid rgb(59,89,152);
+  margin-right: 3px;
+  color: rgb(59,89,152);
+  padding:4px;
+  padding-left:10px;
+  padding-right:10px;
+  border-radius:5px;
+  /*margin-top:20px;*/
+}
+i .uk-facebook-icon {
+  margin-top:10px;
+}
+
+.login-btn {
+  border-radius:5px;
+  font-weight:300;
+  background-color:rgb(44,44,46);
+  color:white;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-right:10px;
+  padding-left:10px;
+  margin-bottom:10px;
+}
+
+.login-btn:hover {
+  background-color:rgb(129,239,188);
+  color:rgb(44,44,46);
+  font-weight:600;
+  text-shadow:none;
+
+}
+
+.email-input {
+  width:70%;
+}
+
+.password-input {
+  width:61%;
+}
+
+#or {
+  margin-top:10px;
+  font-weight:600;
+  font-size:16px;
+}
+
+#email-label, #password-label {
+  margin-right:4px;
+  font-size:16px;
+  font-weight:600;
+  color: rgb(97,3,69);
+}
 
 
 
