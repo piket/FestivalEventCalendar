@@ -21,7 +21,7 @@
 
     <div class="comment-field">
       <div class="form-container">
-        <%= render partial: 'layouts/comment_form' %>
+        <%= render partial: 'layouts/comment_form', :locals => {event:@event,comment_ref:@comment_ref, comment:@comment} %>
       </div>
       <div class="display-container">
         <ul>
@@ -30,4 +30,17 @@
       </div>
     </div>
 
+</div>
+
+
+<!-- COMMENT REPLY MODAL -->
+
+<div id="comment-reply-modal" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
+
+        <div class="reply-modal-body">
+
+        </div>
+    </div>
 </div>
