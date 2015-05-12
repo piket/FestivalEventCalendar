@@ -30,7 +30,6 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/timepicker.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/button.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/dropdown.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/modal.min.js"></script>
 
 
   <%= javascript_include_tag 'application' %>
@@ -87,10 +86,13 @@
     <% if @current_user.user_type == 'host' %>
     </li>
         <li class="uk-parent" data-uk-dropdown>
-          <a href="/events">MY EVENTS</a>
+          <a href="#">EVENTS</a>
 
           <div class="uk-dropdown uk-dropdown-navbar">
             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/events">MY EVENTS</a>
+              </li>
               <li>
                   <a class="sub-nav" href="/events/new">ADD A NEW EVENT</a>
               </li>
@@ -120,6 +122,7 @@
         </li>
 
 
+
          <li class="uk-parent" data-uk-dropdown>
           <a href="#">SOCIAL</a>
 
@@ -144,13 +147,12 @@
         </li>
 
 
-
     <% end %>
 
 
           <li class="uk-parent"></li>
    <% else %>
-    <li class="uk-parent"><a href="/users/new">SIGN UP</a></li>
+    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}">SIGN UP</a></li>
     <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}">LOGIN</a></li>
     <% end %>
 
@@ -281,24 +283,6 @@
               </ul>
             </li>
 
-            <li class="uk-parent">
-                <a href="#">SOCIAL</a>
-
-
-                  <ul class="uk-nav-sub">
-                    <li>
-                        <a href="/friends">MY FRIENDS</a>
-                    </li>
-                    <li>
-                        <a href="/inbox">MY INBOX</a>
-                    </li>
-                  </ul>
-
-
-
-        </li>
-
-
 
     <li class="uk-parent"></li>
    <% else %>
@@ -315,7 +299,6 @@
 
 
   <%= render "/layouts/alerts" %>
-  <%= render "/layouts/new_message_modal" %>
 
 
 

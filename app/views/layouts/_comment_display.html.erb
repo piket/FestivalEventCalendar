@@ -5,7 +5,7 @@
         <%= comment_display.user.name %>
         <%= comment_display.body %>
         Created: <%= format_created_time comment_display %>
-        <%= link_to "REPLY", '#comment-reply-modal', :class=>"uk-button uk-button-mini reply-btn", 'data-uk-modal'=>'', :data_event => @event.id, :data_comment => comment_display.id %>
+        <%= link_to "REPLY", event_comment_comments_path(@event, comment_display), :class=>"uk-button uk-button-mini reply-btn" %>
 
         <% unless comment_display.comments.empty? %>
           <ul>

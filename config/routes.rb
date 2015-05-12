@@ -63,7 +63,6 @@ get '/message/new' => 'comments#new', as: 'new_message'
 
 
 
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

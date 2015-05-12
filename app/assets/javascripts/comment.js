@@ -2,7 +2,7 @@ $(function(){
 
   default_action = $('#default-action').val($('#new_comment').attr('action'));
 
-    $('body').on('submit','#new_comment',function(e){
+    $('#new_comment').submit(function(e){
 
         e.preventDefault();
 
@@ -14,6 +14,7 @@ $(function(){
           data: form.serialize()
         }).done(function(data){
             form.trigger('reset');
+
 
             // var modal = UIKit.modal("#comment-reply-modal");
             form.closest('.uk-modal').hide()
@@ -35,6 +36,8 @@ $(function(){
 
       e.preventDefault();
 
+
+
       var btn = $(this)
 
       // form.attr('action', $(this).attr('href')).children('#comment_body').focus();
@@ -53,8 +56,6 @@ $(function(){
         }).error(function(err){
           console.log('ERROR', err)
         })
-
-
 
 
     })
