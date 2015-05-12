@@ -33,7 +33,7 @@
 
 
   <%= javascript_include_tag 'application' %>
-  <%# cloudinary_js_config %>
+  <%= cloudinary_js_config %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css">
 
 
@@ -117,6 +117,33 @@
           </div>
 
         </li>
+
+
+
+         <li class="uk-parent" data-uk-dropdown>
+          <a href="#">SOCIAL</a>
+
+          <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/friends">MY FRIENDS</a>
+              </li>
+            </ul>
+             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/inbox">MY INBOX</a>
+              </li>
+            </ul>
+             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
+              </li>
+            </ul>
+          </div>
+
+        </li>
+
+
     <% end %>
 
 

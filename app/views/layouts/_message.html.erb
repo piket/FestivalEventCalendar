@@ -7,7 +7,7 @@
 From: <%= message.user.name %>
 Subject: <%= message.subject %>
 Body: <%= message.body %>
-<%= link_to "REPLY", user_comment_comments_path(message.commentable, message), :class=>"uk-button uk-button-mini reply-btn" %>
+<%# link_to "REPLY", user_comment_comments_path(message.commentable, message), :class=>"uk-button uk-button-mini reply-btn" %>
 <% unless message.comments.empty? %>
 <ul>
     <%= render partial: 'layouts/message', :collection => message.comments %>
