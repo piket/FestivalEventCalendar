@@ -67,11 +67,11 @@ class FestivalsController < ApplicationController
                   image: event.image,
                   id:event.id,
                   tags: (event.tags.map { |tag| tag.name }).join(' '),
-                  occurrences: [{time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}]
+                  occurrences: [{time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.id, added:added}]
                 }
             # If the info is there, push the new occurrence into the data
             else
-              @event_dates[date_key][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.event_id, added:added}
+              @event_dates[date_key][i][:occurrences] << {time: occur.date.strftime("%I:%M %p"), location: occur.location, id: occur.id, added:added}
             end
           end
       end
