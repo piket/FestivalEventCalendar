@@ -167,7 +167,7 @@
         <a class="uk-modal-close uk-close"></a>
 
         <div class="uk-container uk-container-center">
-          <%= form_for :user, html:{:class=>"uk-form uk-form-stacked"}, :url => login_path do |f|%>
+          <%= form_for :user, html:{:class=>"uk-form uk-form-stacked", :id => "login-form"}, :url => login_path do |f|%>
             <div class="uk-text-center" id="login-with-fb-div">
               <!-- <i class="uk-icon-facebook"></i> -->
               <%= link_to "LOGIN WITH FACEBOOK", "/auth/facebook", :class=>"uk-button login-with-fb", :type=>"button" %>
