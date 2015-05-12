@@ -56,6 +56,7 @@ delete '/friends/invite/:id' => 'friends#decline'
 delete '/friends/delete/:id' => 'friends#destroy', as: 'friend_remove'
 get '/inbox' => 'comments#index'
 get '/inbox/message/:id' => 'comments#show', as: 'message'
+get '/message/new' => 'comments#new'
 
 
 
