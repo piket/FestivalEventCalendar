@@ -60,8 +60,6 @@ get '/inbox/message/:id' => 'comments#show', as: 'message'
 
 
 
-THIS IS ME CHANGING SOMETHING
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
