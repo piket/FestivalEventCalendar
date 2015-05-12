@@ -1,15 +1,16 @@
 <!-- NEW MESSAGE MODAL -->
-
+<% if @current_user && @current_user.user_type == 'consumer' %>
 <div id="message-modal" class="uk-modal">
     <div class="uk-modal-dialog">
         <a class="uk-modal-close uk-close"></a>
       <div class="modal-body">
-       <%# @current_user.friends.each do |friend| %>
+       <% @current_user.friends.each do |friend| %>
 
           <li>
-              <a class="each-friend" href ="#" data=<%#= friend.id %>><%#= friend.name %></a>
+              <a class="each-friend" href ="#" data=<%= friend.id %>><%= friend.name %></a>
           </li>
-       <%# end %>
+       <% end %>
       </div>
     </div>
 </div>
+<% end %>

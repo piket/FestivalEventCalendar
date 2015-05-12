@@ -34,7 +34,7 @@
 
 
   <%= javascript_include_tag 'application' %>
-  <%# cloudinary_js_config %>
+  <%= cloudinary_js_config %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css">
 
 
@@ -132,6 +132,11 @@
              <ul class="uk-nav uk-nav-navbar">
               <li>
                   <a class="sub-nav" href="/inbox">MY INBOX</a>
+              </li>
+            </ul>
+             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
               </li>
             </ul>
           </div>
