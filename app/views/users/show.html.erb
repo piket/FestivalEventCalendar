@@ -14,7 +14,7 @@
     <% end %>
 
     <div class="uk-text-center">Location: <%= @user.location || "N/A" %></div>
-      <div class="uk-container uk-container-center"><%= cl_image_tag @user.image, :class=>"prof-img" %></div>
+      <div class="uk-container uk-container-center"><%= cl_image_tag @user.image, width: "280", height: "280", crop: :fill, :class=>"prof-img" %></div>
 
     <% if @user.user_type == 'host' %>
       <div><%=@user.about %></div>

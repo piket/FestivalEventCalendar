@@ -4,13 +4,13 @@ THIS IS THE <%=@festival.name%> LIST PAGE
     <input class="uk-search-field" type="search" placeholder="">
 </form>
 
-<% @event_dates.each_pair do |date,events| %>
-    <% events.each do |event| %>
+<% @event_dates.keys.sort.each do |date| %>
+    <% @event_dates[date].each do |event| %>
     <div class="each-event" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
         <a href="/events/<%=event[:id]%>"><div class="name"><%=event[:name]%></div></a>
         <div class="date"><%=date.strftime("%B %d, %Y")%></div>
         <div class="duration"><%=event[:duration]%></div>
-        <%= cl_image_tag event[:image]%>
+        <%= cl_image_tag event[:image], width: "280", height: "280", crop: :fill%>
         <% event[:occurrences].each do |occurrence| %>
             <div class="location"><%=occurrence[:location]%></div>
             <div class="time"><%=occurrence[:time]%></div>
