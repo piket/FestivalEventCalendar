@@ -54,9 +54,11 @@ post '/friends/invite' => 'friends#invite'
 patch '/friends/invite/:id' => 'friends#accept', as: 'friend_invite'
 delete '/friends/invite/:id' => 'friends#decline'
 delete '/friends/delete/:id' => 'friends#destroy', as: 'friend_remove'
+
+# MESSAGING
 get '/inbox' => 'comments#index'
 get '/inbox/message/:id' => 'comments#show', as: 'message'
-get '/message/new' => 'comments#new'
+get '/message/new' => 'comments#new', as: 'new_message'
 
 
 

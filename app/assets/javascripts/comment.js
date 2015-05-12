@@ -16,7 +16,7 @@ $(function(){
             form.trigger('reset');
 
             // var modal = UIKit.modal("#comment-reply-modal");
-            $('#comment-reply-modal').hide()
+            form.closest('.uk-modal').hide()
 
             // if (modal.isActive()) {
             //   modal.hide();
@@ -49,6 +49,9 @@ $(function(){
           }
         }).done(function(form){
           $('.reply-modal-body').html(form)
+          if($(location).attr('pathname').indexOf('inbox') !== -1) {
+            $('#new_comment').attr('id','new_comment_inbox');
+          }
         }).error(function(err){
           console.log('ERROR', err)
         })
