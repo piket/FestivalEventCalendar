@@ -73,7 +73,7 @@
             </li>
             <% if @current_user.user_type == 'consumer' %>
             <li>
-                <a class="sub-nav" href="/users/calendar">MY CALENDAR</a>
+                <a class="sub-nav" href="/calendars">MY CALENDAR</a>
             </li>
             <% end %>
             <li>
@@ -103,6 +103,11 @@
           <a href="#">FESTIVALS</a>
 
           <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/festivals/myfestivals">MY FESTIVALS</a>
+              </li>
+            </ul>
             <ul class="uk-nav uk-nav-navbar">
               <li>
                   <a class="sub-nav" href="/festivals">SEARCH FESTIVALS</a>
@@ -220,7 +225,7 @@
                       <a href="/users/:id">PROFILE</a>
                   </li>
                   <li>
-                      <a href="/users/calendar">MY CALENDAR</a>
+                      <a href="/calendars">MY CALENDAR</a>
                   </li>
                   <li>
                       <a id="logout-btn" href = "/logout">LOGOUT</a>
@@ -252,6 +257,9 @@
 
               <ul class="uk-nav-sub">
                     <li>
+                        <a href="/festivals/myfestivals">MY FESTIVALS</a>
+                    </li>
+                     <li>
                         <a href="/festivals">SEARCH FESTIVALS</a>
                     </li>
               </ul>

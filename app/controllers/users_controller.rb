@@ -2,11 +2,7 @@ class UsersController < ApplicationController
 
   before_action :is_authenticated?, except: [:new, :create]
 
-    def calendar
-      if @current_user.user_type == 'host'
-        redirect_to(:back)
-      end
-    end
+
 
     def addevent
       result = EventOccurrence.find(params[:id])
