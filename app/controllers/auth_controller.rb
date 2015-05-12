@@ -16,7 +16,11 @@ class AuthController < ApplicationController
         user.name = provider_user['info']['name']
         user.email = provider_user['info']['email']
         user.gender = provider_user['extra']['raw_info']['gender']
-        user.image = provider_user['info']['image']
+
+        if !provider_user['info']['image'].empty?
+            user.image = Cloudinary::Uploader.upload(provider_user['info']['image'])['public_id']
+        end
+
         user.status = true
         user.user_type = "consumer"
         if user.save
