@@ -2,7 +2,7 @@ $(function(){
 
   default_action = $('#default-action').val($('#new_comment').attr('action'));
 
-    $('body').on('submit','#new_comment',function(e){
+    $('#new_comment').submit(function(e){
 
         e.preventDefault();
 
@@ -14,16 +14,7 @@ $(function(){
           data: form.serialize()
         }).done(function(data){
             form.trigger('reset');
-
-            // var modal = UIKit.modal("#comment-reply-modal");
-            $('#comment-reply-modal').hide()
-
-            // if (modal.isActive()) {
-            //   modal.hide();
-            // } else {
-            //   modal.show();
-            // }
-
+            form.attr('action', default_action.val());
             $('.display-container').html(data)
         }).error(function(err){
           console.log(err)
@@ -35,27 +26,9 @@ $(function(){
 
       e.preventDefault();
 
-      var btn = $(this)
+      var form = $('#new_comment')
 
-      // form.attr('action', $(this).attr('href')).children('#comment_body').focus();
-
-
-        $.ajax({
-          url: '/message/new',
-          method: 'GET',
-          data: {
-            event_id: btn.attr('data_event'),
-            comment_id: btn.attr('data_comment')
-          }
-        }).done(function(form){
-          $('.reply-modal-body').html(form)
-        }).error(function(err){
-          console.log('ERROR', err)
-        })
-
-
-
-
+      form.attr('action', $(this).attr('href')).children('#comment_body').focus();
     })
 
 
