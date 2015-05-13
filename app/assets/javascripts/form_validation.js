@@ -19,7 +19,6 @@ $(function() {
 
         console.log('clicked');
 
-
         var form_arr = $(this).serializeArray();
         var pass = $('#new_user #user_password').val();
         var valid = true;
