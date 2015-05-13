@@ -55,9 +55,11 @@ $(function() {
             method: 'POST',
             data: invite.serialize()
         }).done(function(data) {
+            console.log("invite sent")
             $('#friends-dashboard').html(data);
-            $('#name').val()
+            $('#name').val("")
         }).error(function(err) {
+            $('#name').val("")
             console.log("Invite error:",err);
         });
     });
