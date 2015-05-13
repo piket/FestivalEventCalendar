@@ -3,4 +3,44 @@
 .my-friends-header {
   font-size:50px;
   margin-top:50px;
+  border: 3px solid yellow;
 }
+
+.friend-image {
+  width: 80px;
+  height:80px;
+  border-radius:50%;
+}
+
+.friend-name {
+  font-weight:600;
+  font-size:18px;
+}
+
+#pending-and-sent {
+  border:3px solid blue;
+}
+
+.sent-invites {
+  border:3px solid red;
+}
+
+.send-invite {
+  border:3px solid purple;
+}
+
+.each-friend {
+  border:3px solid green;
+}
+
+.friends {
+  border:3px solid orange;
+}
+
+.uk-icon-close {
+  color:rgb(97,37,61);
+  font-size:15px;
+}
+
+.uk-icon-close:hover {
+  color:red;

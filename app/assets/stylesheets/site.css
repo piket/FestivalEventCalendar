@@ -60,7 +60,7 @@ body {
 .uk-navbar-nav li a:hover {
   border: 3px solid rgb(129,239,188);
   background-color:transparent;
-  margin-top:2px;
+  margin-bottom:0;
   color: white;
   border-radius:5px;
 }
@@ -82,7 +82,7 @@ li .uk-parent:hover {
 
 .uk-navbar-nav li a.sub-nav:hover {
   color: rgb(129,239,188);
-  background-color: rgb(6,22,62);
+  background-color: rgb(44,44,46);
   font-weight:500;
   margin-left:2px;
   margin-right:2px;
