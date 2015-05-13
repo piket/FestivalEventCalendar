@@ -27,12 +27,12 @@ class Event < ActiveRecord::Base
             time.strip!
             t_arr = time.split(/[: ]/)
             if t_arr.length == 1
-                t_arr[0] = time[0...time.index(/[ap]/)].to_i
+                t_arr[0] = time[0...time.index(/[apAP]/)].to_i
                 t_arr[1] = 0
-                t_arr[2] = time[time.index(/[ap]/)...time.length].upcase
+                t_arr[2] = time[time.index(/[apAP]/)...time.length].upcase
             elsif t_arr.length == 2
-                t_arr[2] = t_arr[1][t_arr[1].index(/[ap]/)...t_arr[1].length].upcase
-                t_arr[1] = t_arr[1][0...t_arr[1].index(/[ap]/)].to_i
+                t_arr[2] = t_arr[1][t_arr[1].index(/[apAP]/)...t_arr[1].length].upcase
+                t_arr[1] = t_arr[1][0...t_arr[1].index(/[apAP]/)].to_i
                 t_arr[0] = t_arr[0].to_i
               else
                 t_arr[0] = t_arr[0].to_i
@@ -55,7 +55,7 @@ class Event < ActiveRecord::Base
 
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
-        when ".csv" then Roo::Csv.new(file.path)
+        when ".csv" then Roo::CSV.new(file.path)
         when ".xls" then Roo::Excel.new(file.path)
         when ".xlsx" then Roo::Excelx.new(file.path)
         else raise "Unknown file type: #{file.original_filename}"
