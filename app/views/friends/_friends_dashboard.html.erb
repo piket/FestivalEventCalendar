@@ -1,7 +1,8 @@
 <div class="friends">MY FRIENDS
     <% @current_user.friends.each do |friend| %>
         <div class="each-friend">
-            <div class="name"><%= friend.name %></div>
+            <div class="friend-name"><%= friend.name %></div>
+            <div class="friend-image"><img src="<%= friend.image %>"></div>
             <%= link_to "Remove", friend_remove_path(friend), :class => "uk-button uk-button-danger remove-friend-btn" %>
             <%= link_to "View Profile", user_path(friend), :class => "uk-button uk-button-primary" %>
         </div>
