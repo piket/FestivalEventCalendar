@@ -6,9 +6,6 @@ class CommentsController < ApplicationController
     def index
       @messages = Comment.where(commentable_id: @current_user.id, commentable_type: 'User').order(created_at: 'ASC')
       @sent = @current_user.comments.order(created_at: 'ASC').select { |c| c.commentable_type == 'User' }
-
-      @new_message = Comment.new
-
     end
 
 #create for comments & messages
@@ -31,7 +28,6 @@ class CommentsController < ApplicationController
     end
 
 
-
     def create
       # render json: message_params
       # return
@@ -41,7 +37,6 @@ class CommentsController < ApplicationController
       if params.key? :comment_id
         if params.key? :user_id
           @current_user.comments << Comment.find(params[:comment_id]).comments.create(message_params)
-          flash[:success] = 'MESSAGE SENT'
           render partial: 'layouts/message', locals: {message:Comment.find(params[:comment][:original])}
           return
         else
@@ -49,7 +44,6 @@ class CommentsController < ApplicationController
         end
       elsif params.key? :user_id
         @current_user.comments << User.find(params[:user_id]).messages.create(message_params)
-         flash[:success] = 'MESSAGE SENT'
         redirect_to inbox_path
         return
       else

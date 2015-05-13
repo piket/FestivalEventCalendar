@@ -14,13 +14,29 @@
 #festival-field {
 
   width:90%;
+
 }
 
-.each-festival {
+div .each-festival {
   width:20%;
   display:inline-block;
-  margin-left:5px;
-  margin-right:5px;
+  margin-left:20px;
+  margin-right:20px;
   padding: 10px;
   text-align:center;
+
+}
+
+.uk-search-field {
+
+  border: 2px solid rgb(44,44,46);
+  width: 250px;
+  height: 24px;
+  font-size: 18px;
+
+}
+
+.filter-form {
+  width:250px;
+  margin-top:20px;
 }

@@ -1,5 +1,6 @@
 $(function() {
 
+
     $('#message-modal').on('click', '.each-friend', function(e){
         e.preventDefault();
 
@@ -23,7 +24,6 @@ $(function() {
         })
 
     })
-
 
 
 
