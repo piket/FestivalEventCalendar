@@ -9,8 +9,8 @@ class CommentsController < ApplicationController
     end
 
 #create for comments & messages
-#no new route - comments created on event show page
 
+  #New Messages
     def new
       if params.key? :event_id
         render :partial => 'layouts/comment_form', :locals => {event:Event.find(params[:event_id]), comment_ref:Comment.find(params[:comment_id]), comment:Comment.new}

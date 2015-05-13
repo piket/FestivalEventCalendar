@@ -17,14 +17,23 @@
 
 }
 
-div .each-festival {
-  width:20%;
+.each-festival {
+  /*width:20%;*/
   display:inline-block;
   margin-left:20px;
   margin-right:20px;
   padding: 10px;
   text-align:center;
 
+}
+
+figure {
+  width:10%;
+}
+
+figure.effect-marley figcaption {
+  margin-right:0;
+  margin-left:0;
 }
 
 .uk-search-field {
