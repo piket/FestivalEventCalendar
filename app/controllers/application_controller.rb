@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
 
   def unread_count
     if @current_user
-      @unread_count = Comment.where(commentable_id: @current_user.id, commentable_type: 'User').length
+      msgs = Comment.where(commentable_id: @current_user.id, commentable_type: 'User')
+      @unread_count = msgs.count { |m| any_unread m }
+      @unread_count
     end
   end
 

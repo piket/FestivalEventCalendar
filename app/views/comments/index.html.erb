@@ -7,6 +7,7 @@ Received Messages
 <ul>
 <% @messages.each do |message| %>
     <li>
+        <%= "!" if any_unread message %>
         From: <%=message.user.name %>
         Sent: <%=format_created_time message%>
         <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
@@ -18,10 +19,12 @@ Received Messages
 Sent Messages
 <ul>
 <% @sent.each do |message| %>
+    <li>
         <%= "!" if any_unread message %>
         To: <%=message.commentable.name %>
         Sent: <%=format_created_time message%>
         <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+    </li>
 <% end %>
 </ul>
 </div>
