@@ -1,0 +1,34 @@
+<%= link_to "SIGNUP WITH FACEBOOK", "/auth/facebook", :id=>"login-with-fb" %>
+
+<%= form_for @user, html:{:class=>"uk-form uk-form-stacked"} do |f|%>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.text_field :name, :placeholder => "Enter your name." %>
+    </div>
+  </div>
+
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.text_field :email, :placeholder => "Enter your email." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.password_field :password, :placeholder => "Enter your password." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm your password." %>
+    </div>
+  </div>
+  <div class="uk-form-row">
+    <div class="uk-form-controls">
+    <%= f.submit "Submit", :class=>"uk-button uk-button-primary" %>
+    <%= f.check_box :user_type%>
+    <%= f.label :user_type, "I am an event HOST" %>
+    </div>
+  </div>
+
+
+<% end %>
