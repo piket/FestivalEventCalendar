@@ -5,12 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'site#index'
 
-#CALENDAR
 
-  resources :calendars do
-    get '/all_events' => 'calendars#all_events', on: :collection
-    get '/get_events/:id' => 'calendars#get_events', on: :collection
-  end
 
 
 #USERS
@@ -18,6 +13,15 @@ Rails.application.routes.draw do
   patch '/addevent/:id' => 'users#addevent', as: "addevent"
   delete '/deleteevent/:id' => 'users#deleteevent', as: "deleteevent"
   resources :users do
+#CALENDAR
+    resources :calendars, only: [:index,:show] do
+      get '/all_events' => 'calendars#all_events', on: :collection
+      get '/:id/get_events' => 'calendars#get_events', on: :collection
+      get '/:id/compare/get_events' => 'calendars#compare_events', on: :collection
+    end
+#COMPARING CALENDARS
+    get '/calendars/:id/compare/:compare_id' => 'calendars#compare', as: 'compare_calendars'
+#Messaging
     resources :comments, except: [:edit, :update, :index, :show] do
       resources :comments, except: [:edit, :update, :index, :show]
     end

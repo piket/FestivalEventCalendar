@@ -19,6 +19,14 @@
         </div>
         <div class="uk-form-row">
           <div class="uk-form-controls">
+            <div class="uk-form-select uk-button" data-uk-form-select>
+               <span></span>
+                  <%= f.select :festival_id, options_for_select(festivals, 0) %>
+            </div>
+          </div>
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-controls">
             <%= f.submit "Send", :class => "uk-button uk-button-primary" %>
           </div>
         </div>
