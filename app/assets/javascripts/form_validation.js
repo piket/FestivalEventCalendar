@@ -3,14 +3,33 @@ $(function() {
     console.log('validations loaded')
 
     $('#login-form').submit(function(e) {
+        e.preventDefault();
 
-        var email = $(this).children('#user_email');
-        var pass = $(this).children('#user_password');
+        var email = $('#user_email').val();
+        var pass = $('#user_password').val();
 
         if (email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/) === null) {
-            e.preventDefault();
-        } else if (pass.length < 8) {
-            // e.preventDefault();
+            $('.error-msg').text("Invalid email");
+        } else if (pass.length < 3) {
+            $('.error-msg').text("Invalid password")
+        } else {
+            var form = $(this)
+
+            $.ajax({
+                url: form.attr('action'),
+                method: 'POST',
+                data: form.serialize(),
+                dataType: 'json'
+            }).done(function(data) {
+                form.trigger('reset');
+                if (data.result) {
+                    window.location.href = '/';
+                } else {
+                    $('.error-msg').text(data.msg);
+                }
+            }).error(function(err) {
+                console.log(err);
+            });
         }
 
     });
