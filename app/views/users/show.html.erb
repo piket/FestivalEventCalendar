@@ -23,7 +23,8 @@
 
 
     <% if @user.user_type == 'consumer' %>
-      <%= render partial: 'layouts/message_form', locals: {user:@user,message:@message,message_ref:false} %>
+      <%# render partial: 'layouts/message_form', locals: {user:@user,message:@message,message_ref:false} %>
+      <a href="#message-modal" data-uk-modal id="send-message-btn">SEND #{user.name} A MESSAGE</a>
     <% end %>
   </div>
 </div>
