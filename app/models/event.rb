@@ -27,12 +27,12 @@ class Event < ActiveRecord::Base
             time.strip!
             t_arr = time.split(/[: ]/)
             if t_arr.length == 1
-                t_arr[0] = time[0...time.index(/[ap]/)].to_i
+                t_arr[0] = time[0...time.index(/[apAP]/)].to_i
                 t_arr[1] = 0
-                t_arr[2] = time[time.index(/[ap]/)...time.length].upcase
+                t_arr[2] = time[time.index(/[apAP]/)...time.length].upcase
             elsif t_arr.length == 2
-                t_arr[2] = t_arr[1][t_arr[1].index(/[ap]/)...t_arr[1].length].upcase
-                t_arr[1] = t_arr[1][0...t_arr[1].index(/[ap]/)].to_i
+                t_arr[2] = t_arr[1][t_arr[1].index(/[apAP]/)...t_arr[1].length].upcase
+                t_arr[1] = t_arr[1][0...t_arr[1].index(/[apAP]/)].to_i
                 t_arr[0] = t_arr[0].to_i
               else
                 t_arr[0] = t_arr[0].to_i

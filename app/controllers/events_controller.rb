@@ -143,22 +143,25 @@ class EventsController < ApplicationController
             end
          end
 
-         if !row['image'].empty?
+         if !row['image'].nil? && !row['image'].empty?
             event.image = Cloudinary::Uploader.upload(row['image'])['public_id']
+         else
+            event.image = 'event_default'
             # render json: event.image
             # return
          else
             event.image = "event_default"
          end
 
-         if row['video'].include? 'youtube.com'
+         if !row['video'].nil? && row['video'].include?('youtube.com')
             vid = row['video']
-            @event.video = vid[vid.index('?v=')+3...vid.length]
+            event.video = vid[vid.index('?v=')+3...vid.length]
          end
 
          event.duration = proccess_duration(row['duration'])
 
          row['tags'].each do |tag|
+            tag.downcase!
             event.tags << Tag.find_or_create_by(name: tag)
          end
 
