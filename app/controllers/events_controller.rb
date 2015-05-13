@@ -29,6 +29,8 @@ class EventsController < ApplicationController
          preloaded = Cloudinary::PreloadedFile.new(params[:event][:image])
          raise "Invalid upload signature" if !preloaded.valid?
          @event.image = preloaded.identifier
+      else
+         @event.image = "event_default"
       end
 
       if params[:event][:video].include? 'youtube.com'
@@ -145,6 +147,8 @@ class EventsController < ApplicationController
             event.image = Cloudinary::Uploader.upload(row['image'])['public_id']
             # render json: event.image
             # return
+         else
+            event.image = "event_default"
          end
 
          if row['video'].include? 'youtube.com'

@@ -46,6 +46,8 @@ class UsersController < ApplicationController
     end
 
     def update
+      # render json: params
+      # return
         user_info = user_params_extended
         user = User.find session[:user_id]
         if params[:user][:image].present?
@@ -57,9 +59,9 @@ class UsersController < ApplicationController
             user[field] = value
         end
         user.save
-        # redirect_to users_path
-        @current_user = User.find(@current_user.id)
-        render partial: 'profile'
+        redirect_to users_path
+        # @current_user = User.find(@current_user.id)
+        # render partial: 'profile'
     end
 
     # routes
@@ -80,6 +82,7 @@ class UsersController < ApplicationController
         user.name = user_info[:name]
         user.status = params[:user][:user_type] == "1" ? false:true
         user.user_type = params[:user][:user_type] == "1" ? "host" : "consumer"
+        user.image = params[:user][:user_type] == "1" ? "festival_default" : "user_default"
         if user.save
           flash[:success] = "Your account has successfully been created!"
           session[:user_id] = user.id

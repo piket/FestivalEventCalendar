@@ -3,21 +3,25 @@ $(function(){
     console.log('ajax loaded');
 
     var profContainer = $('.prof-container');
+    var editContainer = $('.edit-container');
+    editContainer.hide();
 
     profContainer.on('click','.prof-edit-btn',function(e) {
         console.log('clicked')
+        profContainer.hide();
+        editContainer.show();
         e.preventDefault();
 
-        var btn = $(this);
+        // var btn = $(this);
 
-        $.ajax({
-            url: btn.attr('href'),
-            method: 'GET',
-        }).done(function(render){
-            profContainer.html(render);
-        }).error(function(err){
-            console.log(err);
-        })
+        // $.ajax({
+        //     url: btn.attr('href'),
+        //     method: 'GET',
+        // }).done(function(render){
+        //     profContainer.html(render);
+        // }).error(function(err){
+        //     console.log(err);
+        // })
     });
 
     profContainer.on('submit','.edit_user',function(e) {
@@ -30,7 +34,8 @@ $(function(){
             method: 'PATCH',
             data: form.serialize()
         }).done(function(render){
-            profContainer.html(render);
+            profContainer.html(render).show();
+            editContainer.hide();
         }).error(function(err){
             console.log(err);
         })
