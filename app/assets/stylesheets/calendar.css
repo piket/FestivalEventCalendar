@@ -28,3 +28,13 @@ tr .fc-day-header {
   padding-top:12px;
   height:35px;
 }
+
+.my-event {
+  margin-right: 0;
+  width:50%;
+}
+
+.friend-event {
+  margin-left: 0;
+  width: 50%;
+}

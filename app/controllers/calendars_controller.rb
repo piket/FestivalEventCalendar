@@ -37,7 +37,7 @@ before_action :is_authenticated?
 
 
   def show
-      if @current_user.id == params[:user_id] || @current_user.friends.include?(User.find(params[:user_id]))
+      if @current_user.id == params[:user_id].to_i || @current_user.friends.include?(User.find(params[:user_id]))
           @first_date = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id = ? AND event_occurrences.date >= ?', params[:id], Date.today).order(date: 'ASC')
           @first_date = @first_date.empty? ? Date.today : @first_date.first.date.to_date
           @festival = User.find params[:id]
@@ -48,7 +48,10 @@ before_action :is_authenticated?
   end
 
   def compare
-      if @current_user.id == params[:user_id] || @current_user.friends.include?(User.find(params[:user_id]))
+      if params[:user_id] == params[:compare_id]
+          flash[:danger] = "You cannot compare your calendar to itself."
+          redirect_to root_path
+      elsif @current_user.id == params[:user_id].to_i || @current_user.friends.include?(User.find(params[:user_id]))
           @first_date = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id = ? AND event_occurrences.date >= ?', params[:id], Date.today).order(date: 'ASC')
           @first_date = @first_date.empty? ? Date.today : @first_date.first.date.to_date
           @festival = User.find params[:id]
