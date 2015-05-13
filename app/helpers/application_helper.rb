@@ -11,12 +11,18 @@ module ApplicationHelper
 
     def any_unread message
         puts "Checking unread: #{message.unread}"
-        if message.unread && @current_user.id == message.original_id
-            true
+        unread = false
+        if message.unread && @current_user.id != message.user_id && @current_user.id == message.original_id
+            unread = true
         else
-            # message.comments.
-            false
+            for x in 0...message.comments.length
+                if any_unread message.comments[x]
+                    unread = true
+                    break
+                end
+            end
         end
+        unread
     end
 
 end

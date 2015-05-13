@@ -1,6 +1,6 @@
 <li>
-<%= "!" if message.unread && @current_user.id == message.original_id %>
-<% if @current_user.id == message.original_id %>
+<%= "!" if any_unread message %>
+<% if @current_user.id == message.original_id && @current_user.id != message.user_id %>
     <% message.unread = false %>
     <% message.save %>
 <% end %>
