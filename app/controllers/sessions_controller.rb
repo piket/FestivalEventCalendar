@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
 
 #create new user session
   def create
+    # render json: params
+    # return
     user_info = login_params
     @user = User.authenticate user_info[:email], user_info[:password]
 
@@ -14,10 +16,12 @@ class SessionsController < ApplicationController
     elsif @user
       session[:user_id]= @user.id
       flash[:success] ="You have been logged in!"
-      redirect_to root_path
+      # redirect_to root_path
+      render json: {result:true}
     else
-      flash[:danger] = "Invalid credentials. Please try to login again! "
-      redirect_to login_path
+      # flash[:danger] = "Invalid credentials. Please try to login again!"
+      # redirect_to login_path
+      render json: {result:false,msg:"Invalid credentials. Please try to login again!"}
     end
 
   end

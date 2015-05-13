@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       if user && user.password_digest == "fb_authenticated"
         "fb_authenticated"
       else
-        user
+        user.try(:authenticate, password)
       end
 
     end
