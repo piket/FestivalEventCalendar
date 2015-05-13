@@ -12,8 +12,8 @@ $(function(){
       dataType: 'json'
     }).done(function(data){
 
-      if (data) {
-        btn.removeClass('add-btn').addClass('del-btn').text('x').attr('href','/deleteevent/'+ data)
+      if (data.result) {
+        btn.removeClass('add-btn').addClass('del-btn').text('x').attr('href','/deleteevent/'+ data.result)
       }
       console.log(data)
     }).error(function(err){
@@ -36,8 +36,8 @@ $(function(){
       dataType: 'json'
     }).done(function(data){
 
-      if (data) {
-        btn.removeClass('del-btn').addClass('add-btn').text('+').attr('href','/addevent/'+ data)
+      if (data.result) {
+        btn.removeClass('del-btn').addClass('add-btn').text('+').attr('href','/addevent/'+ data.result)
       }
       console.log(data)
     }).error(function(err){

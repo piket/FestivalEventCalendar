@@ -18,7 +18,7 @@ $(function() {
     $('#form-container').on('submit','#new_user',function(e) {
 
         console.log('clicked');
-        e.preventDefault()
+        // e.preventDefault()
 
         var form_arr = $(this).serializeArray();
         var pass = $('#new_user #user_password').val();
