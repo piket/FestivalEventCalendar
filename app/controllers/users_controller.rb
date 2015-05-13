@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     end
 
     def edit
+      render partial: 'edit_form'
     end
 
     def update
@@ -56,12 +57,15 @@ class UsersController < ApplicationController
             user[field] = value
         end
         user.save
-        redirect_to users_path
+        # redirect_to users_path
+        @current_user = User.find(@current_user.id)
+        render partial: 'profile'
     end
 
     # routes
     def new
       @user = User.new
+      render partial: 'signup_form'
     end
 
     def create
