@@ -283,6 +283,20 @@
               </ul>
             </li>
 
+            <li class="uk-parent">
+               <a href="#">SOCIAL</a>
+                 <ul class="uk-nav-sub">
+                   <li>
+                       <a href="/friends">MY FRIENDS</a>
+                   </li>
+                   <li>
+                       <a href="/inbox">MY INBOX</a>
+                   </li>
+                  <li>
+                      <a href="#message-modal" data-uk-modal>NEW MESSAGE</a>
+                  </li>
+                 </ul>
+           </li>
 
     <li class="uk-parent"></li>
    <% else %>
@@ -299,7 +313,7 @@
 
 
   <%= render "/layouts/alerts" %>
-
+<%= render "/layouts/new_message_modal" %>
 
 
 
