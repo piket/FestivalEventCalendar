@@ -8,9 +8,20 @@
 
       <% @festival_details.each do |detail| %>
        <div class="each-festival uk-width-1-4" data-tags="<%= detail[:tags] %>">
-        <div class="name"><%= link_to detail[:name], festival_path(detail[:id]) %></div>
-        <div class="location"><%= detail[:location] %></div>
-        <div class="image"><%= cl_image_tag detail[:image], :class => 'festival-img', width: "280", height: "280", crop: :fill %></div>
+        <div class="grid">
+         <figure class="effect-marley">
+          <%= cl_image_tag detail[:image], :class => 'festival-img', width: "280", height: "280", crop: :fill %>
+          <figcaption>
+            <div class="name">
+            <%= link_to detail[:name], festival_path(detail[:id]) %><br>
+            <%= detail[:location] %>
+
+            </div>
+            <p class="location"></p>
+
+          </figcaption>
+         </figure>
+        </div>
        </div>
 
       <% end %>
