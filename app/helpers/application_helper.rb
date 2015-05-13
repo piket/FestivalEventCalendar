@@ -14,12 +14,7 @@ module ApplicationHelper
         if message.unread && @current_user.id == message.original_id
             true
         else
-            message.comments.each do |m|
-                if any_unread m
-                    true
-                    return
-                end
-            end
+            # message.comments.
             false
         end
     end

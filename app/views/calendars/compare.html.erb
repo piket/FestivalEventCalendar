@@ -1,7 +1,7 @@
 
 
 <div class="uk-grid">
-    <div class="uk-container-center" id="my-calendar" data=<%=@first_date%>>MY <%= @festival.name.upcase %> CALENDAR</div>
+    <div class="uk-container-center" id="my-calendar" data=<%=@first_date%>>OUR <%= @festival.name.upcase %> CALENDARS</div>
 
     <div class="uk-container uk-container-center">
       <div id="cal-div" class="uk-container">
@@ -12,3 +12,4 @@
 
 </div>
 
+<div id="hidden-data" data=<%= @festival.id %>>

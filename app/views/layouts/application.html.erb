@@ -75,7 +75,7 @@
             </li>
             <% if @current_user.user_type == 'consumer' %>
             <li>
-                <a class="sub-nav" href="/calendars">MY CALENDAR</a>
+                <a class="sub-nav" href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
             </li>
             <% end %>
             <li>
@@ -241,7 +241,7 @@
                       <a href="/users/:id">PROFILE</a>
                   </li>
                   <li>
-                      <a href="/calendars">MY CALENDAR</a>
+                      <a href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
                   </li>
                   <li>
                       <a id="logout-btn" href = "/logout">LOGOUT</a>

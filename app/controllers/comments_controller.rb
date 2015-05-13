@@ -18,7 +18,15 @@ class CommentsController < ApplicationController
       if params.key? :event_id
         render :partial => 'layouts/comment_form', :locals => {event:Event.find(params[:event_id]), comment_ref:Comment.find(params[:comment_id]), comment:Comment.new}
       else
-        render :partial => 'layouts/message_form', :locals => {user:User.find(params[:id]), message:Comment.new, message_ref:false}
+        festivals = @current_user.event_occurrences.order(date: 'ASC').reduce([]) do |arr,occur|
+            name = occur.event.host.name
+            id = occur.event.host_id
+            unless arr.include? [name, id]
+                arr << [name, id]
+            end
+            arr
+        end
+        render :partial => 'layouts/message_form', :locals => {user:User.find(params[:id]), message:Comment.new, message_ref:false, festivals:([['none',0]].concat(festivals))}
       end
     end
 
@@ -55,6 +63,14 @@ class CommentsController < ApplicationController
 #individual messages
     def show
       @message = Comment.find params[:id]
+      @festivals = @current_user.event_occurrences.order(date: 'ASC').reduce([]) do |arr,occur|
+            name = occur.event.host.name
+            id = occur.event.host_id
+            unless arr.include? [name, id]
+                arr << [name, id]
+            end
+            arr
+        end
     end
 
 #delete messages
@@ -76,7 +92,7 @@ class CommentsController < ApplicationController
     end
 
     def message_params
-      info = params.require(:comment).permit(:subject,:body)
+      info = params.require(:comment).permit(:subject,:body,:festival_id)
       info[:original_id] = params[:user_id]
       info[:unread] = true
       info

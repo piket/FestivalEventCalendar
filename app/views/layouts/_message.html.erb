@@ -4,9 +4,23 @@
     <% message.unread = false %>
     <% message.save %>
 <% end %>
-From: <%= message.user.name %>
+<div class="msg-from">
+From: <%= message.user.name %> <%= format_created_time message %>
+</div>
+<div class="msg-subject">
 Subject: <%= message.subject %>
+</div>
+<div class="msg-body">
 Body: <%= message.body %>
+</div>
+<% if message.festival_id && message.festival_id > 0 %>
+    <div class="msg-share">
+    Shared Calendar: <%= link_to "My #{User.find(message.festival_id).name} Calendar", user_calendar_path(message.user_id,message.festival_id) %>
+    </div>
+    <div class="msg-compare">
+    <%= link_to "Compare Calendars", user_compare_calendars_path(message.user_id,message.festival_id,@current_user.id), :class => "uk-button uk-button-success" %>
+    </div>
+<% end %>
 <%# link_to "REPLY", user_comment_comments_path(message.commentable, message), :class=>"uk-button uk-button-mini reply-btn" %>
 <% unless message.comments.empty? %>
 <ul>
