@@ -1,4 +1,3 @@
-/*GENERAL*/
 
 body {
   font-family: 'Quicksand', sans-serif;
@@ -86,7 +85,6 @@ li .uk-parent:hover {
   font-weight:500;
   margin-left:2px;
   margin-right:2px;
-  /*border:2px solid rgb(44,44,46);*/
   border-radius:5px;
   border-color: white;
 
@@ -114,7 +112,6 @@ li .uk-parent:hover {
 }
 
 
-/*HOME PAGE*/
 
 #welcome-back {
   font-size:45px;
@@ -155,7 +152,6 @@ li .uk-parent:hover {
 
 
 
-/*USER PROFILE*/
 
 
 a.uk-icon-pencil{
@@ -198,7 +194,6 @@ a.uk-icon-pencil{
   border-radius: 50%;
 }
 
-/*LOGIN MODAL*/
 
 .login-with-fb {
   font-size: 22px;
@@ -227,8 +222,8 @@ a.uk-icon-pencil{
   padding-left:10px;
   padding-right:10px;
   border-radius:5px;
-  /*margin-top:20px;*/
 }
+
 i .uk-facebook-icon {
   margin-top:10px;
 }
