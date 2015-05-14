@@ -10,6 +10,7 @@ $(function(){
         console.log('clicked')
         profContainer.hide();
         editContainer.show();
+        $('#user_name').focus();
         e.preventDefault();
 
         // var btn = $(this);
@@ -51,11 +52,17 @@ $(function(){
             method: 'GET'
         }).done(function(render){
             $('#form-container').html(render);
-
+            $('#form-container input[name="user[name]"]').focus();
             $('.invalid-label').hide();
         }).error(function(err){
             console.log(err);
         })
     });
+
+    var modal = UIkit.modal("#my-id");
+
+    modal.on('show.uk.modal',function(){
+        $('#login-form #user_email').focus();
+    })
 
 });

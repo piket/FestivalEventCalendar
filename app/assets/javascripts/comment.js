@@ -51,8 +51,8 @@ $(function(){
             comment_id: btn.attr('data_comment')
           }
         }).done(function(form){
-          $('.reply-modal-body').html(form)
-
+          $('.reply-modal-body').html(form);
+          $('#new_comment #comment_body').focus();
         }).error(function(err){
           console.log('ERROR', err)
         })

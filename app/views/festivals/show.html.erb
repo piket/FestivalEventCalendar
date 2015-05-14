@@ -1,7 +1,7 @@
 THIS IS THE <%=@festival.name%> LIST PAGE
 
-<form class="uk-search filter-form" data-uk-search id="event_filter">
-    <input class="uk-search-field" type="search" placeholder="">
+<form class="uk-search filter-form" data-uk-search id="filter-form-event">
+    <input class="uk-search-field" type="search" placeholder="" id="event_filter">
 </form>
 
 <% @event_dates.keys.sort.each do |date| %>

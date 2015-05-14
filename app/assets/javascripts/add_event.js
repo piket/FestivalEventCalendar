@@ -47,6 +47,10 @@ $(function(){
 
   })
 
+    if($('#event_name').is('input')) {
+        $('#event_name').focus();
+    }
+
 
   $('#new_event').submit(function(e) {
       var valid = true;

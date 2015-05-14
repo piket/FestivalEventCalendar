@@ -3,7 +3,7 @@
 
 <div id="prof-name" class="uk-text-center uk-container-center">
       <%= @current_user.name || "N/A" %>
-      <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil prof-edit-btn"%></div>
+      <%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil prof-edit-btn uk-button uk-button-primary", :id => "edit-prof-btn" %>
     </div>
     <div id="prof-email" class="uk-text-center">Email: <%= @current_user.email || "N/A" %></div>
 
