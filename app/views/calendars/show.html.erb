@@ -1,7 +1,7 @@
 
 
 <div class="uk-grid">
-    <div class="uk-container-center" id="my-calendar" data=<%=@first_date%>>MY <%= @festival.name.upcase %> CALENDAR</div>
+    <div class="uk-container-center" id="my-calendar" data=<%=@first_date%> data-type=<%=@user.id != @current_user.id ? 'friend' : 'mine'%>><%= "#{@user == @current_user ? 'MY' : @user.name + "'s"} #{@festival.name.upcase} CALENDAR"%></div>
 
     <div class="uk-container uk-container-center">
       <div id="cal-div" class="uk-container">

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :calendars, only: [:index,:show] do
       get '/all_events' => 'calendars#all_events', on: :collection
       get '/:id/get_events' => 'calendars#get_events', on: :collection
+      get '/:id/get_friend_events' => 'calendars#get_friend_events', on: :collection
       get '/:id/compare/get_events' => 'calendars#compare_events', on: :collection
     end
 #COMPARING CALENDARS

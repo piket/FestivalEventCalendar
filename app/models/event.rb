@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
         row_hash['dates'] = row_hash['dates'].split(',').map do |date|
             date.strip!
             date.split('/').map { |d| d.to_i }
+            date[2] += 2000 if date[2] < 2000
         end
         row_hash['times'] = row_hash['times'].split(',').map do |time|
             time.strip!

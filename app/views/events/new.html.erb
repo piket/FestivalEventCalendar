@@ -2,7 +2,7 @@
 
 <div class="uk-grid">
   <div class="uk-container uk-container-center">
-  <%= form_tag import_events_path, html:{:class=>"uk-form uk-form-stacked"}, multipart: true do %>
+  <%= form_tag import_events_path, :class=>"uk-form uk-form-stacked", id: "import-form", multipart: true do %>
     <div class="uk-form-row">
       <div class="uk-form-controls">
         <div id="upload-drop" class="uk-placeholder uk-text-center">
@@ -16,9 +16,17 @@
     </div>
     <div class="uk-form-row">
         <div class="uk-form-controls">
-            <%= submit_tag "Submit", :class=>"uk-button uk-button-primary" %>
+            <a href="#loading-modal" data-uk-modal class="uk-button uk-button-primary import-form-btn">Submit</a>
+            <%# submit_tag "Submit", :class=>"uk-button uk-button-primary" %>
         </div>
     </div>
     <% end %>
 </div>
+</div>
+
+<div id="loading-modal" class="uk-modal">
+    <div class="uk-modal-dialog uk-text-center">
+        <div class="loading-text">Importing please wait...</div>
+        <i class="uk-icon-large uk-icon-spinner uk-icon-spin loading-icon"></i>
+    </div>
 </div>

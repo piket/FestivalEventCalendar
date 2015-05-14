@@ -8,9 +8,9 @@ $(function() {
         var email = $('#user_email').val();
         var pass = $('#user_password').val();
 
-        if (email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/) === null) {
+        if (email.match(/(.+)@(.+){2,}\.(.+){2,}/) === null) {
             $('.error-msg').text("Invalid email");
-        } else if (pass.length < 3) {
+        } else if (pass.length < 6) {
             $('.error-msg').text("Invalid password")
         } else {
             var form = $(this)
@@ -38,35 +38,37 @@ $(function() {
 
         console.log('clicked');
 
+        $('.invalid-label').hide();
+
         var form_arr = $(this).serializeArray();
         var pass = $('#new_user #user_password').val();
         var valid = true;
-        var type = "none"
+        var type = []
 
         for(var i = 2; i < form_arr.length; i++) {
             switch(form_arr[i].name) {
                 case "user[name]":
                     if(form_arr[i].value.length < 3){
                         valid = false;
-                        type = "name";
+                        type.push($('.name-invalid'))
                     }
                     break;
                 case "user[email]":
-                    if(form_arr[i].value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/) === null) {
+                    if(form_arr[i].value.match(/(.+)@(.+){2,}\.(.+){2,}/) === null) {
                         valid = false;
-                        type = "email";
+                        type.push($('.email-invalid'))
                     }
                     break;
                 case "user[password_confirmation]":
-                    if(form_arr[i].value !== pass) {
+                    if(form_arr[i].value !== pass || pass === "") {
                         valid = false;
-                        type = "pass_confirm " + pass;
+                        type.push($('.pass-confirm-invalid'))
                     }
                     break;
                 case "user[password]":
                     if(form_arr[i].value.length < 8) {
                         valid = false;
-                        if(type !== "pass_confirm") type = "password";
+                        if(type !== "pass_confirm") type.push($('.password-invalid'))
                     }
                     break;
             }
@@ -74,6 +76,9 @@ $(function() {
 
         if (!valid) {
             console.log('invalid',type)
+            type.forEach(function(t) {
+                t.show();
+            })
             e.preventDefault();
         }
 
