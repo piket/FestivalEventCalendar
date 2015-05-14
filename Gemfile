@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Allows postgres in heroku
+gem 'rails_12factor', group: :production
 # Allows validation of an email
 gem 'validates_email_format_of'
 # Allows automatic generation of a seed file based on your current database
