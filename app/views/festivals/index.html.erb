@@ -4,13 +4,13 @@
         <input id="festival_filter" class="uk-container uk-container-center uk-search-field" type="search" placeholder="">
     </form>
   </div>
-  <div id="festival-field" class="uk-container uk-container-center" data-uk-grid>
+  <div id="festival-field" class="uk-container uk-container-center text-center" data-uk-grid>
 
       <% @festival_details.each do |detail| %>
        <div class="each-festival uk-width-1-4" data-tags="<%= detail[:tags] %>">
         <div class="grid">
          <figure class="effect-marley">
-          <%= cl_image_tag detail[:image], :class => 'festival-img', width: "280", height: "280", crop: :fill %>
+          <%= cl_image_tag detail[:image], :class => 'festival-img uk-width-1-4', width: "280", height: "280", crop: :fill %>
           <figcaption>
             <div class="name">
             <%= link_to detail[:name], festival_path(detail[:id]) %><br>

@@ -1,4 +1,4 @@
-
+/*FESTIVAL SEARCH PAGE*/
 
 .image {
   width:200px;
@@ -14,15 +14,33 @@
 #festival-field {
 
   width:90%;
+  background-color:129,239,188;
 
 }
 
 .each-festival {
+  width:250px;
+  height:250px;
   display:inline-block;
-  margin-left:20px;
-  margin-right:20px;
+  margin-left:5px;
+  margin-right:5px;
   padding: 10px;
   text-align:center;
+  background-color:rgb(129,239,188);
+
+
+}
+
+.each-festival img {
+  width:250px;
+  height:250px;
+  background-color:white;
+  border: 6px solid rgb(44,44,46);
+  opacity: 0.8;
+  padding: 10px;
+}
+
+.each-festival img:hover {
 
 }
 
@@ -47,4 +65,8 @@ figure.effect-marley figcaption {
 .filter-form {
   width:250px;
   margin-top:20px;
+}
+
+.grid figure img {
+  opacity:1;
 }

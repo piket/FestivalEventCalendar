@@ -2,9 +2,9 @@
     <% @current_user.friends.each do |friend| %>
         <div class="each-friend">
             <div><%= cl_image_tag friend.image, :class=>"friend-image" %></div>
-            <div class="friend-name"><%= friend.name %></div>
+
             <%= link_to "", friend_remove_path(friend), :class => "remove-friend-btn uk-icon-close" %>
-            <%= link_to "View Profile", user_path(friend), :class => "uk-button uk-button-primary" %>
+
             <div class="friend-name"><%= link_to friend.name, user_path(friend) %></div>
         </div>
     <% end %>

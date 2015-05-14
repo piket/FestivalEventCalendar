@@ -18,7 +18,7 @@
 	text-align: center;
 }
 
-
+/* Common style */
 .grid figure {
 	position: relative;
 	float: left;
@@ -28,7 +28,8 @@
 	max-width: 480px;
 	max-height: 360px;
 	width: 48%;
-	background: #3085a3;
+	/*background: #3085a3;*/
+	background-color:129,239,188;
 	text-align: center;
 	cursor: pointer;
 }
@@ -38,7 +39,7 @@
 	display: block;
 	min-height: 100%;
 	max-width: 100%;
-	opacity: 0.8;
+	opacity: 1;
 }
 
 .grid figure figcaption {
@@ -64,6 +65,8 @@
 	height: 100%;
 }
 
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
 .grid figure figcaption > a {
 	z-index: 1000;
 	text-indent: 200%;
@@ -91,6 +94,11 @@
 	font-size: 68.5%;
 }
 
+/* Individual effects */
+
+/*---------------*/
+/***** Lily *****/
+/*---------------*/
 
 figure.effect-lily img {
 	max-width: none;
@@ -153,6 +161,9 @@ figure.effect-lily:hover p {
 	transition-duration: 0.35s;
 }
 
+/*---------------*/
+/***** Sadie *****/
+/*---------------*/
 
 figure.effect-sadie figcaption::before {
 	position: absolute;
@@ -209,6 +220,10 @@ figure.effect-sadie:hover p {
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
+
+/*---------------*/
+/***** Roxy *****/
+/*---------------*/
 
 figure.effect-roxy {
 	background: -webkit-linear-gradient(45deg, #ff89e9 0%, #05abe0 100%);
@@ -270,6 +285,9 @@ figure.effect-roxy:hover p {
 	transform: translate3d(0,0,0);
 }
 
+/*---------------*/
+/***** Bubba *****/
+/*---------------*/
 
 figure.effect-bubba {
 	background: #9e5406;
@@ -343,6 +361,9 @@ figure.effect-bubba:hover p {
 	transform: translate3d(0,0,0);
 }
 
+/*---------------*/
+/***** Romeo *****/
+/*---------------*/
 
 figure.effect-romeo {
 	-webkit-perspective: 1000px;
@@ -420,6 +441,9 @@ figure.effect-romeo:hover p {
 	transform: translate3d(0,-50%,0) translate3d(0,100%,0);
 }
 
+/*---------------*/
+/***** Layla *****/
+/*---------------*/
 
 figure.effect-layla {
 	background: #18a367;
@@ -522,6 +546,9 @@ figure.effect-layla:hover img {
 	transition-delay: 0.15s;
 }
 
+/*---------------*/
+/***** Honey *****/
+/*---------------*/
 
 figure.effect-honey {
 	background: #4a3753;
@@ -583,6 +610,9 @@ figure.effect-honey:hover h2 i {
 	transform: translate3d(0,0,0);
 }
 
+/*---------------*/
+/***** Oscar *****/
+/*---------------*/
 
 figure.effect-oscar {
 	background: -webkit-linear-gradient(45deg, #22682a 0%, #9b4a1b 40%, #3a342a 100%);
@@ -649,6 +679,9 @@ figure.effect-oscar:hover img {
 	opacity: 0.4;
 }
 
+/*---------------*/
+/***** Marley *****/
+/*---------------*/
 
 figure.effect-marley figcaption {
 	text-align: right;
@@ -683,6 +716,7 @@ figure.effect-marley .name {
 figure.effect-marley:hover .name {
 	visibility:visible;
 	font-size: 26px;
+	background-color:rgb(44,44,46);
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
@@ -719,6 +753,9 @@ figure.effect-marley figcaption:hover {
 	padding-left:0;
 }
 
+/*---------------*/
+/***** Ruby *****/
+/*---------------*/
 
 figure.effect-ruby {
 	background-color: #17819c;
@@ -768,6 +805,9 @@ figure.effect-ruby:hover p {
 	transform: translate3d(0,0,0) scale(1);
 }
 
+/*---------------*/
+/***** Milo *****/
+/*---------------*/
 
 figure.effect-milo {
 	background: #2e5d5a;
@@ -817,6 +857,9 @@ figure.effect-milo:hover p {
 	transform: translate3d(0,0,0);
 }
 
+/*---------------*/
+/***** Dexter *****/
+/*---------------*/
 
 figure.effect-dexter {
 	background: -webkit-linear-gradient(top, rgba(37,141,200,1) 0%, rgba(104,60,19,1) 100%);
@@ -875,7 +918,9 @@ figure.effect-dexter:hover p {
 	transform: translate3d(0,0,0);
 }
 
-
+/*---------------*/
+/***** Sarah *****/
+/*---------------*/
 
 figure.effect-sarah {
 	background: #42b078;
@@ -943,6 +988,9 @@ figure.effect-sarah:hover p {
 	transform: translate3d(0,0,0);
 }
 
+/*---------------*/
+/***** Zoe *****/
+/*---------------*/
 
 figure.effect-zoe figcaption {
 	top: auto;
@@ -982,7 +1030,7 @@ figure.effect-zoe p.description {
 	opacity: 0;
 	-webkit-transition: opacity 0.35s;
 	transition: opacity 0.35s;
-	-webkit-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
 }
 
 figure.effect-zoe h2,
@@ -1049,6 +1097,9 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 	transition-delay: 0.2s;
 }
 
+/*---------------*/
+/***** Chico *****/
+/*---------------*/
 
 figure.effect-chico img {
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
