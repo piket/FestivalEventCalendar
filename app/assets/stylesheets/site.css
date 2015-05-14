@@ -29,6 +29,7 @@ body {
   display:none;
   background-color:rgb(44,44,46);
   border-radius:0;
+  font-size:20px;
 
 }
 
@@ -112,11 +113,6 @@ li .uk-parent:hover {
 .uk-nav-offcanvas>.uk-open>a, html:not(.uk-touch) .uk-nav-offcanvas>li>a:focus {
    color: rgb(129,239,188);
 }
-
-li .uk-parent .uk-open {
-  background-color:;
-}
-
 
 
 /*HOME PAGE*/

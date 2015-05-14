@@ -145,10 +145,7 @@ class EventsController < ApplicationController
 
          if !row['image'].nil? && !row['image'].empty?
             event.image = Cloudinary::Uploader.upload(row['image'])['public_id']
-         else
-            event.image = 'event_default'
-            # render json: event.image
-            # return
+
          else
             event.image = "event_default"
          end
