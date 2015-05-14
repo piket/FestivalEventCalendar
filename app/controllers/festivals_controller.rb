@@ -12,7 +12,7 @@ class FestivalsController < ApplicationController
 
     def index
       #Find all festivals (users that are both type host and verified)
-      festivals = User.where(user_type:'host',status:true)
+      festivals = User.where(user_type:'host',status:true).order(name: 'ASC')
         # Loop through festivals and for each grab the events that they are hosting and grab tags associated with those events.
         @festival_details = festivals.map do |f|
          tags = f.hosted_events.map do |event|
