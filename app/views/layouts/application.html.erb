@@ -253,6 +253,7 @@
             <!-- </div> -->
             </li>
              <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
+             <% if @current_user.user_type == 'host' %>
             <li class="uk-parent">
                 <a href="#">MY EVENTS</a>
               <!-- <div class="data-uk-dropdown"> -->
@@ -268,7 +269,7 @@
                 <!-- </div> -->
               <!-- </div> -->
             </li>
-
+            <% else %>
         <!-- FOR CONSUMER  -->
             <li class="uk-parent">
               <a href = "#">FESTIVALS</a>
@@ -297,7 +298,7 @@
                   </li>
                  </ul>
            </li>
-<% end %>
+            <% end %>
     <li class="uk-parent"></li>
    <% else %>
     <li class="uk-parent"><a href="/users/new" class="signup-link">SIGN UP</a></li>
