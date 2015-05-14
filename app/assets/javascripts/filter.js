@@ -16,6 +16,10 @@ $(function(){
     }
   }
 
+  var abbrev = function(str,word) {
+      return str + word[0];
+  }
+
     var filter = function(e){
 
       var filterForm = $('.filter-form');
@@ -38,8 +42,14 @@ $(function(){
 
     unmatches = items.filter(function(j,item){
       var classes = $(item).attr('data-tags').toLowerCase()
+      var location = $(item).find('.fest-location').text().toLowerCase();
+      var name = $(item).find('.fest-name').text().toLowerCase().trim();
+      var nickname = name.split(' ').reduce(abbrev,"")
+
+      console.log(nickname)
+
       for (var i=0; i<arr.length; i++) {
-        if (classes.indexOf(arr[i]) !== -1 || $(item).children('.location').text().toLowerCase().indexOf(arr[i]) !== -1 || $(item).children('.name').text().toLowerCase().indexOf(arr[i]) !== -1) {
+        if (classes.indexOf(arr[i]) !== -1 || location.indexOf(arr[i]) !== -1 || name.indexOf(arr[i]) !== -1 || nickname.indexOf(arr[i]) !== -1) {
           return false
         } else if (formId == 'event_filter' && dateComp($(item).children('.date').text().toLowerCase(), arr[i])) {
           return false
