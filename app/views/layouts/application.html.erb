@@ -282,7 +282,7 @@
                     </li>
               </ul>
             </li>
-
+            <% if @current_user.user_type == 'consumer' %>
             <li class="uk-parent">
                <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
                  <ul class="uk-nav-sub">
@@ -297,7 +297,7 @@
                   </li>
                  </ul>
            </li>
-
+<% end %>
     <li class="uk-parent"></li>
    <% else %>
     <li class="uk-parent"><a href="/users/new" class="signup-link">SIGN UP</a></li>
