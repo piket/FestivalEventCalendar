@@ -66,7 +66,7 @@ $(function() {
                     }
                     break;
                 case "user[password]":
-                    if(form_arr[i].value.length < 8) {
+                    if(form_arr[i].value.length < 6) {
                         valid = false;
                         if(type !== "pass_confirm") type.push($('.password-invalid'))
                     }
