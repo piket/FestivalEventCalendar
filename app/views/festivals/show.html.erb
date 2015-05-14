@@ -1,4 +1,6 @@
-THIS IS THE <%=@festival.name%> LIST PAGE
+<div class="uk-grid">
+
+<div id="event-filter-header">SEARCH  <%=@festival.name%> EVENTS</div>
 
 <form class="uk-search filter-form" data-uk-search id="filter-form-event">
     <input class="uk-search-field" type="search" placeholder="" id="event_filter">
@@ -24,3 +26,5 @@ THIS IS THE <%=@festival.name%> LIST PAGE
     </div>
     <% end %>
 <% end %>
+
+</div>

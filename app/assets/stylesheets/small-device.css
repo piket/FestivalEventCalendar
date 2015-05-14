@@ -1,7 +1,9 @@
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
 
 
-
+  body {
+      /*background:red;*/
+  }
 
   nav {
     display:none;
@@ -12,7 +14,7 @@
   }
 
 
-
+  /*HOME*/
 
   #title {
     font-size:60px;
@@ -38,6 +40,7 @@
   }
 
 
+  /*CREATE NEW EVENT PAGE*/
 
 
   #create-event-header {
@@ -60,6 +63,17 @@ a.host-event-name {
 }
 
 
+/*FESTIVAL SEARCH */
+
+
+.each-festival img {
+  width:120px;
+  height:120px;
+  margin-top:5px;
+  margin-bottom:5px;
+  border: 2px solid rgb(44,44,46);
+  border-radius:5px;
+}
 
 
 
