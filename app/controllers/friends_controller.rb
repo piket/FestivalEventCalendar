@@ -44,4 +44,8 @@ class FriendsController < ApplicationController
         render partial: 'friends_dashboard'
     end
 
+    def list
+        render partial: 'layouts/modal_friend_list', locals: {friends:@current_user.friends}
+    end
+
 end

@@ -31,6 +31,7 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/button.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/dropdown.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/upload.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/modal.min.js"></script>
 
   <%= javascript_include_tag 'application' %>
   <%= cloudinary_js_config %>
@@ -153,7 +154,7 @@
           <li class="uk-parent"></li>
    <% else %>
     <li class="uk-parent"><a href="/users/new" class="signup-link">SIGN UP</a></li>
-    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}">LOGIN</a></li>
+    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}" class="login-btn">LOGIN</a></li>
     <% end %>
 
    </ul>
@@ -283,7 +284,6 @@
                     </li>
               </ul>
             </li>
-            <% if @current_user.user_type == 'consumer' %>
             <li class="uk-parent">
                <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
                  <ul class="uk-nav-sub">
@@ -302,7 +302,7 @@
     <li class="uk-parent"></li>
    <% else %>
     <li class="uk-parent"><a href="/users/new" class="signup-link">SIGN UP</a></li>
-    <li class="uk-parent"><a href = "/login">LOGIN</a></li>
+    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}" class="login-btn">LOGIN</a></li>
     <% end %>
 
 

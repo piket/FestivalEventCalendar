@@ -31,7 +31,7 @@ $(function(){
 
     var formId = filterForm.attr('id');
 
-    if(formId == 'event_filter') {
+    if(formId == 'filter-form-event') {
       items = $('.each-event')
     } else {
       items = $('.each-festival')
@@ -46,7 +46,7 @@ $(function(){
       var name = $(item).find('.fest-name').text().toLowerCase().trim();
       var nickname = name.split(' ').reduce(abbrev,"")
 
-      console.log(nickname)
+      // console.log(nickname)
 
       for (var i=0; i<arr.length; i++) {
         if (classes.indexOf(arr[i]) !== -1 || location.indexOf(arr[i]) !== -1 || name.indexOf(arr[i]) !== -1 || nickname.indexOf(arr[i]) !== -1) {
@@ -62,10 +62,19 @@ $(function(){
 
   }
 
+  var filterInput = $('#festival_filter');
+  var eventFilter = $('#event_filter');
+
+
   $('.filter-form').on('keyup',filter);
   $('.filter-form').submit(filter);
 
 
+  if(filterInput.is('input')) {
+      filterInput.focus();
+  } else if (eventFilter.is('input')) {
+      eventFilter.focus();
+  }
 
 
 
