@@ -94,3 +94,80 @@ figure.effect-marley figcaption {
 .page-div {
   width:100%;
 }
+
+/*EVENT FILTER PAGE*/
+
+#event-filter-header {
+  text-transform:uppercase;
+  font-size:45px;
+  margin-top:60px;
+  margin-bottom:20px;
+  line-height:100%;
+}
+
+#event-filter-field {
+  display:inline;
+  width:90%;
+}
+
+.each-event {
+  border: 3px solid rgb(44,44,46);
+  width:40%;
+  border-radius:5px;
+  border-radius: 5px;
+  margin-left:5px;
+  margin-right:5px;
+  margin-top:5px;
+  margin-bottom:5px;
+  display:inline-block;
+}
+
+.event-filter-img {
+  float:left;
+}
+
+.event-filter-img:hover {
+  opacity:0.8;
+}
+
+.event-page.div {
+  width:100%;
+
+}
+
+.uk-icon-plus {
+
+  background-color:rgb(44,44,46);
+  color:rgb(120,329,188);
+  text-shadow:none;
+}
+
+.add-btn {
+  padding-top:8px;
+  float:right;
+  margin-top:9px;
+  margin-left:3px;
+
+}
+
+.add-btn:hover {
+  background-color:rgb(120,329,188);
+  color:rgb(44,44,46);
+  opacity:0.8;
+}
+
+#event_filter {
+  margin-bottom:20px;
+}
+
+a.event-filter-name {
+  font-size:16px;
+  color:rgb(44,44,46);
+  margin-top:10px;
+}
+
+a.event-filter-name:hover {
+  text-decoration:none;
+  background-color:rgb(120,329,188);
+  color:rgb(44,44,46);
+}

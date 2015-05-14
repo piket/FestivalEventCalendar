@@ -1,30 +1,41 @@
 <div class="uk-grid">
 
-<div id="event-filter-header">SEARCH  <%=@festival.name%> EVENTS</div>
+    <!-- <div class="uk-text-center uk container uk-container-center event-page-div"> -->
 
-<form class="uk-search filter-form" data-uk-search id="filter-form-event">
-    <input class="uk-search-field" type="search" placeholder="" id="event_filter">
-</form>
+      <div id="event-search" class="uk-container uk-container-center">
+        <div id="event-filter-header" class="uk-text-center uk-container uk-container-center">
+        Search<br>  <strong><%=@festival.name%></strong><br> Events
+        </div>
 
-<% @event_dates.keys.sort.each do |date| %>
-    <% @event_dates[date].each do |event| %>
-    <div class="each-event" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
-        <a href="/events/<%=event[:id]%>"><div class="name"><%=event[:name]%></div></a>
-        <div class="date"><%=date.strftime("%B %d, %Y")%></div>
-        <div class="duration"><%=event[:duration]%></div>
-        <%= cl_image_tag event[:image], width: "280", height: "280", crop: :fill%>
-        <% event[:occurrences].each do |occurrence| %>
-            <div class="location"><%=occurrence[:location]%></div>
-            <div class="time"><%=occurrence[:time]%></div>
+        <form class="uk-search filter-form uk-container uk-container-center uk-text-center" data-uk-search id="filter-form-event">
+            <input class="uk-search-field" type="search" placeholder="" id="event_filter">
+        </form>
+      </div>
 
-             <% if occurrence[:added] %>
-                <%= link_to "x", deleteevent_path(occurrence[:id]), :class => "del-btn uk-button" %>
-            <% else %>
-                <%= link_to "+", addevent_path(occurrence[:id]), :class => "add-btn uk-button" %>
+      <div id="event-filter-field" class="uk-text-center uk-container uk-container-center">
+    <% @event_dates.keys.sort.each do |date| %>
+        <% @event_dates[date].each do |event| %>
+        <div class="each-event uk-width-1-2" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
+            <strong><a href="/events/<%=event[:id]%>" class="event-filter-name"><%=event[:name]%></a></strong>
+            <a href="/events/<%=event[:id]%>" class="event-filter-img">
+                <%= cl_image_tag event[:image], width: 220, height: 120, crop: :fill%>
+            </a>
+            <div class="date"><%=date.strftime("%B %d, %Y")%></div>
+            <% event[:occurrences].each do |occurrence| %>
+                <div class="location"><%=occurrence[:location]%></div>
+                <div class="time"><%=occurrence[:time]%></div>
+
+                 <% if occurrence[:added] %>
+                    <%= link_to "", deleteevent_path(occurrence[:id]), :class => "del-btn uk-button uk-icon-remove" %>
+                <% else %>
+                    <%= link_to "", addevent_path(occurrence[:id]), :class => "add-btn uk-button uk-icon-plus" %>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
-    <% end %>
-<% end %>
 
+        </div>
+        <% end %>
+    <% end %>
+
+  </div>
+ <!-- </div> -->
 </div>
