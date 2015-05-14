@@ -1,6 +1,6 @@
 class CalendarsController < ApplicationController
 
-before_action :is_authenticated?
+before_action :consumer_user?
 
   def index
     if @current_user && @current_user.id == params[:user_id].to_i

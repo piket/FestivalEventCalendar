@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
 
     before_action :host_user?, only: [:new, :create]
+    before_action :is_authenticated?, only: [:index]
 
     def index
       @tags = Tag.all.order('name ASC')
