@@ -48,7 +48,7 @@ $(function(){
         var link = $(this);
 
         $.ajax({
-            url: link.attr('href'),
+            url: link.attr('data-href'),
             method: 'GET'
         }).done(function(render){
             $('#form-container').html(render);

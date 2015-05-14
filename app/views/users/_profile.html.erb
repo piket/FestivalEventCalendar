@@ -7,13 +7,13 @@
     </div>
     <div id="prof-email" class="uk-text-center">Email: <%= @current_user.email || "N/A" %></div>
 
-    <% if @current_user.user_type == 'consumer' %>
+    <% if false && @current_user.user_type == 'consumer' %>
         <div class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></div>
         <div class="uk-text-center">Age: <%= @current_user.age || "N/A" %></div>
     <% end %>
 
     <div class="uk-text-center">Location: <%= @current_user.location || "N/A" %></div>
-      <div class="uk-container uk-container-center"><%= cl_image_tag @current_user.image, :class=>"prof-img" %></div>
+      <div class="uk-container uk-container-center"><%= cl_image_tag @current_user.image, :class=>"prof-img", :width => 280, :height => 280, :crop => :thumb, :radius => :max %></div>
 
     <% if @current_user.user_type == 'host' %>
       <div><%=@current_user.about %></div>

@@ -4,7 +4,7 @@ $(function(){
     var dateStr = date.split(' ');
     dateStr[1] = parseInt(dateStr[1]);
     dateStr[2] = parseInt(dateStr[2]);
-    // console.log(dateStr[2] == input,dateStr[2],input)
+    console.log(dateStr[2] == input,dateStr[2],input)
     if (dateStr[0].indexOf(input) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input)) {
       // console.log("month match")
       return true;
@@ -42,8 +42,8 @@ $(function(){
 
     unmatches = items.filter(function(j,item){
       var classes = $(item).attr('data-tags').toLowerCase()
-      var location = $(item).find('.fest-location').text().toLowerCase();
-      var name = $(item).find('.fest-name').text().toLowerCase().trim();
+      var location = $(item).find('.location').text().toLowerCase();
+      var name = $(item).find('.name').text().toLowerCase().trim();
       var nickname = name.split(' ').reduce(abbrev,"")
 
       // console.log(nickname)
@@ -51,7 +51,7 @@ $(function(){
       for (var i=0; i<arr.length; i++) {
         if (classes.indexOf(arr[i]) !== -1 || location.indexOf(arr[i]) !== -1 || name.indexOf(arr[i]) !== -1 || nickname.indexOf(arr[i]) !== -1) {
           return false
-        } else if (formId == 'event_filter' && dateComp($(item).children('.date').text().toLowerCase(), arr[i])) {
+        } else if (formId == 'filter-form-event' && dateComp($(item).find('.date').text().toLowerCase(), arr[i])) {
           return false
         }
       }

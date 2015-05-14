@@ -64,7 +64,8 @@ class UsersController < ApplicationController
             user[field] = value
         end
         user.save
-        redirect_to users_path
+        # redirect_to users_path
+        redirect_to friends_path
         # @current_user = User.find(@current_user.id)
         # render partial: 'profile'
     end
