@@ -9,18 +9,18 @@
       <%= form_for arr do |f| %>
         <div class="uk-form-row">
           <div class="form-controls">
-            <%= f.text_field :subject, :placeholder => "Enter a subject" %>
+            <%= f.text_field :subject, :placeholder => "Enter a subject", size: "50" %>
           </div>
         </div>
         <div class="uk-form-row">
           <div class="uk-form-controls">
-            <%= f.text_area :body, :placeholder => "Type your message here" %>
+            <%= f.text_area :body, :placeholder => "Type your message here", size: "50x10" %>
           </div>
         </div>
         <label for="comment[festival_id]">Share a Calendar</label>
         <div class="uk-form-row">
           <div class="uk-form-controls">
-            <div class="uk-form-select uk-button" data-uk-form-select>
+            <div class="uk-form-select" data-uk-form-select>
                <span></span>
                   <%= f.select :festival_id, options_for_select(festivals, 0) %>
             </div>

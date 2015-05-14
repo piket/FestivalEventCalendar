@@ -4,7 +4,7 @@
     <%= form_for [event, comment_ref, comment], html:{:class=>"uk-form uk-form-stacked"} do |f|%>
       <div class="uk-form-row">
         <div class="uk-form-controls">
-        <%= f.text_field :body, :placeholder => "Enter your comment.", :class=> "comment-input" %>
+        <%= f.text_area :body, size: "50x10", :placeholder => "Enter your comment.", :class=> "comment-input" %>
         </div>
       </div>
       <div class="uk-form-row">
@@ -20,15 +20,15 @@
 <% else %>
 
 
-    <%= form_for [event, comment], html:{:class=>"uk-form uk-form-stacked"} do |f|%>
+    <%= form_for [event, comment], html:{:class=>"uk-form uk-form-stacked comment-form"} do |f|%>
       <div class="uk-form-row">
         <div class="uk-form-controls">
-        <%= f.text_field :body, :placeholder => "Enter your comment." %>
+        <%= f.text_area :body, size: "50x10", :placeholder => "Enter your comment." %>
         </div>
       </div>
       <div class="uk-form-row">
         <div class="uk-form-controls">
-        <%= f.submit "Submit", :class=>"uk-button uk-button-primary" %>
+        <%= f.button "Submit", :class=>"uk-button uk-button-primary", :type => "submit" %>
         </div>
       </div>
 

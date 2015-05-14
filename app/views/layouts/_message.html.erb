@@ -1,4 +1,5 @@
-<li>
+<div class="comment-content">
+<li class="comment-block">
 <%= "!" if any_unread message %>
 <% if @current_user.id == message.original_id && @current_user.id != message.user_id %>
     <% message.unread = false %>
@@ -10,8 +11,9 @@ From: <%= message.user.name %> <%= format_created_time message %>
 <div class="msg-subject">
 Subject: <%= message.subject %>
 </div>
+<hr class="comment-break">
 <div class="msg-body">
-Body: <%= message.body %>
+<%= message.body %>
 </div>
 <% if message.festival_id && message.festival_id > 0 %>
     <div class="msg-share">
@@ -25,8 +27,9 @@ Body: <%= message.body %>
 <% end %>
 <%# link_to "REPLY", user_comment_comments_path(message.commentable, message), :class=>"uk-button uk-button-mini reply-btn" %>
 <% unless message.comments.empty? %>
-<ul>
+<ul class="comment-list">
     <%= render partial: 'layouts/message', :collection => message.comments %>
 </ul>
 <% end %>
 </li>
+</div>
