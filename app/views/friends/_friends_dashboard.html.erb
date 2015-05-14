@@ -1,11 +1,13 @@
 <div class="friends">
     <% @current_user.friends.each do |friend| %>
         <div class="each-friend">
-            <div><%= cl_image_tag friend.image, :class=>"friend-image" %></div>
+            <div><%= cl_image_tag friend.image, :class=>"friend-image", :width => 80, :height => 80, :crop => :thumb, :radius => :max %></div>
 
             <%= link_to "", friend_remove_path(friend), :class => "remove-friend-btn uk-icon-close" %>
 
-            <div class="friend-name"><%= link_to friend.name, user_path(friend) %></div>
+            <div class="friend-name"><%=friend.name%></div>
+            <div class="friend-location"><%=friend.location%></div>
+            <a href="#message-modal" data-uk-modal id="send-message-btn" data-id="<%=friend.id%>">Send message</a>
         </div>
     <% end %>
 </div>

@@ -20,8 +20,8 @@
           <%= cl_image_tag detail[:image], :class => 'festival-img uk-width-1-4', width: "280", height: "280", crop: :fill %>
           <figcaption>
             <div class="name">
-            <%= link_to detail[:name], festival_path(detail[:id]), :class => 'fest-name' %><br>
-            <span class="fest-location"><%= detail[:location] %></span>
+            <%= link_to detail[:name], festival_path(detail[:id]), :class => 'name' %><br>
+            <span class="location"><%= detail[:location] %></span>
 
             </div>
             <!-- <p class="location"></p> -->

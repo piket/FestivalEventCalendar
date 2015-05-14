@@ -1,8 +1,8 @@
-<div class="message-form">
-    <%= render partial: 'layouts/message_form', locals: {user:@message.commentable,message:Comment.new,message_ref:@message,festivals:([['none',0]].concat(@festivals))} %>
-</div>
 <div class="display-container">
     <ul>
         <%= render partial: 'layouts/message', locals: {message:@message} %>
     </ul>
+</div>
+<div class="uk-container uk-container-center message-form">
+    <%= render partial: 'layouts/message_form', locals: {user:@message.commentable,message:Comment.new,message_ref:@message,festivals:([['none',0]].concat(@festivals))} %>
 </div>

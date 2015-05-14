@@ -1,5 +1,13 @@
 
 <div class="uk-grid">
+    <div class=".uk-container .uk-container-center uk-width-1-1 Xprof-container">
+    <div class="prof-container">
+    <%= render 'users/profile' %>
+    </div>
+    <div class="edit-container">
+    <%= render 'users/edit_form' %>
+    </div>
+  </div>
     <div class="my-friends-header uk-container uk-text-center">My Friends</div>
 
     <div id="friends-dashboard">
@@ -17,7 +25,7 @@
             </div>
             <div class="uk-form-row">
                 <div class="uk-form-controls">
-                    <%= submit_tag "Send Invite", :class => "uk-button uk-button-primary" %>
+                    <%= button_tag "Send Invite", :class => "uk-button uk-button-primary", type: 'submit' %>
                 </div>
             </div>
         <% end %>

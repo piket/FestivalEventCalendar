@@ -5,14 +5,17 @@ $(function() {
 
         var btn = $(this);
 
-        $.ajax({
-            url: btn.attr('href'),
-            method: 'DELETE'
-        }).done(function(data) {
-            $('#friends-dashboard').html(data);
-        }).error(function(err) {
-            console.log("Delete error:",err);
-        });
+        if (confirm("Remove "+btn.next('.friend-name').text()+" from your friends.")) {
+            $.ajax({
+                url: btn.attr('href'),
+                method: 'DELETE'
+            }).done(function(data) {
+                $('#friends-dashboard').html(data);
+            }).error(function(err) {
+                console.log("Delete error:",err);
+            });
+        }
+
     });
 
     $('#friends-dashboard').on('click', '.accept-friend-btn', function(e) {
