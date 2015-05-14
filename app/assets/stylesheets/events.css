@@ -40,3 +40,133 @@
 .event-headings {
   display:inline;
 }
+
+/*HOST EVENT PAGE*/
+
+.each-host-event {
+  border:3px solid rgb(44,44,46);
+  width: 40%;
+  border-radius: 5px;
+  margin-left:5px;
+  margin-right:5px;
+  margin-top:5px;
+  margin-bottom:5px;
+  display:inline-block;
+
+}
+
+.each-host-event:hover {
+  opacity:0.7;
+}
+
+.host-event-field {
+  display:inline;
+  width:90%;
+}
+
+#host-event-header {
+
+  font-size:55px;
+  margin-top:60px;
+  margin-bottom:30px;
+  height: 50px;
+}
+
+a.host-event-name {
+  width:46%;
+  font-size:26px;
+  float:right;
+  margin-top:35px;
+  color:rgb(44,44,46);
+  text-align:center;
+  margin-right:3px;
+}
+
+a.host-event-name:hover {
+  text-decoration:none;
+
+}
+
+a.host-event-img {
+  float:left;
+}
+
+/*EVENTS SHOW PAGE - EACH EVENT*/
+
+.each-event-name {
+
+  font-size:60px;
+  float:right;
+  margin-top:210px;
+}
+
+.event-link {
+  background-color:rgb(6,22,62);
+  color:rgb(129,239,188);
+  text-shadow:none;
+}
+
+.event-link:hover {
+  background-color:rgb(129,239,188);
+  color:rgb(6,22,62);
+  font-weight:600;
+}
+
+.each-host-event-show {
+  border: 2px solid purple;
+}
+
+.event-image {
+
+  width:38%;
+  margin-top:30px;
+  border-radius:5px;
+
+}
+
+.event-desc {
+
+  font-size:16px;
+  margin-top:30px;
+  margin-bottom:30px;
+}
+
+.event-video {
+  border:2px solid green;
+  width:39%;
+  float:right;
+}
+
+.event-purchase {
+
+  background-color:rgb(6,22,62);
+  color:rgb(129,239,188);
+  text-shadow:none;
+}
+
+.event-purchase:hover {
+  background-color:rgb(129,239,188);
+  color:rgb(6,22,62);
+  font-weight:600;
+}
+
+.comment-field {
+  border:2px solid rgb(44,44,46);
+  border-radius:5px;
+  width:99%;
+}
+
+.event-edit-btn {
+  background-color:rgb(6,22,62);
+  padding:8px;
+  border-radius:5px;
+}
+
+a.uk-icon-pencil:hover {
+
+  color:rgb(129,239,188);
+}
+
+
+
+

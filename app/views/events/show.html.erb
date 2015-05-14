@@ -1,46 +1,46 @@
 
 
-<div class="uk-grid">
+<div class="uk-grid uk-container uk-container-center">
 
-    <div class="each-host-event uk-container uk-width-1-1 uk-container-center">
+    <div class="each-host-event-show uk-container uk-width-1-1 uk-container-center">
       <!-- <div class="event-headings"> -->
+          <div class="each-event-name"><%= @event.name %></div>
           <%= cl_image_tag @event.image, :class => "event-image" %>
-          <div class="event-name"><%= @event.name %></div>
-          <%= link_to "EDIT", edit_event_path %>
+          <%= link_to "", edit_event_path, :class=>"event-edit-btn uk-icon-pencil" %>
       <!-- </div> -->
       <div class="event-details">
-          <a href="<%= @event.link %>">LINK</a>
+          <a class="event-link uk-button" href="<%= @event.link %>">VISIT THE OFFICIAL EVENT PAGE</a>
+          <a class="event-purchase uk-button" href="<%= @event.purchase %>">BUY TICKETS &nbsp($<%= @event.price == 0 ? 'Free' : sprintf('%.2f', @event.price) %>)</a>
+          <div class="event-price"></div>
           <div class="event-desc"><%= @event.description %></div>
-          <div class="event-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen class="video-frame"></iframe></div>
-          <div class="event-purchase"><%= @event.purchase %></div>
-          <div class="event-price"><%= @event.price == 0 ? 'Free' : @event.price %></div>
+          <div class="event-video"><iframe width="400" height="218" src="https://www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen class="video-frame"></iframe></div>
       </div>
 
 
+        <div class="comment-field">
+          <div class="form-container uk-container uk-container-center">
+            <%= render partial: 'layouts/comment_form', :locals => {event:@event,comment_ref:@comment_ref, comment:@comment} %>
+          </div>
+          <div class="display-container">
+            <ul>
+            <%= render partial: 'layouts/comment_display', :collection=> @event.comments %>
+            </ul>
+          </div>
+
+        </div>
     </div>
 
-    <div class="comment-field">
-      <div class="form-container">
-        <%= render partial: 'layouts/comment_form', :locals => {event:@event,comment_ref:@comment_ref, comment:@comment} %>
-      </div>
-      <div class="display-container">
-        <ul>
-        <%= render partial: 'layouts/comment_display', :collection=> @event.comments %>
-        </ul>
-      </div>
+
+<!-- COMMENT REPLY MODAL -->
+
+<div id="comment-reply-modal" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
+
+        <div class="reply-modal-body">
+
+        </div>
     </div>
--
--
--<!-- COMMENT REPLY MODAL -->
--
--<div id="comment-reply-modal" class="uk-modal">
--    <div class="uk-modal-dialog">
--        <a class="uk-modal-close uk-close"></a>
--
--        <div class="reply-modal-body">
--
--        </div>
--    </div>
--</div>
+</div>
 
 </div>

@@ -1,16 +1,26 @@
-THIS IS THE HOST EVENTS PAGE
 
-<% if @current_user.status %>
-<!-- <div class="uk-grid"> -->
-    <% @events.each do |event| %>
-    <div class="each-host-event uk-container">
-      <%= cl_image_tag event.image %>
-      <a href="/events/<%=event.id%>"><%= event.name %></a>
-      <a href="<%= event.link %>">LINK</a>
+<div class="uk-grid">
 
-    </div>
-    <% end %>
-<!-- </div> -->
-<% else %>
-    Your status is pending
-<% end %>
+      <div id="host-event-header" class="uk-text-center uk-container uk-container-center"><%= @current_user.name %> Events</div>
+
+      <div class="uk-text-center host-event-field uk-container uk-container-center">
+      <% if @current_user.status %>
+
+          <% @events.each do |event| %>
+          <div class="each-host-event uk-width-1-2">
+             <a href="/events/<%=event.id%>" class="host-event-img">
+              <%= cl_image_tag event.image, :width=> 220, :height=>120, :crop=>:fill %>
+             </a>
+             <a href="/events/<%=event.id%>" class="host-event-name">
+              <%= event.name %>
+             </a>
+
+          </div>
+          <% end %>
+
+      <% else %>
+          Your status is pending
+      <% end %>
+      </div>
+
+</div>
