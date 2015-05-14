@@ -12,6 +12,7 @@
  *
 
  *= require jquery.tagsinput
+ *= require textillate-master/assets/animate
  *= require_tree .
  *= require_self
  */
