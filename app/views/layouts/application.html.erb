@@ -122,7 +122,7 @@
         </li>
 
 
-          <% pending_count = @current_user.pending_invited_by.nil? ? 0 : @current_user.pending_invited_by.length %>
+          <% pending_count = @current_user.pending_invited_by.length %>
          <li class="uk-parent" data-uk-dropdown>
           <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
 
