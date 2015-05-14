@@ -9,8 +9,11 @@ class ApplicationController < ActionController::Base
   def is_authenticated?
     unless @current_user
       flash[:warning] ="You must be logged in to access this page."
-      redirect_to login_path
+      redirect_to root_path
+      return
+      false
     end
+    true
   end
 
   def current_user
@@ -44,18 +47,20 @@ class ApplicationController < ActionController::Base
   end
 
   def host_user?
-    is_authenticated?
-    unless @current_user.user_type == 'host' && @current_user.status
-      flash[:warning] = "You do not have access to this page."
-      redirect_to :back
+    if is_authenticated?
+      unless @current_user.user_type == 'host' && @current_user.status
+        flash[:warning] = "You do not have access to this page."
+        redirect_to root_path
+      end
     end
   end
 
   def consumer_user?
-    is_authenticated?
-    unless @current_user.user_type == 'consumer'
-      flash[:warning] = "You do not have access to this page."
-      redirect_to :back
+    if is_authenticated?
+      unless @current_user.user_type == 'consumer'
+        flash[:warning] = "You do not have access to this page."
+        redirect_to root_path
+      end
     end
   end
 
