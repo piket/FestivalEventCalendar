@@ -51,6 +51,8 @@ $(function(){
             method: 'GET'
         }).done(function(render){
             $('#form-container').html(render);
+
+            $('.invalid-label').hide();
         }).error(function(err){
             console.log(err);
         })

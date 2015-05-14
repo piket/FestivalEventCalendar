@@ -114,6 +114,16 @@ $(function(){
 
   })
 
+  $('.import-form-btn').click(function(e){
+      // $('#loading-modal').show();
+      // e.preventDefault();
+      $('#import-form').submit()
+  });
+
+  // $('#import-form').submit(function(e){
+    // e.preventDefault();
+    // console.log("Form submitting...");
+  // })
 
 
   console.log("Page loaded.")

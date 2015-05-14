@@ -10,8 +10,12 @@ class UsersController < ApplicationController
       if @current_user.user_type != 'consumer' || result.users.include?(@current_user)
         render :json => {result:false}
       else
-        @current_user.event_occurrences << result
-        render :json => {result:params[:id]}
+          if result.users.include? @current_user
+            render json: {result:false}
+          else
+            @current_user.event_occurrences << result
+            render :json => {result:params[:id]}
+          end
       end
     end
 
@@ -91,12 +95,12 @@ class UsersController < ApplicationController
 
         else
           flash[:danger] = "Error. Invalid information inputed."
-          redirect_to new_user_path
+          redirect_to root_path
         end
 
       else
         flash[:primary] = "We already have an account under that email address. Please try again or login!"
-        redirect_to new_user_path
+        redirect_to root_path
       end
     end
 

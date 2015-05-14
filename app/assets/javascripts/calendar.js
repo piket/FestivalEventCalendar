@@ -9,13 +9,17 @@ $(document).ready(function() {
 
     if (get_url[0].indexOf('compare') !== -1) {
         console.log("compare page");
-        first_url = get_url[0].substring(0,get_url[0].indexOf('/compare')) + '/get_events/';
+        first_url = get_url[0].substring(0,get_url[0].indexOf('/compare')) + '/get_friend_events/';
         second_url = '/users/' + get_url[0].substr(get_url[0].indexOf('compare/')+8) + get_url[0].substring(get_url[0].indexOf('/calendars'),get_url[0].indexOf('/compare')+8) + '/get_events/';
         get_url = [second_url,first_url];
         console.log(get_url)
     }
     else if (get_url[0].substr(get_url[0].indexOf('calendars')+10) !== "") {
-        get_url[0] += "/get_events/";
+        if ($('#my-calendar').attr('data-type') == "friend") {
+            get_url[0] += '/get_friend_events';
+        } else {
+            get_url[0] += "/get_events/";
+        }
         console.log("show page")
     } else {
         get_url[0] += "/all_events";

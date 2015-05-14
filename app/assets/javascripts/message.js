@@ -23,6 +23,20 @@ $(function() {
             console.log('ERROR:',err)
         })
 
+    });
+
+    $('#send-message-btn').click(function(e) {
+        var id = $(this).attr('data-id')
+
+        $.ajax({
+            url: '/message/new',
+            method: 'GET',
+            data: { id: id}
+        }).done(function(form) {
+            $('.modal-body').html(form)
+        }).error(function(err) {
+            console.log(err);
+        })
     })
 
 

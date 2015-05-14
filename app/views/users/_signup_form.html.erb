@@ -3,22 +3,26 @@
 <%= form_for @user, html:{:class=>"uk-form uk-form-stacked"} do |f|%>
   <div class="uk-form-row">
     <div class="uk-form-controls">
+    <label for="user[name]" class="name-invalid invalid-label">invalid name</label><br />
     <%= f.text_field :name, :placeholder => "Enter your name." %>
     </div>
   </div>
 
   <div class="uk-form-row">
     <div class="uk-form-controls">
+    <label for="user[email]" class="email-invalid invalid-label">invalid email address</label><br />
     <%= f.text_field :email, :placeholder => "Enter your email." %>
     </div>
   </div>
   <div class="uk-form-row">
     <div class="uk-form-controls">
+    <label for="user[password]" class="password-invalid invalid-label">invalid password, it must be at least 8 characters long</label><br />
     <%= f.password_field :password, :placeholder => "Enter your password." %>
     </div>
   </div>
   <div class="uk-form-row">
     <div class="uk-form-controls">
+    <label for="user[password_confirmation]" class="pass-confirm-invalid invalid-label">Confirmation does not match your password</label><br />
     <%= f.password_field :password_confirmation, :placeholder => "Confirm your password." %>
     </div>
   </div>

@@ -18,10 +18,27 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def any_unread message
+        puts "Checking unread: #{message.unread}"
+        unread = false
+        if message.unread && @current_user.id != message.user_id && @current_user.id == message.original_id
+            unread = true
+        else
+            for x in 0...message.comments.length
+                if any_unread message.comments[x]
+                    unread = true
+                    break
+                end
+            end
+        end
+        unread
+    end
+
   def unread_count
     if @current_user
       msgs = Comment.where(commentable_id: @current_user.id, commentable_type: 'User')
-      @unread_count = msgs.count { |m| any_unread m }
+      @unread_count = 0
+      msgs.each { |m| @unread_count += 1 if any_unread(m) }
       @unread_count
     end
   end
