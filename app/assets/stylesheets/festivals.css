@@ -13,8 +13,9 @@
 
 #festival-field {
 
-  width:90%;
-  background-color:129,239,188;
+  width:100%;
+  /*background-color:rgb(129,239,188);*/
+  margin: 0 auto;
 
 }
 
@@ -26,7 +27,7 @@
   margin-right:5px;
   padding: 10px;
   text-align:center;
-  background-color:rgb(129,239,188);
+  /*background-color:rgb(129,239,188);*/
 
 
 }
@@ -40,9 +41,6 @@
   padding: 10px;
 }
 
-.each-festival img:hover {
-
-}
 
 figure {
   width:10%;
@@ -50,8 +48,21 @@ figure {
 
 figure.effect-marley figcaption {
   margin-right:0;
-  margin-left:0;
+  margin-left:30px;
 }
+
+.grid figure figcaption, .grid figure figcaption > a {
+
+  width:79% !important;
+  height:75% !important;
+  margin-left:34px;
+}
+
+.grid figure figcaption, .grid figure figcaption > a {
+  opacity:0;
+}
+
+
 
 .uk-search-field {
 
@@ -59,14 +70,27 @@ figure.effect-marley figcaption {
   width: 250px;
   height: 24px;
   font-size: 18px;
+  border-radius:5px;
 
 }
 
 .filter-form {
-  width:250px;
+  /*width:250px;*/
   margin-top:20px;
 }
 
 .grid figure img {
   opacity:1;
+}
+
+.festival-filter-header {
+  margin-left:10px;
+  font-size:50px;
+  margin-top:60px;
+  margin-bottom:20px;
+}
+
+
+.page-div {
+  width:100%;
 }

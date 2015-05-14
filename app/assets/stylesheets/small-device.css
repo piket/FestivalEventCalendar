@@ -67,6 +67,17 @@ a.host-event-name {
   /*max-height:105px;*/
 }
 
+/*FESTIVAL SEARCH */
+
+
+.each-festival img {
+  width:120px;
+  height:120px;
+  margin-top:5px;
+  margin-bottom:5px;
+  border: 2px solid rgb(44,44,46);
+  border-radius:5px;
+}
 
 
 
