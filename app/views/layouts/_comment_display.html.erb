@@ -1,18 +1,23 @@
 
   <div class="uk-container-center">
 
-      <li>
-        <%= comment_display.user.name %>
-        <%= comment_display.body %>
+        <div class="comment-content">
+      <li class="comment-block">
+        <div class="comment-author"><%= comment_display.user.name %>
         Created: <%= format_created_time comment_display %>
-        <%= link_to "REPLY", '#comment-reply-modal', :class=>"uk-button uk-button-mini reply-btn", 'data-uk-modal'=>'', :data_event => @event.id, :data_comment => comment_display.id %>
-
+        <%= link_to "", '#comment-reply-modal', :class=>"uk-button uk-button-mini reply-btn uk-icon-reply", 'data-uk-modal'=>'', :data_event => @event.id, :data_comment => comment_display.id %>
+        </div>
+        <hr class="comment-break">
+        <div class="comment-text">
+        <%= comment_display.body %>
+        </div>
         <% unless comment_display.comments.empty? %>
-          <ul>
+          <ul class="comment-list">
           <%= render :partial => 'layouts/comment_display', :collection => comment_display.comments %>
           </ul>
         <% end %>
       </li>
+        </div>
 
 
   </div>

@@ -22,7 +22,7 @@
             <%= render partial: 'layouts/comment_form', :locals => {event:@event,comment_ref:@comment_ref, comment:@comment} %>
           </div>
           <div class="display-container">
-            <ul>
+            <ul class="comment-meta-list">
             <%= render partial: 'layouts/comment_display', :collection=> @event.comments %>
             </ul>
           </div>

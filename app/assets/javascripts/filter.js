@@ -43,13 +43,20 @@ $(function(){
     unmatches = items.filter(function(j,item){
       var classes = $(item).attr('data-tags').toLowerCase()
       var location = $(item).find('.location').text().toLowerCase();
-      var name = $(item).find('.name').text().toLowerCase().trim();
-      var nickname = name.split(' ').reduce(abbrev,"")
+
+      if (formId == 'filter-form-event') {
+          var name = $(item).find('.event-filter-name').text().toLowerCase().trim();
+          var nickname = "";
+      } else {
+          var name = $(item).find('.festival-name').text().toLowerCase().trim();
+          var nickname = name.split(' ').reduce(abbrev,"")
+      }
+
 
       // console.log(nickname)
 
       for (var i=0; i<arr.length; i++) {
-        if (classes.indexOf(arr[i]) !== -1 || location.indexOf(arr[i]) !== -1 || name.indexOf(arr[i]) !== -1 || nickname.indexOf(arr[i]) !== -1) {
+        if (classes.indexOf(arr[i]) !== -1 || location.indexOf(arr[i]) !== -1 || name.indexOf(arr[i]) !== -1 || ( nickname !== "" && nickname.indexOf(arr[i]) !== -1)) {
           return false
         } else if (formId == 'filter-form-event' && dateComp($(item).find('.date').text().toLowerCase(), arr[i])) {
           return false
