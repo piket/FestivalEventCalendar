@@ -3,34 +3,37 @@
 <%= form_for @user, html:{:class=>"uk-form uk-form-stacked"} do |f|%>
   <div class="uk-form-row">
     <div class="uk-text-center uk-form-controls">
-    <label for="user[name]" class="name-invalid invalid-label">invalid name</label><br />
-    <%= f.text_field :name, :placeholder => "Enter your name." %>
+    <label for="user[name]" class="name-invalid invalid-label">INVALID NAME ENTERED</label><br />
+    <%= f.text_field :name, :placeholder => "ENTER YOUR NAME.", :class=>"signup-input" %>
     </div>
   </div>
 
   <div class="uk-form-row">
     <div class="uk-text-center uk-form-controls">
-    <label for="user[email]" class="email-invalid invalid-label">invalid email address</label><br />
-    <%= f.text_field :email, :placeholder => "Enter your email." %>
+    <label for="user[email]" class="email-invalid invalid-label">INVALID EMAIL ADDRESS ENTERED</label><br />
+    <%= f.text_field :email, :placeholder => "ENTER YOUR EMAIL.", :class=>"signup-input" %>
     </div>
   </div>
   <div class="uk-form-row">
     <div class="uk-text-center uk-form-controls">
-    <label for="user[password]" class="password-invalid invalid-label">invalid password, it must be at least 6 characters long</label><br />
-    <%= f.password_field :password, :placeholder => "Enter your password." %>
+    <label for="user[password]" class="password-invalid invalid-label">PASSWORD MUST BE AT LEAST 6 CHARACTERS LONG</label><br />
+    <%= f.password_field :password, :placeholder => "ENTER YOUR PASSWORD.", :class=>"signup-input" %>
     </div>
   </div>
   <div class="uk-form-row">
     <div class="uk-text-center uk-form-controls">
-    <label for="user[password_confirmation]" class="pass-confirm-invalid invalid-label">Confirmation does not match your password</label><br />
-    <%= f.password_field :password_confirmation, :placeholder => "Confirm your password." %>
+    <label for="user[password_confirmation]" class="pass-confirm-invalid invalid-label">CONFIRMATION DOES NOT MATCH</label><br />
+    <%= f.password_field :password_confirmation, :placeholder => "CONFIRM YOUR PASSWORD.", :class=>"signup-input" %>
     </div>
   </div>
   <div class="uk-form-row">
     <div class="uk-text-center uk-form-controls">
-    <%= f.button "Submit", :class=>"uk-button uk-button-primary", type: 'submit' %>
     <%= f.check_box :user_type%>
-    <%= f.label :user_type, "I am an event HOST" %>
+    <%= f.label :user_type, "I am an event HOST", :class=>"i-am-host" %>
+    </div>
+    <div class="uk-text-center uk-form-controls">
+
+    <%= f.button "Submit", :class=>"uk-button signup-submit-btn", type: 'submit' %>
     </div>
   </div>
 
