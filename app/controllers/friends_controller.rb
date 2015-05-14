@@ -1,6 +1,6 @@
 class FriendsController < ApplicationController
 
-    before_action :is_authenticated?
+    before_action :consumer_user?
 
     def index
     end

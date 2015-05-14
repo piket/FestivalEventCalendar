@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
-  before_action :is_authenticated?
+  before_action :is_authenticated?, except: [:index, :show]
+  before_action :consumer_user?, only: [:index,:show]
 
 #inbox
     def index

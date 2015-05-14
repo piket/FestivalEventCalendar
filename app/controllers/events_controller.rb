@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
    before_action :host_user?, except: [:show]
+   before_action :is_authenticated?, only: [:show]
 
    def index
 

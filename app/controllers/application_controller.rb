@@ -51,4 +51,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def consumer_user?
+    is_authenticated?
+    unless @current_user.user_type == 'consumer'
+      flash[:warning] = "You do not have access to this page."
+      redirect_to :back
+    end
+  end
+
 end

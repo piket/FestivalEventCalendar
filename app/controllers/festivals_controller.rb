@@ -1,6 +1,6 @@
 class FestivalsController < ApplicationController
 
-  before_action :is_authenticated?
+  before_action :consumer_user?
 
     def myfestivals
       @festivals = @current_user.event_occurrences.order(date: 'ASC').reduce([]) do |arr,occur|
