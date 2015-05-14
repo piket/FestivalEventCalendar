@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require jquery.tagsinput
 //= require cloudinary
+//= require textillate-master/assets/jquery.fittext
+//=require textillate-master/assets/jquery.lettering
+//= require textillate-master/jquery.textillate
 //= require_tree .
