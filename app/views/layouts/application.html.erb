@@ -122,19 +122,19 @@
         </li>
 
 
-
+          <% pending_count = @current_user.pending_invited_by.length %>
          <li class="uk-parent" data-uk-dropdown>
-          <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>SOCIAL</a>
+          <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
 
           <div class="uk-dropdown uk-dropdown-navbar">
             <ul class="uk-nav uk-nav-navbar">
               <li>
-                  <a class="sub-nav" href="/friends">MY FRIENDS</a>
+                  <a class="sub-nav" href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY FRIENDS</a>
               </li>
             </ul>
              <ul class="uk-nav uk-nav-navbar">
               <li>
-                  <a class="sub-nav" href="/inbox">MY INBOX</a>
+                  <a class="sub-nav" href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
               </li>
             </ul>
              <ul class="uk-nav uk-nav-navbar">
@@ -284,13 +284,13 @@
             </li>
 
             <li class="uk-parent">
-               <a href="#">SOCIAL</a>
+               <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
                  <ul class="uk-nav-sub">
                    <li>
-                       <a href="/friends">MY FRIENDS</a>
+                       <a href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY FRIENDS</a>
                    </li>
                    <li>
-                       <a href="/inbox">MY INBOX</a>
+                       <a href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
                    </li>
                   <li>
                       <a href="#message-modal" data-uk-modal>NEW MESSAGE</a>
