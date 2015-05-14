@@ -6,12 +6,6 @@
       <div id="edit-prof-btn" class= "uk-button uk-button-primary"><%= link_to "", edit_user_path(@user), :class => "uk-icon-pencil"%></div>
 
     </div>
-    <div id="prof-email" class="uk-text-center">Email: <%= @user.email || "N/A" %></div>
-
-    <% if @user.user_type == 'consumer' %>
-        <div class="uk-text-center">Gender: <%= @user.gender || "N/A" %></div>
-        <div class="uk-text-center">Age: <%= @user.age || "N/A" %></div>
-    <% end %>
 
     <div class="uk-text-center">Location: <%= @user.location || "N/A" %></div>
       <div class="uk-container uk-container-center"><%= cl_image_tag @user.image, width: "280", height: "280", crop: :fill, :class=>"prof-img" %></div>

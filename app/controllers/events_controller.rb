@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
    def index
 
-      @events = Event.where(:host_id => @current_user.id)
+      @events = Event.where(:host_id => @current_user.id).order(name: 'ASC')
       # render :json => @events
    end
 
