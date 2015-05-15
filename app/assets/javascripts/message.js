@@ -40,7 +40,7 @@ $(function() {
         });
     });
 
-    $('#send-message-btn').click(function(e) {
+    $('.send-message-btn').click(function(e) {
         var id = $(this).attr('data-id')
 
         $.ajax({

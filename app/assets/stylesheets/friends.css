@@ -1,9 +1,10 @@
-/*MY FRIENDS*/
+/*MY FRIENDS/DASHBOARD */
 
 .my-friends-header {
   font-size:50px;
   margin-top:50px;
-  border: 3px solid yellow;
+  /*border: 3px solid yellow;*/
+  height:60px;
 }
 
 .friend-image {
@@ -21,24 +22,21 @@ a .uk-link .friend-name:hover {
   text-decoration:none;
 }
 
-#pending-and-sent {
-  border:3px solid blue;
-}
-
-.sent-invites {
-  border:3px solid red;
-}
-
-.send-invite {
-  border:3px solid purple;
-}
-
 .each-friend {
-  border:3px solid green;
+  /*border:3px solid green;*/
+  display:inline-block;
+  height:130px;
+  width:130px;
 }
 
 .friends {
-  border:3px solid orange;
+  border:3px solid rgb(44,44,46);
+  text-align:center;
+  border-radius:5px;
+  margin-left:40px;
+  padding-bottom:15px;
+  min-width:550px;
+  min-height:600px;
 }
 
 .uk-icon-close {
@@ -48,4 +46,122 @@ a .uk-link .friend-name:hover {
 
 .uk-icon-close:hover {
   color:red;
+}
+
+#pending-and-sent {
+  width:200px;
+}
+
+
+/*USER PROFILE*/
+
+
+a.uk-icon-pencil{
+  text-decoration:none;
+  color:white;
+
+}
+
+.user-prof {
+  /*border:2px solid red;*/
+  width:600px;
+  margin-left:280px;
+}
+
+
+
+#edit-prof-btn {
+   background-color:rgb(97,3,69);
+   opacity:0.8;
+   margin-top:8px;
+   padding-top:6px;
+}
+
+#edit-prof-btn:hover {
+  opacity:1;
+}
+
+#prof-name {
+  font-size: 70px;
+  /*background-color:rgb(129,239,188);*/
+  color: rgb(6,2,76);
+  text-shadow:2px 2px 3px rgb(44,44,46);
+  margin-top:50px;
+  margin-bottom:30px;
+  margin-left:50px;
+  padding:40px;
+  padding-top:50px;
+  padding-left:250px;
+  opacity: 0.9;
+  width:100%;
+  border-radius: 8px;
+  float:right;
+
+}
+
+.prof-img {
+  height:280px;
+  width:280px;
+  border-radius: 50%;
+  display:inline;
+  float:right;
+  margin-top:-230px;
+  margin-right:95px;
+  border: 5px solid rgb(129,239,188);
+  padding:8px;
+}
+
+
+/*FRIEND REQUESTS*/
+
+
+.send-invite {
+  min-height:180px;
+  border: 2px solid rgb(44,44,46);
+  border-radius:5px;
+  width:500px;
+  text-align:center;
+  padding-top:25px;
+  float:right;
+  margin-top:-580px;
+}
+
+.prof-details {
+  /*background-color:rgb(129,239,188);*/
+  color:rgb(6,22,62);
+  margin-left:125px;
+  font-size:18px;
+  float:right;
+  text-shadow:none;
+
+}
+
+.uk-icon-envelope {
+  color:rgb(6,22,62);
+}
+
+.send-invite-btn {
+  background-color:rgb(6,22,62);
+  color:rgb(129,239,188);
+  text-shadow:none;
+
+}
+
+.send-invite-btn:hover {
+  background-color:rgb(129,239,188);
+  color:rgb(6,22,62);
+  font-weight:600;
+}
+
+#friend-invite-header {
+  font-size:20px;
+}
+
+.pending-requests-header, .sent-requests-header {
+  font-size:18px;
+}
+
+#pending-and-sent {
+  width:100%;
+  margin-top:25px;
 }

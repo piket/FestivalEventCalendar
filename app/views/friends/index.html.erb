@@ -1,21 +1,27 @@
 
 <div class="uk-grid">
-    <div class=".uk-container .uk-container-center uk-width-1-1 Xprof-container">
+    <div class=".uk-container .uk-container-center uk-width-1-1 prof-container">
+
+<!-- USER PROFILE -->
     <div class="prof-container">
     <%= render 'users/profile' %>
     </div>
+    <!-- USER EDIT FORM -->
     <div class="edit-container">
     <%= render 'users/edit_form' %>
     </div>
   </div>
-    <div class="my-friends-header uk-container uk-text-center">My Friends</div>
 
+
+<!-- FRIEND DASHBOARD -->
     <div id="friends-dashboard">
         <%= render partial: 'friends_dashboard' %>
-    </div>
-    <hr>
 
-    <div class="send-invite">SEND AN INVITE
+
+    <!-- INVITE FORM -->
+
+    <div class="send-invite">
+      <div id="friend-invite-header">SEND A FRIEND REQUEST</div>
         <div class="uk-form">
         <%= form_tag friends_invite_path, id: 'invite-form' do %>
             <div class="uk-form-row">
@@ -25,11 +31,14 @@
             </div>
             <div class="uk-form-row">
                 <div class="uk-form-controls">
-                    <%= button_tag "Send Invite", :class => "uk-button uk-button-primary", type: 'submit' %>
+                    <%= button_tag "SUBMIT", :class => "uk-button send-invite-btn", type: 'submit' %>
                 </div>
             </div>
         <% end %>
+        <%= render partial: 'friend_request' %>
         </div>
+
     </div>
+  </div>
 
 </div>

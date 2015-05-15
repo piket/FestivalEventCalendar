@@ -1,0 +1,25 @@
+<div id="pending-and-sent" class="uk-container">
+
+        <div class="pending-invites">
+            <div class="pending-requests-header">PENDING REQUESTS</div>
+            <% @current_user.pending_invited_by.each do |invited| %>
+                <div class="each-invited">
+                    <div class="name"><%=invited.name%></div>
+                    <%= link_to "Accept", friend_invite_path(invited), :class => "uk-button uk-button-success accept-friend-btn" %>
+                    <%= link_to "Decline", friend_invite_path(invited), :class => "uk-button uk-button-danger decline-friend-btn" %>
+                </div>
+            <% end %>
+            <div class="sent-requests-header">SENT REQUESTS</div>
+            <% @current_user.pending_invited.each do |sent| %>
+                <div class="each-sent">
+                    <div class="name"><%=sent.name%></div>
+                </div>
+            <% end %>
+        </div>
+
+        <hr>
+
+        <div class="sent-invites">
+        </div>
+
+</div>

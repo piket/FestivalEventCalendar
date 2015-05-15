@@ -1,19 +1,22 @@
 <!-- CURRENT USER PROFILE -->
 
-
-<div id="prof-name" class="uk-text-center uk-container-center">
+  <div class="user-prof">
+    <div id="prof-name" class="">
+      <%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil prof-edit-btn uk-button", :id => "edit-prof-btn" %>
       <%= @current_user.name || "N/A" %>
-      <%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil prof-edit-btn uk-button uk-button-primary", :id => "edit-prof-btn" %>
+    <div id="prof-details" class="">
+      <div class="prof-details"><strong>LOCATION.</strong>&nbsp<%= @current_user.location || "N/A" %></div>
+      <div class="prof-details"><strong>CONTACT.</strong>&nbsp<%= @current_user.email || "N/A" %></div>
     </div>
-    <div id="prof-email" class="uk-text-center">Email: <%= @current_user.email || "N/A" %></div>
+    </div>
+  </div>
+      <%= cl_image_tag @current_user.image, :class=>"prof-img", :width => 280, :height => 280, :crop => :thumb, :radius => :max, :gravity => :faces %>
 
     <% if false && @current_user.user_type == 'consumer' %>
         <div class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></div>
         <div class="uk-text-center">Age: <%= @current_user.age || "N/A" %></div>
     <% end %>
 
-    <div class="uk-text-center">Location: <%= @current_user.location || "N/A" %></div>
-      <div class="uk-container uk-container-center"><%= cl_image_tag @current_user.image, :class=>"prof-img", :width => 280, :height => 280, :crop => :thumb, :radius => :max, :gravity => :faces %></div>
 
     <% if @current_user.user_type == 'host' %>
       <div><%=@current_user.about %></div>

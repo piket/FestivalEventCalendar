@@ -70,7 +70,7 @@
              <% pending_count = @current_user.pending_invited_by.length %>
     <li class="uk-parent" data-uk-dropdown>
 
-        <%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %><%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
+        <%= "<span class='uk-badge uk-badge-notification notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %><%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
 
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
