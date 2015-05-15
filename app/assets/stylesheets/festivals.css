@@ -171,3 +171,7 @@ a.event-filter-name:hover {
   background-color:rgb(120,329,188);
   color:rgb(44,44,46);
 }
+
+.view-occurrence {
+  list-style: none;
+}

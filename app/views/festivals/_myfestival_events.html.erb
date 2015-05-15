@@ -1,0 +1,8 @@
+<% @occurrences.each do |occur| %>
+<li class="view-occurrence">
+    <div class="view-image"><%=cl_image_tag occur.event.image, :width => 50, :height => 50, :crop => :thumb %></div>
+    <div class="view-name"><%=link_to occur.event.name, event_path(occur.event_id)%></div>
+    <div class="view-date"><%=occur.date.strftime("%B %d, %Y %I:%M %p")%></div>
+    <div class="view-location"><%=occur.location%></div>
+</li>
+<% end %>

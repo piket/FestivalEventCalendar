@@ -46,9 +46,13 @@ class Event < ActiveRecord::Base
             l.strip!
             l
         end
-        row_hash['tags'] = row_hash['tags'].split(',').map do |tag|
-            tag.strip!
-            tag.downcase
+        if row_hash['tags'].present?
+          row_hash['tags'] = row_hash['tags'].split(',').map do |tag|
+              tag.strip!
+              tag.downcase
+          end
+        else
+          row_hash['tags'] = []
         end
         imported << row_hash
     end

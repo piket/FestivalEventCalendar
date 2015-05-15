@@ -1,5 +1,17 @@
 $(function(){
 
+    $('.alert-message').each(function() {
+        var type = $(this).attr('data-type');
+        var msg = $(this).html();
+        console.log(type,msg)
+        UIkit.notify({
+            status: type,
+            message: msg,
+            timeout: 8000,
+            pos: 'top-center'
+        });
+    });
+
     console.log('ajax loaded');
 
     var profContainer = $('.prof-container');

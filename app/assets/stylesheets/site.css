@@ -350,6 +350,19 @@ i .uk-facebook-icon {
   margin-top:10px;
 }
 
+.alert-message {
+  display: none;
+}
 
+.uk-notify-message {
+  text-align: center;
+  width: 100%;
+}
 
+.welcome-name {
+  padding-right: 4px;
+}
 
+.user-menu {
+  margin-top: 2px;
+}

@@ -52,6 +52,7 @@ get '/auth/:provider/callback' => 'auth#callback'
 get '/festivals' => 'festivals#index'
 get '/festivals/myfestivals' => 'festivals#myfestivals'
 get '/festivals/:id' => 'festivals#show', as: 'festival'
+get '/festivals/view/:id' => 'festivals#view', as: 'view_festival'
 
 # FRIEND RELATIONS ROUTES
 get '/friends' => 'friends#index'

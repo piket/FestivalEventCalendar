@@ -6,13 +6,22 @@
       <!-- <div class="event-headings"> -->
           <div class="each-event-name"><%= @event.name %></div>
           <%= cl_image_tag @event.image, :class => "event-image" %>
+          <% if @current_user.id == @event.host_id %>
           <%= link_to "", edit_event_path, :class=>"event-edit-btn uk-icon-pencil" %>
+          <% end %>
       <!-- </div> -->
       <div class="event-details">
           <a class="event-link uk-button" href="<%= @event.link %>">VISIT THE OFFICIAL EVENT PAGE</a>
           <a class="event-purchase uk-button" href="<%= @event.purchase %>">BUY TICKETS &nbsp($<%= @event.price == 0 ? 'Free' : sprintf('%.2f', @event.price) %>)</a>
           <div class="event-price"></div>
           <div class="event-desc"><%= @event.description %></div>
+          <div class="event-dates">
+            <ul>
+            <% @event.event_occurrences.each do |occur| %>
+                <li><%=occur.date.strftime("%B %d, %Y %I:%M %p")%> <%=occur.location%></li>
+            <% end %>
+            </ul>
+          </div>
           <div class="event-video"><iframe width="400" height="218" src="https://www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen class="video-frame"></iframe></div>
       </div>
 
