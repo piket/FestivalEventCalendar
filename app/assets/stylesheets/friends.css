@@ -89,7 +89,7 @@ a.uk-icon-pencil{
   text-shadow:2px 2px 3px rgb(44,44,46);
   margin-top:50px;
   margin-bottom:30px;
-  margin-left:50px;
+  margin-right:450px;
   padding:40px;
   padding-top:50px;
   padding-left:250px;
@@ -97,6 +97,8 @@ a.uk-icon-pencil{
   width:100%;
   border-radius: 8px;
   float:right;
+  /*margin-left:-150px;*/
+  /*line-height:400%;*/
 
 }
 
