@@ -1,39 +1,17 @@
-<div class="friends">
+<div class="friends uk-width-5-10 uk-container">
+ <div class="my-friends-header uk-container uk-text-center" data-uk-grid>FRIENDS</div>
     <% @current_user.friends.each do |friend| %>
-        <div class="each-friend">
+        <div class="each-friend uk-text-center">
             <div><%= cl_image_tag friend.image, :class=>"friend-image", :width => 80, :height => 80, :crop => :thumb, :radius => :max %></div>
 
             <%= link_to "", friend_remove_path(friend), :class => "remove-friend-btn uk-icon-close" %>
+            <a href="#message-modal" data-uk-modal class="uk-icon-envelope send-message-btn" data-id="<%=friend.id%>"></a>
 
             <div class="friend-name"><%=friend.name%></div>
             <div class="friend-location"><%=friend.location%></div>
-            <a href="#message-modal" data-uk-modal id="send-message-btn" data-id="<%=friend.id%>">Send message</a>
         </div>
     <% end %>
 </div>
 
 <hr>
 
-<div id="pending-and-sent" class="uk-container uk-container-center">
-
-        <div class="pending-invites">MY PENDING INVITATIONS
-            <% @current_user.pending_invited_by.each do |invited| %>
-                <div class="each-invited">
-                    <div class="name"><%=invited.name%></div>
-                    <%= link_to "Accept", friend_invite_path(invited), :class => "uk-button uk-button-success accept-friend-btn" %>
-                    <%= link_to "Decline", friend_invite_path(invited), :class => "uk-button uk-button-danger decline-friend-btn" %>
-                </div>
-            <% end %>
-        </div>
-
-        <hr>
-
-        <div class="sent-invites">MY SENT INVITITAIONS
-            <% @current_user.pending_invited.each do |sent| %>
-                <div class="each-sent">
-                    <div class="name"><%=sent.name%></div>
-                </div>
-            <% end %>
-        </div>
-
-</div>

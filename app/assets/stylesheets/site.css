@@ -140,7 +140,7 @@ li .uk-parent:hover {
 
 #title {
   font-size:150px;
-  margin-top:200px;
+  margin-top:180px;
   margin-bottom:80px;
   text-align:center;
   text-shadow: 2px 2px 3px rgb(44,44,46);
@@ -158,6 +158,11 @@ span.char4 {
   color:rgb(6,22,62);
 }
 
+.uk-badge {
+  background-color:rgb(129,239,188);
+  color:rgb(6,22,62);
+  margin-right:4px;
+}
 
 
 #your-personal {
@@ -187,48 +192,7 @@ span.char4 {
 
 
 
-/*USER PROFILE*/
 
-
-a.uk-icon-pencil{
-  text-decoration:none;
-  color:white;
-
-}
-
-
-
-#edit-prof-btn {
-   background-color:rgb(97,3,69);
-   opacity:0.8;
-   margin-top:5px;
-}
-
-#edit-prof-btn:hover {
-  opacity:1;
-}
-
-#prof-name {
-  font-size: 70px;
-  background-color:rgb(129,239,188);
-  color: rgb(6,2,76);
-  text-shadow:white;
-  margin-top:50px;
-  margin-bottom:30px;
-  padding:40px;
-  padding-top:50px;
-  padding-left:38px;
-  opacity: 0.9;
-  width:50%;
-  border-radius: 8px;
-
-}
-
-.prof-img {
-  height:280px;
-  width:280px;
-  border-radius: 50%;
-}
 
 /*LOGIN MODAL*/
 
