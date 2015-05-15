@@ -26,23 +26,87 @@
 
 #inbox-new-message {
   margin-top:50px;
+  height:30px;
+}
 
+#inbox-new-message:hover {
+  background-color:rgb(129,329,188);
+  color:rgb(6,22,62);
 }
 
 #received-msg-header {
-  border:2px solid red;
+  /*border:2px solid red;*/
+  border-bottom: 2px solid rgb(44,44,46);
+  margin-top:20px;
+  font-size:40px;
+  padding-bottom:3px;
 }
 
 #sent-msg-header {
-  border:2px solid green;
+  /*border:2px solid green;*/
+  border-bottom: 2px solid rgb(44,44,46);
+  margin-top:20px;
+  font-size:40px;
+  padding-bottom:3px;
 }
 
 .sent-msg-list {
-  border: 2px solid orange;
+  /*border: 2px solid orange;*/
+  margin-top:10px;
+  width:98%;
 }
 
 .received-msg-list {
-  border:2px solid blue;
+  /*border:2px solid blue;*/
+  margin-top:10px;
+  width:98%;
+}
+
+#inbox-header {
+  font-size:60px;
+  margin-top:50px;
+  margin-bottom:30px;
+}
+
+.outbox-container {
+  border:3px solid rgb(44,44,46);
+  min-height:250px;
+  margin-right:60px;
+  border-radius:5px;
+  margin-top:20px;
+
+}
+
+.inbox-container {
+  border:3px solid rgb(44,44,46);
+  min-height:250px;
+  margin-right:60px;
+  border-radius:5px;
+  padding-bottom:10px;
+  margin-top:45px;
+}
+
+/*NEW MESSAGE MODAL*/
+
+#message-modal-header {
+  font-size:40px;
+  margin-bottom:25px;
+}
+
+#share-cal-label {
+  margin-top:15px;
+  font-size:18px;
+}
+
+#comment_body {
+
+  margin-bottom:20px;
+  width:100%;
+}
+
+#comment_subject {
+  width:100%;
+  margin-top:20px;
 }
 
 

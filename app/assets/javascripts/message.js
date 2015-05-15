@@ -2,7 +2,7 @@ $(function() {
 
     var msgModal = UIkit.modal('#message-modal');
 
-    $('.message-modal-body').on('click', '.each-friend', function(e){
+    $('.message-modal-body').on('click', '.list-each-friend', function(e){
         console.log("clicked friend")
         e.preventDefault();
 

@@ -1,34 +1,35 @@
 <div class="uk-grid">
 
-        <div id="inbox-header">INBOX</div>
+        <div id="inbox-header" class="uk-container uk-container-center uk-text-center">FSTVLMail</div>
 
         <button id="inbox-new-message" class="uk-button uk-icon-plus" data-uk-modal="{target:'#message-modal'}">&nbsp&nbspNEW MESSAGE</button>
-
-        <div class="inbox container">
-            <div id="received-msg-header">Received Messages</div>
-        <ul class="received-msg-list">
-        <% @messages.each do |message| %>
-            <li>
-                <%= "!" if any_unread message %>
-                From: <%=message.user.name %>
-                Sent: <%=format_created_time message%>
-                <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
-            </li>
-        <% end %>
-        </ul>
-        </div>
-        <div class="outbox container">
-            <div id="sent-msg-header">Sent Messages</div>
-        <ul class="sent-msg-list">
-        <% @sent.each do |message| %>
-            <li>
-                <%= "!" if any_unread message %>
-                To: <%=message.commentable.name %>
-                Sent: <%=format_created_time message%>
-                <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
-            </li>
-        <% end %>
-        </ul>
+        <div id="msg-field">
+                <div class="inbox-container">
+                    <div id="received-msg-header">INBOX</div><hr>
+                <ul class="received-msg-list uk-container uk-container-center">
+                <% @messages.each do |message| %>
+                    <li>
+                        <%= "!" if any_unread message %>
+                        From: <%=message.user.name %>
+                        Sent: <%=format_created_time message%>
+                        <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+                    </li>
+                <% end %>
+                </ul>
+                </div>
+                <div class="outbox-container">
+                    <div id="sent-msg-header">OUTBOX</div><hr>
+                <ul class="sent-msg-list uk-container uk-container-center">
+                <% @sent.each do |message| %>
+                    <li>
+                        <%= "!" if any_unread message %>
+                        To: <%=message.commentable.name %>
+                        Sent: <%=format_created_time message%>
+                        <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+                    </li>
+                <% end %>
+                </ul>
+                </div>
         </div>
 
 </div>

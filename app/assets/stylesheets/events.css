@@ -98,13 +98,17 @@ a.host-event-img {
 
   font-size:60px;
   float:right;
-  margin-top:210px;
+  margin-top:50px;
 }
 
 .event-link {
   background-color:rgb(6,22,62);
   color:rgb(129,239,188);
   text-shadow:none;
+  float:right;
+  /*margin-right:192px;*/
+  /*margin-top:-58px;*/
+  margin-bottom:10px;
 }
 
 .event-link:hover {
@@ -114,13 +118,14 @@ a.host-event-img {
 }
 
 .each-host-event-show {
-  border: 2px solid purple;
+  border-right: 2px solid rgb(44,44,46);
+  border-left: 2px solid rgb(44,44,46);
 }
 
 .event-image {
 
   width:38%;
-  margin-top:30px;
+  margin-top:50px;
   border-radius:5px;
 
 }
@@ -133,9 +138,10 @@ a.host-event-img {
 }
 
 .event-video {
-  border:2px solid green;
+  /*border:2px solid green;*/
   width:39%;
   float:right;
+  margin-right:28px;
 }
 
 .event-purchase {
@@ -143,6 +149,10 @@ a.host-event-img {
   background-color:rgb(6,22,62);
   color:rgb(129,239,188);
   text-shadow:none;
+  float:right;
+  /*margin-top:-58px;*/
+  margin-bottom:10px;
+  margin-right:8px;
 }
 
 .event-purchase:hover {
@@ -154,7 +164,7 @@ a.host-event-img {
 .comment-field {
   border:2px solid rgb(44,44,46);
   border-radius:5px;
-  width:99%;
+  width:50%;
 }
 
 .event-edit-btn {
@@ -168,6 +178,47 @@ a.uk-icon-pencil:hover {
   color:rgb(129,239,188);
 }
 
+.event-dates {
+  border: 3px solid rgb(44,44,46);
+  border-radius:5px;
+  margin-top:-180px;
+  margin-bottom:10px;
+  width:42%;
+  float:right;
 
+
+}
+
+.each-date {
+  list-style:none;
+  font-size:18px;
+}
+
+#dates-header {
+  font-size:26px;
+  margin-top:10px;
+  border-bottom:2px solid rgb(44,44,46);
+  padding-bottom:-3px;
+  padding-left:25px;
+}
+
+#event-comment-header {
+  border-bottom:2px solid rgb(44,44,46);
+  font-size:24px;
+  padding-bottom:-3px;
+  margin-top:15px;
+}
+
+.comment-submit-btn {
+  color:rgb(129,239,188);
+  background-color:rgb(6,22,62);
+  text-shadow:none;
+}
+
+.comment-submit-btn:hover {
+  color:rgb(6,22,62);
+  font-weight:600;
+  background-color:rgb(129,239,188);
+}
 
 
