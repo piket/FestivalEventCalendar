@@ -116,13 +116,13 @@ class EventsController < ApplicationController
 
          if row['dates'].length == row['times'].length && row['dates'].length == row['locations'].length
             for x in 0...row['dates'].length
-               hour = row['times'][x][0] + (row['times'][x][2].casecmp('pm') == 0 && row['times'][x][0] != 12 ? 12:0)
+               hour = row['times'][x][0] + (row['times'][x][2].casecmp('pm') == 0 && row['times'][x][0] < 12 ? 12:0)
                datetime = DateTime.new(row['dates'][x][2],row['dates'][x][0],row['dates'][x][1],hour,row['times'][x][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][x]})
             end
          elsif row['dates'].length >= row['times'].length && row['dates'].length >= row['locations'].length
             for x in 0...row['dates'].length
-               hour = row['times'][0][0] + (row['times'][0][2].casecmp('pm') == 0 && row['times'][0][0] != 12 ? 12:0)
+               hour = row['times'][0][0] + (row['times'][0][2].casecmp('pm') == 0 && row['times'][0][0] < 12 ? 12:0)
                puts "Date Array: #{row['dates'][x]}\nTime Array: #{row['times'][0]}"
                datetime = DateTime.new(row['dates'][x][2],row['dates'][x][0],row['dates'][x][1],hour,row['times'][0][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][0]})
@@ -132,13 +132,13 @@ class EventsController < ApplicationController
             end
          elsif row['times'].length >= row['dates'].length && row['times'].length >= row['locations'].length
             for x in 0...row['times'].length
-               hour = row['times'][x][0] + (row['times'][x][2].casecmp('pm') == 0 && row['times'][x][0] != 12 ? 12:0)
+               hour = row['times'][x][0] + (row['times'][x][2].casecmp('pm') == 0 && row['times'][x][0] < 12 ? 12:0)
                datetime = DateTime.new(row['dates'][0][2],row['dates'][0][0],row['dates'][0][1],hour,row['times'][x][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][0]})
             end
          elsif row['locations'].length >= row['times'].length && row['locations'].length >= row['dates'].length
             for x in 0...row['locations'].length
-               hour = row['times'][0][0] + (row['times'][0][2].casecmp('pm') == 0 && row['times'][0][0] != 12 ? 12:0)
+               hour = row['times'][0][0] + (row['times'][0][2].casecmp('pm') == 0 && row['times'][0][0] < 12 ? 12:0)
                datetime = DateTime.new(row['dates'][0][2],row['dates'][0][0],row['dates'][0][1],hour,row['times'][0][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][x]})
             end
@@ -188,7 +188,7 @@ class EventsController < ApplicationController
          event_time = params[:event][:time]['0'].split(/[: ]/).map { |str| (str.casecmp('am') == 0 || str.casecmp('pm') == 0) ? str : str.to_i }
 
          # Adjust the hour to be the correct 24hr time
-         event_time[0] += 12 if event_time[2].casecmp('pm') == 0 && event_time[0] != 12
+         event_time[0] += 12 if event_time[2].casecmp('pm') == 0 && event_time[0] < 12
 
          params_hash = {deleted: false}
       # Generate DateTime from date and time arrays in format: year, month, day, hour, minute
@@ -203,7 +203,7 @@ class EventsController < ApplicationController
                event_date = params[:event][:date][x.to_s].split('.').map { |str| str.to_i }
                event_time = params[:event][:time][x.to_s].split(/[: ]/).map { |str| (str.casecmp('am') == 0 || str.casecmp('pm') == 0) ? str : str.to_i }
 
-               event_time[0] += 12 if event_time[2].casecmp('pm') == 0 && event_time[0] != 12
+               event_time[0] += 12 if event_time[2].casecmp('pm') == 0 && event_time[0] < 12
 
                params_hash = {deleted: false}
                params_hash[:date] = DateTime.new(event_date[2],event_date[0],event_date[1],event_time[0],event_time[1])
