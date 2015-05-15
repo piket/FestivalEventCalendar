@@ -68,7 +68,7 @@ $(function() {
 
     });
 
-    $('#invite-form').submit(function(e) {
+    $('#friends-dashboard').on('submit','#invite-form',function(e) {
         e.preventDefault();
 
         var invite = $(this);
