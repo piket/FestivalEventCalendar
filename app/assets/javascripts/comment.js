@@ -58,10 +58,29 @@ $(function(){
         })
 
 
+    });
+
+
+    $('.comment-form').submit(function(e) {
+        e.preventDefault();
+
+        var form = $(this)
+
+        $.ajax({
+          url: form.attr('action'),
+          method: 'POST',
+          data: form.serialize()
+        }).done(function(data){
+            form.trigger('reset');
+
+
+            // form.closest('.uk-modal').hide()
+
+            $('.display-container').html(data)
+        }).error(function(err){
+          console.log(err)
+        })
     })
-
-
-
 
 
 
