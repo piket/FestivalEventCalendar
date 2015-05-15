@@ -22,7 +22,7 @@
             </a>
             <div class="date"><%=date.strftime("%B %d, %Y")%></div>
             <% event[:occurrences].each do |occurrence| %>
-                <div class="location"><%=occurrence[:location]%></div>
+                <div class="each-event-location"><%=occurrence[:location]%></div>
                 <div class="time"><%=occurrence[:time]%></div>
 
                  <% if occurrence[:added] %>
