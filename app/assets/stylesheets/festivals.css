@@ -135,14 +135,14 @@ figure.effect-marley figcaption {
 
 }
 
-.uk-icon-plus {
+.uk-icon-remove,.uk-icon-plus {
 
   background-color:rgb(44,44,46);
   color:rgb(120,329,188);
   text-shadow:none;
 }
 
-.add-btn {
+.del-btn,.add-btn {
   padding-top:8px;
   float:right;
   margin-top:9px;

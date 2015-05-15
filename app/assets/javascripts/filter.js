@@ -83,7 +83,9 @@ $(function(){
       eventFilter.focus();
   }
 
-
+  $('figcaption').click(function(e){
+      window.location.href = $(this).find('.festival-name').attr('href');
+  });
 
 
   console.log("HERRO")

@@ -240,19 +240,32 @@
 <div id="mobile-nav" class="uk-offcanvas">
     <div class="uk-offcanvas-bar">
         <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
-
+          <li><a href="/">MAIN</a></li>
           <% if @current_user %>
             <li class="uk-parent">
-              <a href="#">MY ACCOUNT</a>
+              <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>
+              <%= cl_image_tag @current_user.image, :width=> 40, :height => 40, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon-mobile", :gravity=>:faces %><%=@current_user.name.upcase%></a>
             <!-- <div class="data-uk-dropdown"> -->
               <!-- <div class="uk-dropdown uk-dropdown-navbar"> -->
                 <ul class="uk-nav-sub">
+                  <% if @current_user.user_type == 'host' %>
                   <li>
                       <a href="/users/:id">PROFILE</a>
                   </li>
+                  <% else %>
                   <li>
                       <a href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
                   </li>
+                  <li>
+                       <a href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
+                   </li>
+                   <li>
+                       <a href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
+                   </li>
+                  <li>
+                      <a href="#message-modal" data-uk-modal>NEW MESSAGE</a>
+                  </li>
+                  <% end %>
                   <li>
                       <a id="logout-btn" href = "/logout">LOGOUT</a>
                   </li>
@@ -291,20 +304,6 @@
                     </li>
               </ul>
             </li>
-            <li class="uk-parent">
-               <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
-                 <ul class="uk-nav-sub">
-                   <li>
-                       <a href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY FRIENDS</a>
-                   </li>
-                   <li>
-                       <a href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
-                   </li>
-                  <li>
-                      <a href="#message-modal" data-uk-modal>NEW MESSAGE</a>
-                  </li>
-                 </ul>
-           </li>
             <% end %>
     <li class="uk-parent"></li>
    <% else %>

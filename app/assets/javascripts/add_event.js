@@ -13,7 +13,7 @@ $(function(){
     }).done(function(data){
 
       if (data.result) {
-        btn.removeClass('add-btn').addClass('del-btn').text('x').attr('href','/deleteevent/'+ data.result)
+        btn.removeClass('add-btn').removeClass('uk-icon-plus').addClass('del-btn').addClass('uk-icon-remove').attr('href','/deleteevent/'+ data.result)
       }
       console.log(data)
     }).error(function(err){
@@ -37,7 +37,7 @@ $(function(){
     }).done(function(data){
 
       if (data.result) {
-        btn.removeClass('del-btn').addClass('add-btn').text('+').attr('href','/addevent/'+ data.result)
+        btn.removeClass('del-btn').removeClass('uk-icon-remove').addClass('add-btn').addClass('uk-icon-plus').attr('href','/addevent/'+ data.result)
       }
       console.log(data)
     }).error(function(err){
