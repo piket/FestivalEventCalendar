@@ -32,4 +32,29 @@
                 </div>
         </div>
 
+<div class="inbox container">
+Received Messages
+<ul>
+<% @messages.each do |message| %>
+    <li>
+        <%= '<span class="uk-badge uk-badge-danger">!</span>'.html_safe if any_unread message %>
+        From: <%=message.user.name %>
+        Sent: <%=format_created_time message%>
+        <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+    </li>
+<% end %>
+</ul>
+</div>
+<div class="outbox container">
+Sent Messages
+<ul>
+<% @sent.each do |message| %>
+    <li>
+        <%= '<span class="uk-badge uk-badge-danger">!</span>'.html_safe if any_unread message %>
+        To: <%=message.commentable.name %>
+        Sent: <%=format_created_time message%>
+        <%= link_to "Subject: #{message.subject || ''}", message_path(message) %>
+    </li>
+<% end %>
+</ul>
 </div>

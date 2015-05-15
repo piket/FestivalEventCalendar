@@ -1,11 +1,11 @@
 <div class="comment-content">
 <li class="comment-block">
-<%= "!" if any_unread message %>
+<div class="msg-from">
+<%= '<span class="uk-badge uk-badge-danger">!</span>'.html_safe if any_unread message %>
 <% if @current_user.id == message.original_id && @current_user.id != message.user_id %>
     <% message.unread = false %>
     <% message.save %>
 <% end %>
-<div class="msg-from">
 From: <%= message.user.name %> <%= format_created_time message %>
 </div>
 <div class="msg-subject">

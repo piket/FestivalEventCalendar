@@ -14,16 +14,16 @@ $(function(){
 
     console.log('ajax loaded');
 
-    var profContainer = $('.prof-container');
+    var profContainer = $('.profile');
     var editContainer = $('.edit-container');
     editContainer.hide();
 
-    profContainer.on('click','.prof-edit-btn',function(e) {
+    profContainer.on('click','#edit-prof-btn',function(e) {
+        e.preventDefault();
         console.log('clicked')
         profContainer.hide();
         editContainer.show();
         $('#user_name').focus();
-        e.preventDefault();
 
         // var btn = $(this);
 

@@ -3,7 +3,7 @@
     <div class=".uk-container .uk-container-center uk-width-1-1 prof-container">
 
 <!-- USER PROFILE -->
-    <div class="prof-container">
+    <div class="prof-container profile">
     <%= render 'users/profile' %>
     </div>
     <!-- USER EDIT FORM -->
@@ -14,31 +14,7 @@
 
 
 <!-- FRIEND DASHBOARD -->
-    <div id="friends-dashboard">
-        <%= render partial: 'friends_dashboard' %>
-
-
-    <!-- INVITE FORM -->
-
-    <div class="send-invite">
-      <div id="friend-invite-header">SEND A FRIEND REQUEST</div>
-        <div class="uk-form">
-        <%= form_tag friends_invite_path, id: 'invite-form' do %>
-            <div class="uk-form-row">
-                <div class="uk-form-controls">
-                    <%= text_field_tag :name %>
-                </div>
-            </div>
-            <div class="uk-form-row">
-                <div class="uk-form-controls">
-                    <%= button_tag "SUBMIT", :class => "uk-button send-invite-btn", type: 'submit' %>
-                </div>
-            </div>
-        <% end %>
-        <%= render partial: 'friend_request' %>
-        </div>
-
-    </div>
-  </div>
-
+<div id="friends-dashboard">
+    <%= render 'friends_list' %>
+</div>
 </div>
