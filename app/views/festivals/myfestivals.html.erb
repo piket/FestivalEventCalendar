@@ -1,9 +1,12 @@
 MY FESTIVALS PAGE
 
 <% @festivals.each do |fest| %>
-<div class="each-festival">
-    <div class="name"><%= link_to fest.name, festival_path(fest.id) %></div>
+<div class="each-myfestival">
+    <div class="name"><%= link_to "My #{fest.name} Calendar", user_calendar_path(@current_user,fest.id) %></div>
     <div class="location"><%=fest.location%></div>
-    <div class="image"><%= cl_image_tag fest.image, width: "280", height: "280", crop: :fill%></div>
+    <div class="image"><%= cl_image_tag fest.image, width: 200, height: 250, crop: :fill%></div>
+    <div class="blurb"><%=fest.about%></div>
+    <ul class="event-container"></ul>
+    <button class="uk-button uk-button-primary view-events" href=<%=view_festival_path(fest)%>>YOUR EVENTS <i class="uk-icon-chevron-down"></i></button>
 </div>
 <% end %>

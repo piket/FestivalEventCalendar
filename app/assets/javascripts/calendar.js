@@ -26,8 +26,10 @@ $(document).ready(function() {
         console.log("my calendars page")
     }
 
+    var url = null;
 
-    var addEvent = function(url) {
+
+    var addEvent = function() {
         console.log(url);
             console.log('adding event');
             $.ajax({
@@ -46,7 +48,7 @@ $(document).ready(function() {
             });
     }
 
-    var deleteEvent = function(url) {
+    var deleteEvent = function() {
         console.log(url);
         $.ajax({
               url: url,
@@ -83,15 +85,20 @@ $(document).ready(function() {
             if (exists) {
                 console.log('you already have this event');
             } else {
-                if (confirm("Add "+e.title+" to your calendar?")) {
-                    addEvent(e.url);
-                }
+                // if (confirm("Add "+e.title+" to your calendar?")) {
+                    url = e.url;
+                    UIkit.modal.confirm("Are you sure you want to add "+e.title+" to your calendar?",addEvent)
+                    $('.js-modal-confirm').text('Yes').next('.uk-modal-close').text('No');
+                // }
             }
             return false
         } else if (e.className[0] == "my-event") {
-            if (confirm("Delete "+e.title+" from your calendar?")) {
-                deleteEvent(e.url);
-            }
+          url = e.url;
+          UIkit.modal.confirm("Are you sure you want to delete "+e.title+" from your calendar?",deleteEvent);
+          $('.js-modal-confirm').text('Yes').next('.uk-modal-close').text('No');
+            // if (confirm("Delete "+e.title+" from your calendar?")) {
+            //     deleteEvent(e.url);
+            // }
             return false;
         }
     }

@@ -1,8 +1,7 @@
 <% flash.each do |k,v| %>
 
-  <div class="uk-alert uk-alert-<%= k %>">
+  <div class="alert-message" data-type="<%=k%>">
     <%= v %>
-
   </div>
 
 <% end %>

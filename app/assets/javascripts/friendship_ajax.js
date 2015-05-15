@@ -1,12 +1,9 @@
 $(function() {
 
-    $('#friends-dashboard').on('click', '.remove-friend-btn', function(e) {
-        e.preventDefault();
+    var btn = null;
 
-        var btn = $(this);
-
-        if (confirm("Remove "+btn.next('.friend-name').text()+" from your friends.")) {
-            $.ajax({
+    var deleteFriend = function() {
+        $.ajax({
                 url: btn.attr('href'),
                 method: 'DELETE'
             }).done(function(data) {
@@ -14,7 +11,36 @@ $(function() {
             }).error(function(err) {
                 console.log("Delete error:",err);
             });
-        }
+    }
+
+    var declineFriend = function() {
+        $.ajax({
+            url: btn.attr('href'),
+            method: 'DELETE'
+        }).done(function(data) {
+            $('#friends-dashboard').html(data);
+        }).error(function(err) {
+            console.log("Accept error:",err);
+        });
+    }
+
+    $('#friends-dashboard').on('click', '.remove-friend-btn', function(e) {
+        e.preventDefault();
+
+        btn = $(this);
+        var q = "Are you sure you want to remove "+btn.next('.friend-name').text()+" from your friends list?"
+        UIkit.modal.confirm(q, deleteFriend);
+        $('.js-modal-confirm').text('Yes').next('.uk-modal-close').text('No');
+        // if (confirm("Remove "+btn.next('.friend-name').text()+" from your friends.")) {
+        //     $.ajax({
+        //         url: btn.attr('href'),
+        //         method: 'DELETE'
+        //     }).done(function(data) {
+        //         $('#friends-dashboard').html(data);
+        //     }).error(function(err) {
+        //         console.log("Delete error:",err);
+        //     });
+        // }
 
     });
 
@@ -36,16 +62,10 @@ $(function() {
     $('#friends-dashboard').on('click', '.decline-friend-btn', function(e) {
         e.preventDefault();
 
-        var btn = $(this);
+        btn = $(this);
+        UIkit.modal.confirm("Are you sure you want to decline "+btn.next('.friend-name').text()+"'s friend request?",declineFriend);
+        $('.js-modal-confirm').text('Yes').next('.uk-modal-close').text('No');
 
-        $.ajax({
-            url: btn.attr('href'),
-            method: 'DELETE'
-        }).done(function(data) {
-            $('#friends-dashboard').html(data);
-        }).error(function(err) {
-            console.log("Accept error:",err);
-        });
     });
 
     $('#invite-form').submit(function(e) {

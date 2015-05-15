@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/datepicker.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/autocomplete.almost-flat.min.css">
   <link rel ="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/form-file.almost-flat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/notify.almost-flat.min.css">
 
 
   <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
@@ -32,6 +33,7 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/dropdown.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/upload.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/modal.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/components/notify.min.js"></script>
 
   <%= javascript_include_tag 'application' %>
   <%= cloudinary_js_config %>
@@ -69,13 +71,16 @@
 
              <% pending_count = @current_user.pending_invited_by.length %>
     <li class="uk-parent" data-uk-dropdown>
-
-        <%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %><%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
+        <div class="user-menu">
+        <%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>
+        <span class="welcome-name">Welcome, <%=@current_user.name%></span>
+        <%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
+        </div>
 
         <div class="uk-dropdown uk-dropdown-navbar">
-          <ul class="uk-nav uk-nav-navbar">
 
             <% if @current_user.user_type == 'consumer' %>
+          <ul class="uk-nav uk-nav-navbar">
             <li>
 
                 <a class="sub-nav" href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
