@@ -61,31 +61,56 @@
 
     <a class="uk-navbar-brand" href="/">FSTVL</a>
 
-
+    <div class="uk-navbar-flip">
    <ul class="uk-navbar-nav">
 
    <% if @current_user %>
+
+
+             <% pending_count = @current_user.pending_invited_by.length %>
     <li class="uk-parent" data-uk-dropdown>
-        <a href="#">MY ACCOUNT</a>
+
+        <%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %><%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
 
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
-            <li>
-                <a class="sub-nav" href="/users/">PROFILE</a>
-            </li>
+
             <% if @current_user.user_type == 'consumer' %>
             <li>
-                <a class="sub-nav" href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
+
+                <a class="sub-nav" href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
             </li>
+
+
+
+
+          </ul>
+            <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
+              </li>
+            </ul>
+             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
+              </li>
+            </ul>
+             <ul class="uk-nav uk-nav-navbar">
+              <li>
+                  <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
+              </li>
+            </ul>
+
             <% end %>
+            <ul class="uk-nav uk-nav-navbar">
             <li>
                 <a class="sub-nav" id="logout-btn" href = "/logout">LOGOUT</a>
             </li>
           </ul>
         </div>
 
-    <% if @current_user.user_type == 'host' %>
     </li>
+    <% if @current_user.user_type == 'host' %>
         <li class="uk-parent" data-uk-dropdown>
           <a href="#">EVENTS</a>
 
@@ -123,26 +148,7 @@
         </li>
 
 
-          <% pending_count = @current_user.pending_invited_by.length %>
-         <li class="uk-parent" data-uk-dropdown>
-          <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>SOCIAL</a>
 
-          <div class="uk-dropdown uk-dropdown-navbar">
-            <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY FRIENDS</a>
-              </li>
-            </ul>
-             <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
-              </li>
-            </ul>
-             <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
-              </li>
-            </ul>
           </div>
 
         </li>
@@ -151,13 +157,14 @@
     <% end %>
 
 
-          <li class="uk-parent"></li>
+
    <% else %>
     <li class="uk-parent"><a data-uk-modal="{target:'#signup-modal'}" data-href="/users/new" class="signup-link">SIGN UP</a></li>
     <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}" class="login-btn">LOGIN</a></li>
     <% end %>
 
    </ul>
+   </div>
   </nav>
 
 
