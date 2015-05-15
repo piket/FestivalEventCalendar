@@ -16,7 +16,7 @@
       <% @festival_details.each do |detail| %>
        <div class="each-festival uk-width-1-4" data-tags="<%= detail[:tags] %>">
         <div class="grid">
-         <figure class="effect-marley">
+         <figure class="effect-marley festival-block">
           <%= cl_image_tag detail[:image], :class => 'festival-img uk-width-1-4', width: "280", height: "280", crop: :fill %>
           <figcaption>
             <div class="name">
