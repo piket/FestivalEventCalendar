@@ -97,6 +97,7 @@ figure.effect-marley figcaption {
 
 /*EVENT FILTER PAGE*/
 
+
 #event-filter-header {
   text-transform:uppercase;
   font-size:45px;
@@ -174,6 +175,10 @@ a.event-filter-name:hover {
 
 .view-occurrence {
   list-style: none;
+}
+
+.each-event-location {
+  font-size:12px;
 }
 
 
