@@ -1,7 +1,7 @@
 <!-- CURRENT USER PROFILE -->
 
   <div class="user-prof">
-    <div id="prof-name" class="">
+    <div id="prof-name" class="uk-container uk-container-center">
       <%= link_to "", edit_user_path(@current_user), :class => "uk-icon-pencil prof-edit-btn uk-button", :id => "edit-prof-btn" %>
       <%= @current_user.name || "N/A" %>
     <div id="prof-details" class="">
@@ -19,7 +19,7 @@
 
 
     <% if @current_user.user_type == 'host' %>
-      <div><%=@current_user.about %></div>
+      <div class="uk-container uk-container-center"><%=@current_user.about %></div>
     <% end %>
 
 
