@@ -2,7 +2,7 @@ $(function(){
 
   default_action = $('#default-action').val($('#new_comment').attr('action'));
 
-    $('#new_comment').submit(function(e){
+    $('#comment-reply-modal').on('submit','#new_comment',function(e){
 
         e.preventDefault();
 
@@ -16,14 +16,14 @@ $(function(){
             form.trigger('reset');
 
 
-            // var modal = UIKit.modal("#comment-reply-modal");
-            form.closest('.uk-modal').hide()
+            var modal = UIkit.modal("#comment-reply-modal");
+            // form.closest('.uk-modal').hide()
 
-            // if (modal.isActive()) {
-            //   modal.hide();
-            // } else {
-            //   modal.show();
-            // }
+            if (modal.isActive()) {
+              modal.hide();
+            } else {
+              modal.show();
+            }
 
             $('.display-container').html(data)
         }).error(function(err){

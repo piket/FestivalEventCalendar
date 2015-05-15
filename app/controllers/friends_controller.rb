@@ -20,7 +20,7 @@ class FriendsController < ApplicationController
 
         if friend && friend.user_type == 'consumer' && @current_user.user_type == 'consumer'
             success = @current_user.invite friend
-            render partial: 'friends_dashboard'
+            render partial: 'friends_list'
         else
             success = false
             raise "User not found"
@@ -29,19 +29,19 @@ class FriendsController < ApplicationController
 
     def accept
         success = @current_user.approve User.find params[:id]
-        render partial: 'friends_dashboard'
+        render partial: 'friends_list'
     end
 
     def decline
         success = @current_user.block User.find params[:id]
-        render partial: 'friends_dashboard'
+        render partial: 'friends_list'
     end
 
     def destroy
         friend = User.find params[:id]
         friend.remove_friendship @current_user
         success = @current_user.remove_friendship friend
-        render partial: 'friends_dashboard'
+        render partial: 'friends_list'
     end
 
     def list
