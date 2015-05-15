@@ -53,6 +53,7 @@
           <div class="occurrence-block<%='-first' if count == 0%>" id="<%=count%>">
             <div class="uk-form-row">
               <div class="uk-form-controls">
+                <label>LOCATION</label>
                 <input type="text" name="event[location][<%=count%>]" placeholder="Enter event location" id="event_location_<%=count%>" value="<%=occurrence.location%>">
                 <button class="uk-button uk-button-danger uk-button-mini" id="remove-<%=count%>">Delete</button>
               </div>
@@ -77,6 +78,7 @@
 
     <div class="uk-form-row">
       <div class="uk-form-controls">
+        <label>DESCRIPTION</label>
         <%= f.text_area :description, :placeholder => "Enter details about your event." %>
       </div>
     </div>
@@ -96,21 +98,25 @@
 
     <div class="uk-form-row">
       <div class="uk-form-controls">
+        <label>YOUTUBE LINK</label>
         <%= f.text_field :video, :placeholder => "Enter a youtube link to your video." %>
       </div>
     </div>
     <div class="uk-form-row">
       <div class="uk-form-controls">
+      <label>OFFICIAL EVENT LINK</label>
         <%= f.text_field :link, :placeholder => "Enter a link for your event." %>
       </div>
     </div>
     <div class="uk-form-row">
       <div class="uk-form-controls">
+      <label>TICKET PRICE</label>
         <%= f.text_field :price, :placeholder => "Enter a ticket price for your event." %>
       </div>
     </div>
     <div class="uk-form-row">
       <div class="uk-form-controls">
+      <label>TICKET PURCHASE LINK</label>
         <%= f.text_field :purchase, :placeholder => "Enter a link to purchase tickets for your event." %>
       </div>
     </div>
@@ -118,6 +124,7 @@
 
     <div class="uk-form-row">
       <div class="uk-form-controls">
+      <label>TAG YOUR EVENT (Tag wisely. These are terms your event will be searched by.)</label>
         <%= f.text_field :tags, id: "tags", value: @tags %>
       </div>
     </div>

@@ -53,6 +53,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+  <%= favicon_link_tag 'favicon.ico' %>
+
 </head>
 <body>
 
@@ -105,7 +107,12 @@
                   <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
               </li>
             </ul>
-
+            <% else %>
+              <ul class="uk-nav uk-nav-navbar">
+            <li>
+                <a class="sub-nav" id="host-prof" href = "/users">PROFILE</a>
+            </li>
+          </ul>
             <% end %>
             <ul class="uk-nav uk-nav-navbar">
             <li>
