@@ -1,12 +1,16 @@
-MY FESTIVALS PAGE
 
-<% @festivals.each do |fest| %>
-<div class="each-myfestival">
-    <div class="name"><%= link_to "My #{fest.name} Calendar", user_calendar_path(@current_user,fest.id) %></div>
-    <div class="location"><%=fest.location%></div>
-    <div class="image"><%= cl_image_tag fest.image, width: 200, height: 250, crop: :fill%></div>
-    <div class="blurb"><%=fest.about%></div>
-    <ul class="event-container"></ul>
-    <button class="uk-button uk-button-primary view-events" href=<%=view_festival_path(fest)%>>YOUR EVENTS <i class="uk-icon-chevron-down"></i></button>
+<div class="uk-grid">
+  <div id="my-festivals-header" class="uk-container">MY FESTIVALS</div>
+
+    <% @festivals.each do |fest| %>
+    <div class="each-myfestival uk-container uk-container-center">
+        <div class=""><%= link_to "MY #{fest.name} CALENDAR", user_calendar_path(@current_user,fest.id), :class=>"f-name uk-icon-calendar" %></div>
+        <div class="f-location"><%=fest.location%></div>
+        <div class="f-image"><%= cl_image_tag fest.image, width: 250, height: 250, crop: :fill%></div>
+        <div class="blurb"><%=fest.about%></div>
+        <ul class="event-container"></ul>
+        <button class="uk-button view-events" href=<%=view_festival_path(fest)%>>MY EVENTS <i class="uk-icon-chevron-down"></i></button>
+    </div>
+    <% end %>
+
 </div>
-<% end %>

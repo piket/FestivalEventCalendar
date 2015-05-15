@@ -175,3 +175,73 @@ a.event-filter-name:hover {
 .view-occurrence {
   list-style: none;
 }
+
+
+/*MYFESTIVALS*/
+
+#my-festivals-header {
+  font-size:80px;
+  color:rgb(6,22,62);
+  /*text-shadow: 1px 1px 2px rgb(129,239,188);*/
+  margin-top:75px;
+  float:right;
+  height:50px;
+  margin-bottom:20px;
+  margin-left:40px;
+
+}
+
+.f-image {
+  width:100px;
+  height:100px;
+  margin-left:36px;
+  border:3px solid rgb(44,44,46);
+  padding:3px;
+  border-radius:5px;
+}
+
+.f-name {
+  margin-top:30px;
+  font-size:40px;
+  color:rgb(6,22,62);
+}
+
+.f-name:hover {
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.each-myfestival {
+  margin-top:30px;
+}
+
+.view-events {
+  margin-top:20px;
+  background-color:rgb(6,22,62);
+  color:rgb(120,329,188);
+  text-shadow:none;
+  margin-left:36px;
+}
+
+.view-events:hover {
+  background-color:rgb(6,22,62);
+  color:white;
+  font-weight:400;
+}
+
+.blurb {
+  margin-top:20px;
+}
+
+.f-location {
+  font-size:36px;
+  color:rgb(6,22,62);
+  margin-top:15px;
+  margin-left:36px;
+  margin-bottom:25px;
+}
+
+
+
+
+

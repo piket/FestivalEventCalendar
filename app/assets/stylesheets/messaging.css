@@ -1,0 +1,48 @@
+/*MESSAGE LIST MODAL*/
+
+.list-each-friend {
+
+  color:rgb(44,44,46);
+  font-size:18px;
+  margin-bottom:5px;
+}
+
+.list-each-friend:hover {
+  text-decoration:none;
+  background-color:rgb(129,329,188);
+}
+
+.friend-list-item {
+  list-style:none;
+}
+
+#message-list {
+  font-size:20px;
+  margin-bottom:15px;
+  font-weight:600;
+}
+
+/*INBOX*/
+
+#inbox-new-message {
+  margin-top:50px;
+
+}
+
+#received-msg-header {
+  border:2px solid red;
+}
+
+#sent-msg-header {
+  border:2px solid green;
+}
+
+.sent-msg-list {
+  border: 2px solid orange;
+}
+
+.received-msg-list {
+  border:2px solid blue;
+}
+
+

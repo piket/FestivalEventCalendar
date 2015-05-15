@@ -29,7 +29,7 @@ body {
   border-radius:50%;
   width:48px;
   height:48px;
-  margin-top:5px;
+  margin-top:-2px;
   margin-right:6px;
 }
 
@@ -131,12 +131,32 @@ li .uk-parent:hover {
 }
 
 
+.alert-message {
+  display: none;
+}
+
+.uk-notify-message {
+  text-align: center;
+  width: 100%;
+}
+
+.welcome-name {
+  padding-right: 10px;
+
+}
+
+.user-menu {
+  margin-top: 7px;
+}
+
+
+
 /*HOME PAGE*/
 
-#welcome-back {
+/*#welcome-back {
   font-size:45px;
   margin-top:70px;
-}
+}*/
 
 #title {
   font-size:150px;
@@ -312,21 +332,4 @@ i .uk-facebook-icon {
 
 .uk-form-controls>:first-child {
   margin-top:10px;
-}
-
-.alert-message {
-  display: none;
-}
-
-.uk-notify-message {
-  text-align: center;
-  width: 100%;
-}
-
-.welcome-name {
-  padding-right: 4px;
-}
-
-.user-menu {
-  margin-top: 2px;
 }
