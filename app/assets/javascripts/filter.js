@@ -1,19 +1,31 @@
 $(function(){
 
   var dateComp = function(date,input) {
+    // console.log("input",input)
     var dateStr = date.split(' ');
     dateStr[1] = parseInt(dateStr[1]);
     dateStr[2] = parseInt(dateStr[2]);
-    console.log(dateStr[2] == input,dateStr[2],input)
-    if (dateStr[0].indexOf(input) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input)) {
-      // console.log("month match")
-      return true;
-    } else if (dateStr[1] == input || dateStr[2] == input) {
-      // console.log("day/year match")
-      return true;
-    } else {
-      return false;
+    input = input.split('/');
+    if(input[input.length-1] == "") input.pop();
+    // console.log(dateStr[2] == input[2],dateStr[2],input)
+    switch(input.length) {
+      case 3:
+        return ((dateStr[0].indexOf(input[0]) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input[0])) && dateStr[1] == parseInt(input[1]) && (dateStr[2] == parseInt(input[2]) || dateStr[2] == 2000 + parseInt(input[2])));
+      case 2:
+        return ((dateStr[0].indexOf(input[0]) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input[0])) && dateStr[1] == parseInt(input[1]));
+      case 1:
+        return ((dateStr[0].indexOf(input[0]) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input[0])) || dateStr[1] == parseInt(input[1]) || (dateStr[2] == parseInt(input[2]) || dateStr[2] == 2000 + parseInt(input[2])));
     }
+    return false;
+    // if (dateStr[0].indexOf(input[0]) !== -1 || (new Date(Date.parse(dateStr[0]+" 1 2000")).getMonth() + 1) === parseInt(input[0])) {
+    //   // console.log("month match")
+    //   return true;
+    // } else if (dateStr[1] == input || dateStr[2] == input) {
+    //   // console.log("day/year match")
+    //   return true;
+    // } else {
+    //   return false;
+    // }
   }
 
   var abbrev = function(str,word) {
@@ -27,7 +39,8 @@ $(function(){
     // console.log("start filter")
 
     e.preventDefault();
-    arr = filterForm.children().val().toLowerCase().split(/[ ,-\/:\&"']/)
+    // console.log('input:',filterForm.children().val())
+    arr = filterForm.children().val().toLowerCase().split(/[ ,\-:"']/)
 
     var formId = filterForm.attr('id');
 
@@ -49,20 +62,20 @@ $(function(){
           var nickname = "";
       } else {
           var name = $(item).find('.festival-name').text().toLowerCase().trim();
-          var nickname = name.split(' ').reduce(abbrev,"")
+          var nickname = name.split(' ').reduce(abbrev,"");
       }
 
 
-      // console.log(nickname)
+      // console.log(arr)
 
       for (var i=0; i<arr.length; i++) {
         if (classes.indexOf(arr[i]) !== -1 || location.indexOf(arr[i]) !== -1 || name.indexOf(arr[i]) !== -1 || ( nickname !== "" && nickname.indexOf(arr[i]) !== -1)) {
-          return false
+          return false;
         } else if (formId == 'filter-form-event' && dateComp($(item).find('.date').text().toLowerCase(), arr[i])) {
-          return false
+          return false;
         }
       }
-      return true
+      return true;
     })
 
     $(unmatches).hide();
