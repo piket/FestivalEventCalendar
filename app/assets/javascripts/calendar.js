@@ -40,11 +40,12 @@ $(document).ready(function() {
 
               if (data.result) {
                 calendar.fullCalendar('refetchEvents');
+                UIkit.notify('New event added to your calendar!',{status:'success'});
               }
               console.log(data)
             }).error(function(err){
               console.log("ERROR" + err);
-              alert('Error! Unable to add event to your calendar.');
+              UIkit.notify('Error! Unable to add event to your calendar.',{status:'danger'});
             });
     }
 
@@ -58,11 +59,12 @@ $(document).ready(function() {
 
               if (data.result) {
                 calendar.fullCalendar('refetchEvents');
+                UIkit.notify('Event deleted from your calendar.',{status:'warning'});
               }
               console.log(data)
         }).error(function(err){
               console.log("ERROR" + err);
-              alert('Error! Unable to delete event to your calendar.');
+              UIkit.notify('Error! Unable to delete event to your calendar.',{status:'danger'});
         });
     }
 

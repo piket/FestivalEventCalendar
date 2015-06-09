@@ -13,7 +13,8 @@ $(function(){
     }).done(function(data){
 
       if (data.result) {
-        btn.removeClass('add-btn').removeClass('uk-icon-plus').addClass('del-btn').addClass('uk-icon-remove').attr('href','/deleteevent/'+ data.result)
+        btn.removeClass('add-btn').removeClass('uk-icon-plus').addClass('del-btn').addClass('uk-icon-remove').attr('href','/deleteevent/'+ data.result);
+        UIkit.notify('New event added to your calendar!',{status:'success'});
       }
       console.log(data)
     }).error(function(err){
@@ -37,7 +38,8 @@ $(function(){
     }).done(function(data){
 
       if (data.result) {
-        btn.removeClass('del-btn').removeClass('uk-icon-remove').addClass('add-btn').addClass('uk-icon-plus').attr('href','/addevent/'+ data.result)
+        btn.removeClass('del-btn').removeClass('uk-icon-remove').addClass('add-btn').addClass('uk-icon-plus').attr('href','/addevent/'+ data.result);
+        UIkit.notify('Event deleted from your calendar.',{status:'warning'});
       }
       console.log(data)
     }).error(function(err){

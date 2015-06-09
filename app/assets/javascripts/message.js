@@ -50,8 +50,10 @@ $(function() {
         }).done(function(form) {
             $('.modal-body').html(form);
             $('#new_comment #comment_subject').focus();
+            UIkit.notify('Message sent.',{status:'success'});
         }).error(function(err) {
             console.log(err);
+            UIkit.notify('ERROR: Unable to send message.',{status:'danger'});
         })
     })
 
