@@ -8,6 +8,7 @@ $(function() {
                 method: 'DELETE'
             }).done(function(data) {
                 $('#friends-dashboard').html(data);
+                UIkit.notify('Friend deleted.', {status:'warning'});
             }).error(function(err) {
                 console.log("Delete error:",err);
             });
@@ -19,6 +20,7 @@ $(function() {
             method: 'DELETE'
         }).done(function(data) {
             $('#friends-dashboard').html(data);
+            UIkit.notify('Friend request declined.', {status:'warning'});
         }).error(function(err) {
             console.log("Accept error:",err);
         });
@@ -54,7 +56,9 @@ $(function() {
             method: 'PATCH'
         }).done(function(data) {
             $('#friends-dashboard').html(data);
+            UIkit.notify('New friend added.', {status:'success'});
         }).error(function(err) {
+            UIkit.notify('Unknown error: Please try again.',{status:'danger'});
             console.log("Accept error:",err);
         });
     });
@@ -81,8 +85,10 @@ $(function() {
             console.log("invite sent")
             $('#friends-dashboard').html(data);
             $('#name').val("")
+            UIkit.notify('Invitation sent.',{status:'success'});
         }).error(function(err) {
             $('#name').val("")
+            UIkit.notify('No user found.',{status:'danger'});
             console.log("Invite error:",err);
         });
     });

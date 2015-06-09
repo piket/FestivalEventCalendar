@@ -77,7 +77,9 @@ $(function(){
             // form.closest('.uk-modal').hide()
 
             $('.display-container').html(data)
+            UIkit.notify('Comment added.',{status:'success'});
         }).error(function(err){
+          UIkit.notify('ERROR: Unable to add comment.',{status:'danger'});
           console.log(err)
         })
     })
