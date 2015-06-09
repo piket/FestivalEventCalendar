@@ -101,7 +101,7 @@ class UsersController < ApplicationController
         end
 
       else
-        flash[:primary] = "We already have an account under that email address. Please try again or login!"
+        flash[:primary] = "Invalid email or password. Please try again!"
         redirect_to root_path
       end
     end
