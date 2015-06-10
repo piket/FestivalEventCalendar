@@ -8,7 +8,7 @@
         </div>
 
         <form class="uk-search filter-form uk-container uk-container-center uk-text-center" data-uk-search id="filter-form-event">
-            <input class="uk-search-field" type="search" placeholder="" id="event_filter">
+            <input class="uk-search-field" type="search" placeholder="Search by Event Date or Title" id="event_filter">
         </form>
       </div>
 
@@ -16,10 +16,13 @@
     <% @event_dates.keys.sort.each do |date| %>
         <% @event_dates[date].each do |event| %>
         <div class="each-event uk-width-1-2" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
-            <strong><a href="/events/<%=event[:id]%>" class="event-filter-name"><%=event[:name]%></a></strong>
+           
             <a href="/events/<%=event[:id]%>" class="event-filter-img">
                 <%= cl_image_tag event[:image], width: 220, height: 120, crop: :fill%>
             </a>
+
+            <div class="detail-div">
+             <strong><a href="/events/<%=event[:id]%>" class="event-filter-name"><%=event[:name]%></a></strong>
             <div class="date"><%=date.strftime("%B %d, %Y")%></div>
             <% event[:occurrences].each do |occurrence| %>
                 <div class="each-event-location"><%=occurrence[:location]%></div>
@@ -31,7 +34,7 @@
                     <%= link_to "", addevent_path(occurrence[:id]), :class => "add-btn uk-button uk-icon-plus" %>
                 <% end %>
             <% end %>
-
+            </div>
         </div>
         <% end %>
     <% end %>

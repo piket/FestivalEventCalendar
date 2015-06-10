@@ -8,6 +8,10 @@
 
 }
 
+#cal-div{
+  margin-left:4%;
+}
+
 #calendar {
   margin-top:60px;
   font-weight:200;
@@ -46,4 +50,50 @@ tr .fc-day-header {
 .friend-event {
   margin-left: 0;
   width: 50%;
+}
+
+/*COMPARE*/
+
+#cal-key{
+  border:2px solid rgb(44,44,46);
+  border-radius:5px;
+  margin-left:13.5%;
+  font-size:20px;
+  padding-left:10px;
+  padding-top:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  
+}
+
+#your-cal{
+  display:inline;
+  position:relative;
+
+}
+
+#my-swatch{
+  width:30px;
+  height:30px;
+  background-color:rgb(6,22,62);
+  border:1px solid rgb(44,44,46);
+  border-radius:5px;
+  display:inline-block;
+  margin-right:10px;
+}
+
+#your-swatch{
+  width:30px;
+  height:30px;
+  background-color:rgb(129,239,188);
+  border:1px solid rgb(44,44,46);
+  display:inline-block;
+  border-radius:5px;
+  margin-right:10px;
+  margin-top:5px;
+}
+
+
+#friend-cal{
+  position:relative;
 }

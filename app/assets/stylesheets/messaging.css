@@ -26,7 +26,9 @@
 
 #inbox-new-message {
   margin-top:50px;
-  height:30px;
+  height:50px;
+  margin-left:11.5%;
+  font-size:20px;
 }
 
 #inbox-new-message:hover {
@@ -63,15 +65,16 @@
 }
 
 #inbox-header {
-  font-size:60px;
+  font-size:70px;
   margin-top:50px;
   margin-bottom:30px;
+  width:100%;
 }
 
 .outbox-container {
   border:3px solid rgb(44,44,46);
   min-height:250px;
-  margin-right:60px;
+  margin-left:10%;
   border-radius:5px;
   margin-top:20px;
 
@@ -80,10 +83,14 @@
 .inbox-container {
   border:3px solid rgb(44,44,46);
   min-height:250px;
-  margin-right:60px;
+  margin-left:10%;
   border-radius:5px;
   padding-bottom:10px;
-  margin-top:45px;
+  margin-top:25px;
+}
+
+#msg-field{
+  width:90%;
 }
 
 /*NEW MESSAGE MODAL*/
@@ -114,6 +121,25 @@
 .comment-meta-list {
   margin-top:40px;
   margin-bottom:40px;
+}
+
+.compare-btn{
+  background-color:rgb(6,22,62);
+  /*color:rgb(129,329,188);*/
+  /*text-shadow:0;*/
+  color:white;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+
+.compare-btn:hover{
+  background-color:rgb(129,329,188);
+  color:rgb(6,22,62);
+}
+
+.comment-block{
+  padding-top:10px;
+  padding-left:10px;
 }
 
 

@@ -21,7 +21,7 @@ Subject: <%= message.subject %>
     </div>
     <% if @current_user.id != message.user_id %>
         <div class="msg-compare">
-            <%= link_to "Compare Calendars", user_compare_calendars_path(message.user_id,message.festival_id,@current_user.id), :class => "uk-button uk-button-success" %>
+            <%= link_to "Compare Calendars", user_compare_calendars_path(message.user_id,message.festival_id,@current_user.id), :class => "uk-button compare-btn" %>
         </div>
     <% end %>
 <% end %>

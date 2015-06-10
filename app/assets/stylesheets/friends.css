@@ -7,6 +7,10 @@
   height:60px;
 }
 
+.friends-list{
+  margin-left:3%;
+}
+
 .friend-image {
   width: 80px;
   height:80px;
@@ -98,7 +102,7 @@ a.uk-icon-pencil{
   border-radius: 8px;
   float:right;
   /*margin-left:-150px;*/
-  /*line-height:400%;*/
+  line-height:1;
 
 }
 
@@ -109,7 +113,7 @@ a.uk-icon-pencil{
   display:inline;
   float:right;
   margin-top:-230px;
-  margin-right:95px;
+  margin-right:10%;
   border: 5px solid rgb(129,239,188);
   padding:8px;
 }
