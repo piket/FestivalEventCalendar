@@ -111,6 +111,21 @@ a.host-event-img {
   margin-bottom:10px;
 }
 
+div.comment-author{
+  margin-top:5px;
+  margin-left:5px;
+}
+
+div.comment-text{
+  margin-left:5px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+#comment_body{
+  margin-top:20px;
+}
+
 .event-link:hover {
   background-color:rgb(129,239,188);
   color:rgb(6,22,62);
@@ -206,7 +221,7 @@ a.uk-icon-pencil:hover {
   border-bottom:2px solid rgb(44,44,46);
   font-size:24px;
   padding-bottom:-3px;
-  margin-top:15px;
+  margin-top:30px;
 }
 
 .comment-submit-btn {

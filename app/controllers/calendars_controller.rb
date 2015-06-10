@@ -17,7 +17,7 @@ before_action :consumer_user?
     entries = @current_user.event_occurrences
     events = []
     entries.each do |entry|
-      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), url:deleteevent_path(entry), className:'my-event'}
+      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), url:deleteevent_path(entry), backgroundColor: 'rgb(6,22,62)', textColor:'rgb(129,239,188)', className:'my-event'}
     end
     render :json => events
   end
@@ -30,7 +30,7 @@ before_action :consumer_user?
 
     events = []
     entries.each do |entry|
-      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), url:deleteevent_path(entry), className:'my-event'}
+      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), backgroundColor: 'rgb(6,22,62)', textColor:'rgb(129,239,188)', url:deleteevent_path(entry), className:'my-event'}
     end
     render :json => events
   end
@@ -84,7 +84,7 @@ before_action :consumer_user?
 
     events = []
     entries.each do |entry|
-      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), url:addevent_path(entry), className:'friend-event'}
+      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), textColor: 'rgb(6,22,62)', backgroundColor:'rgb(129,239,188)', url:addevent_path(entry), className:'friend-event'}
     end
     render :json => events
   end
@@ -94,7 +94,7 @@ before_action :consumer_user?
 
     events = []
     entries.each do |entry|
-      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), backgroundColor: 'red', url:deleteevent_path(entry), className:'my-event'}
+      events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), backgroundColor: 'rgb(6,22,62)', textColor:'rgb(129,239,188)', url:deleteevent_path(entry), className:'my-event'}
     end
     render :json => events
   end

@@ -4,10 +4,12 @@
 
     <% @festivals.each do |fest| %>
     <div class="each-myfestival uk-container uk-container-center">
-        <div class=""><%= link_to "MY #{fest.name} CALENDAR", user_calendar_path(@current_user,fest.id), :class=>"f-name uk-icon-calendar" %></div>
-        <div class="f-location"><%=fest.location%></div>
+        <div class="cal-name"><%= link_to "MY #{fest.name} CALENDAR (#{fest.location})", user_calendar_path(@current_user,fest.id), :class=>"f-name" %></div>
+        <div class="f-location"></div>
+        <div class="festival-core">
         <div class="f-image"><%= cl_image_tag fest.image, width: 250, height: 250, crop: :fill%></div>
         <div class="blurb"><%=fest.about%></div>
+        </div>
         <ul class="event-container"></ul>
         <button class="uk-button view-events" href=<%=view_festival_path(fest)%>>MY EVENTS <i class="uk-icon-chevron-down"></i></button>
     </div>
