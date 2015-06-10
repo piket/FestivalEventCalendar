@@ -67,8 +67,10 @@ tr .fc-day-header {
 }
 
 #your-cal{
-  display:inline;
+  /*display:inline;*/
   position:relative;
+  /*overflow:auto;*/
+  vertical-align:middle;
 
 }
 
@@ -91,9 +93,18 @@ tr .fc-day-header {
   border-radius:5px;
   margin-right:10px;
   margin-top:5px;
+  /*display:inline;*/
+}
+
+.cal-text{
+  display:inline;
+  position:relative;
+  bottom:6px;
 }
 
 
 #friend-cal{
   position:relative;
+  /*overflow:auto;*/
+  vertical-align:middle;
 }
