@@ -2,7 +2,8 @@ class AuthController < ApplicationController
 
     def failure
       flash[:danger] = "FACEBOOK LOGIN ERROR. Please try again!"
-      redirect_to login_path
+      # redirect_to login_path
+      redirect_to root_path
     end
 
     def callback
@@ -30,7 +31,8 @@ class AuthController < ApplicationController
           redirect_to root_path
         else
           flash[:danger] = "Error. Invalid information inputed."
-          redirect_to new_user_path
+          # redirect_to new_user_path
+          redirect_to root_path
         end
 
       else
