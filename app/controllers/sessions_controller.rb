@@ -16,12 +16,12 @@ class SessionsController < ApplicationController
     elsif @user
       session[:user_id]= @user.id
       flash[:success] ="You have been logged in!"
-      redirect_to root_path
-      # render json: {result:true}
+      # redirect_to root_path
+      render json: {result:true}
     else
       flash[:danger] = "Invalid credentials. Please try to login again!"
       # redirect_to login_path
-      redirect_to root_path
+      # redirect_to root_path
       render json: {result:false,msg:"Invalid credentials. Please try to login again!"}
     end
 
