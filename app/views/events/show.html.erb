@@ -1,15 +1,18 @@
 
+<!-- event show page -->
 
 <div class="uk-grid uk-container uk-container-center">
 
     <div class="each-host-event-show uk-container uk-width-1-1 uk-container-center">
-      <!-- <div class="event-headings"> -->
-          <div class="each-event-name"><%= @event.name %></div>
-          <%= cl_image_tag @event.image, :class => "event-image" %>
-          <% if @current_user.id == @event.host_id %>
-          <%= link_to "", edit_event_path, :class=>"event-edit-btn uk-icon-pencil" %>
-          <% end %>
-      <!-- </div> -->
+
+<!-- allows hosts to edit -->
+      <div class="each-event-name"><%= @event.name %></div>
+      <%= cl_image_tag @event.image, :class => "event-image" %>
+      <% if @current_user.id == @event.host_id %>
+        <%= link_to "", edit_event_path, :class=>"event-edit-btn uk-icon-pencil" %>
+      <% end %>
+
+<!-- event details -->
       <div class="event-details">
           <div class="event-dates">
               <div id="dates-header">DATES</div>
@@ -21,12 +24,11 @@
           </div>
           <a class="event-link uk-button" href="<%= @event.link %>">VISIT THE OFFICIAL EVENT PAGE</a>
           <a class="event-purchase uk-button" href="<%= @event.purchase %>">BUY TICKETS &nbsp($<%= @event.price == 0 ? 'Free' : sprintf('%.2f', @event.price) %>)</a>
-          <!-- <div class="event-price"></div> -->
           <div class="event-desc"><%= @event.description %></div>
           <div class="uk-container uk-container-center event-video"><iframe width="400" height="218" src="https://www.youtube.com/embed/<%= @event.video %>" frameborder="0" allowfullscreen class="video-frame"></iframe></div>
       </div>
 
-
+<!-- comments for event -->
         <div class="comment-field">
           <div class="form-container uk-container uk-container-center">
             <div id="event-comment-header">COMMENTS</div>

@@ -1,14 +1,30 @@
-
+<!-- compare calendars view -->
 
 <div class="uk-grid">
     <div class="uk-container-center" id="my-calendar" data=<%=@first_date%>>OUR <%= @festival.name.upcase %> CALENDARS</div>
 
+<!-- compare calendars key -->
     <div id="cal-key">
-	    
-	    <div id="your-cal"><div id="my-swatch"></div><div class="cal-text">YOUR CALENDAR</div></div>
-	    <div id="friend-cal"><div id="your-swatch"></div><div class="cal-text">YOUR FRIEND'S CALENDAR</div></div>
+	    <!-- user swatch -->
+	    <div id="your-cal">
+        <div id="my-swatch">
+        </div>
+        <div class="cal-text">
+        YOUR CALENDAR
+        </div>
+      </div>
+
+      <!-- user's friend's swatch -->
+	    <div id="friend-cal">
+        <div id="your-swatch">
+        </div>
+        <div class="cal-text">
+        YOUR FRIEND'S CALENDAR
+        </div>
+      </div>
     </div>
 
+<!-- cals -->
     <div class="uk-container uk-container-center">
       <div id="cal-div" class="uk-container">
         <div id='calendar'	></div>
@@ -18,4 +34,5 @@
 
 </div>
 
+<!-- hidden -->
 <div id="hidden-data" data=<%= @festival.id %>>

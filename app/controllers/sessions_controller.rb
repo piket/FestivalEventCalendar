@@ -6,8 +6,6 @@ class SessionsController < ApplicationController
 
 #create new user session
   def create
-    # render json: params
-    # return
     user_info = login_params
     @user = User.authenticate user_info[:email], user_info[:password]
 
@@ -40,8 +38,5 @@ class SessionsController < ApplicationController
   def login_params
     params.require(:user).permit(:email, :password)
   end
-
-
-
 
 end

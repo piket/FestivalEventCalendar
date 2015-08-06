@@ -6,6 +6,7 @@ class AuthController < ApplicationController
       redirect_to root_path
     end
 
+# signup callback and login
     def callback
       provider_user = request.env['omniauth.auth']
 
@@ -27,11 +28,9 @@ class AuthController < ApplicationController
         if user.save
           flash[:success] = "Your account has successfully been created!"
           session[:user_id] = user.id
-          #CHANGE TO REDIRECT AND AUTO LOGIN
           redirect_to root_path
         else
           flash[:danger] = "Error. Invalid information inputed."
-          # redirect_to new_user_path
           redirect_to root_path
         end
 
@@ -39,7 +38,6 @@ class AuthController < ApplicationController
         flash[:success] = "You have been successfully logged in!"
         session[:user_id] = user.id
         redirect_to root_path
-        # render :json => provider_user
       end
     end
 end

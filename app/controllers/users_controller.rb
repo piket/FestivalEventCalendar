@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   before_action :is_authenticated?, except: [:new, :create, :show]
   before_action :consumer_user?, only: [:show]
 
-
-
     def addevent
       result = EventOccurrence.find(params[:id])
 

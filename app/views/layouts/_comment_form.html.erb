@@ -1,3 +1,4 @@
+<!-- comment form partial for both new comments and reply comments -->
 
 <% if comment_ref %>
 
@@ -13,12 +14,9 @@
         </div>
       </div>
       <input type="hidden" value="" id="default-action">
-
-
     <% end %>
 
 <% else %>
-
 
     <%= form_for [event, comment], html:{:class=>"uk-form uk-form-stacked comment-form"} do |f|%>
       <div class="uk-form-row">
@@ -31,8 +29,6 @@
         <%= f.button "Submit", :class=>"uk-button comment-submit-btn", :type => "submit" %>
         </div>
       </div>
-
-
     <% end %>
 
 <% end %>

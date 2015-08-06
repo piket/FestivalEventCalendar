@@ -10,12 +10,6 @@ class FriendsController < ApplicationController
 
         if friend.nil?
             friend = User.find_by_email params[:name]
-
-            # if friend.nil?
-            #     # render partial: 'friends_dashboard'
-            #     raise "User not found"
-            #     return
-            # end
         end
 
         if friend && friend.user_type == 'consumer' && @current_user.user_type == 'consumer'

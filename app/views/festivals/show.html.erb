@@ -1,10 +1,10 @@
+<!-- Search events page -->
 <div class="uk-grid">
 
-    <!-- <div class="uk-text-center uk container uk-container-center event-page-div"> -->
-
+  <!-- Search events form -->
       <div id="event-search" class="uk-container uk-container-center">
         <div id="event-filter-header" class="uk-text-center uk-container uk-container-center">
-        Search<br>  <strong><%=@festival.name%></strong><br> Events
+        Search<br><strong><%=@festival.name%></strong><br> Events
         </div>
 
         <form class="uk-search filter-form uk-container uk-container-center uk-text-center" data-uk-search id="filter-form-event">
@@ -12,33 +12,32 @@
         </form>
       </div>
 
+      <!-- user's events for specific festival -->
       <div id="event-filter-field" class="uk-text-center uk-container uk-container-center">
-    <% @event_dates.keys.sort.each do |date| %>
-        <% @event_dates[date].each do |event| %>
-        <div class="each-event uk-width-1-2" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
-           
-            <a href="/events/<%=event[:id]%>" class="event-filter-img">
-                <%= cl_image_tag event[:image], width: 220, height: 120, crop: :fill%>
-            </a>
+            <% @event_dates.keys.sort.each do |date| %>
+                <% @event_dates[date].each do |event| %>
+                <div class="each-event uk-width-1-2" data-tags="<%=event[:tags]%>" id="<%=event[:id]%>">
+                   
+                    <a href="/events/<%=event[:id]%>" class="event-filter-img">
+                        <%= cl_image_tag event[:image], width: 220, height: 120, crop: :fill%>
+                    </a>
 
-            <div class="detail-div">
-             <strong><a href="/events/<%=event[:id]%>" class="event-filter-name"><%=event[:name]%></a></strong>
-            <div class="date"><%=date.strftime("%B %d, %Y")%></div>
-            <% event[:occurrences].each do |occurrence| %>
-                <div class="each-event-location"><%=occurrence[:location]%></div>
-                <div class="time"><%=occurrence[:time]%></div>
+                    <div class="detail-div">
+                     <strong><a href="/events/<%=event[:id]%>" class="event-filter-name"><%=event[:name]%></a></strong>
+                    <div class="date"><%=date.strftime("%B %d, %Y")%></div>
+                    <% event[:occurrences].each do |occurrence| %>
+                        <div class="each-event-location"><%=occurrence[:location]%></div>
+                        <div class="time"><%=occurrence[:time]%></div>
 
-                 <% if occurrence[:added] %>
-                    <%= link_to "", deleteevent_path(occurrence[:id]), :class => "del-btn uk-button uk-icon-remove" %>
-                <% else %>
-                    <%= link_to "", addevent_path(occurrence[:id]), :class => "add-btn uk-button uk-icon-plus" %>
+                         <% if occurrence[:added] %>
+                            <%= link_to "", deleteevent_path(occurrence[:id]), :class => "del-btn uk-button uk-icon-remove" %>
+                        <% else %>
+                            <%= link_to "", addevent_path(occurrence[:id]), :class => "add-btn uk-button uk-icon-plus" %>
+                        <% end %>
+                    <% end %>
+                    </div>
+                </div>
                 <% end %>
             <% end %>
-            </div>
-        </div>
-        <% end %>
-    <% end %>
-
-  </div>
- <!-- </div> -->
+      </div>
 </div>

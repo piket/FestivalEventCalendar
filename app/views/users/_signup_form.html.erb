@@ -1,3 +1,5 @@
+<!-- signup form partial -->
+
 <div class="uk-text-center"><%= link_to "SIGNUP WITH FACEBOOK", "/auth/facebook", :id=>"login-with-fb", :class => "uk-button login-with-fb", :type => 'button' %></div>
 
 <%= form_for @user, html:{:class=>"uk-form uk-form-stacked"} do |f|%>
@@ -36,6 +38,5 @@
     <%= f.button "Submit", :class=>"uk-button signup-submit-btn", type: 'submit' %>
     </div>
   </div>
-
 
 <% end %>

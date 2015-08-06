@@ -10,7 +10,6 @@ before_action :consumer_user?
         flash[:danger] = "You do not have permission to view this page."
         redirect_to root_path
     end
-
   end
 
   def all_events
@@ -24,10 +23,7 @@ before_action :consumer_user?
 
 
   def get_events
-
-
-      entries = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id' => params[:id])
-
+    entries = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id' => params[:id])
     events = []
     entries.each do |entry|
       events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), backgroundColor: 'rgb(6,22,62)', textColor:'rgb(129,239,188)', url:deleteevent_path(entry), className:'my-event'}
@@ -56,9 +52,6 @@ before_action :consumer_user?
           your_first_date = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id = ? AND event_occurrences.date >= ?', params[:id], Date.today).order(date: 'ASC')
           friend_first_date = User.find(params[:compare_id]).event_occurrences.joins(:event).where('events.host_id = ? AND event_occurrences.date >= ?', params[:id], Date.today).order(date: 'ASC')
 
-          # render json: {your:your_first_date,friend:friend_first_date}
-          # return
-
           if your_first_date.empty? && friend_first_date.empty?
             @first_date = Date.today
           elsif your_first_date.empty?
@@ -69,7 +62,6 @@ before_action :consumer_user?
             @first_date = your_first_date.first.date < friend_first_date.first.date ? your_first_date.first.date : friend_first_date.first.date
           end
 
-          # @first_date = @first_date.empty? ? Date.today : @first_date.first.date.to_date
           @festival = User.find params[:id]
       else
           flash[:danger] = "You do not have permission to view this page."
@@ -79,9 +71,7 @@ before_action :consumer_user?
 
   def get_friend_events
 
-
-      entries = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id' => params[:id])
-
+    entries = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id' => params[:id])
     events = []
     entries.each do |entry|
       events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), textColor: 'rgb(6,22,62)', backgroundColor:'rgb(129,239,188)', url:addevent_path(entry), className:'friend-event'}
@@ -91,7 +81,6 @@ before_action :consumer_user?
 
   def compare_events
     entries = User.find(params[:user_id]).event_occurrences.joins(:event).where('events.host_id' => params[:id])
-
     events = []
     entries.each do |entry|
       events << {:id => entry.event_id, :title => entry.event.name, :start => entry.date, :end => (entry.date + entry.event.duration.minutes), backgroundColor: 'rgb(6,22,62)', textColor:'rgb(129,239,188)', url:deleteevent_path(entry), className:'my-event'}

@@ -9,15 +9,13 @@ class Event < ActiveRecord::Base
 
   # validates :host_id, presence: true
 
+#imports csv files
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     imported = []
     (2..spreadsheet.last_row).each do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
-        # event = Event.new
-        # event.attributes = row.to_hash.slice(*accessible_attributes)
-        # event.save!
         row_hash = row.to_hash
         row_hash['dates'] = row_hash['dates'].split(',').map do |date|
             date.strip!
@@ -58,7 +56,7 @@ class Event < ActiveRecord::Base
     end
     imported
   end
-
+#opens spreadsheets
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
         when ".csv" then Roo::CSV.new(file.path)

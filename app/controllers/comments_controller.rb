@@ -30,11 +30,8 @@ class CommentsController < ApplicationController
 
 
     def create
-      # render json: message_params
-      # return
-      @event = Event.find params[:event_id] if params.key?(:event_id)
-        # friend = User.find(params[:user_id]) if params.key(:user_id)
 
+      @event = Event.find params[:event_id] if params.key?(:event_id)
       if params.key? :comment_id
         if params.key? :user_id
           @current_user.comments << Comment.find(params[:comment_id]).comments.create(message_params)
@@ -71,7 +68,6 @@ class CommentsController < ApplicationController
 #delete messages
     def destroy
       comment = Comment.find params[:id]
-
       if comment.user_id == @current_user.id
         comment.destroy
       end

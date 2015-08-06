@@ -1,3 +1,6 @@
+<!-- form for sending messages -->
+
+<!-- checking for message_ref -->
 <% if message_ref %>
     <% arr = [user, message_ref, message] %>
 <% else %>
@@ -6,6 +9,7 @@
 
 <div id="message-modal-header" class="uk-text-center">To: <%=user.name %></div>
 <div class="uk-form">
+  <!-- message form -->
       <%= form_for arr do |f| %>
         <div class="uk-form-row">
           <div class="form-controls">
@@ -22,6 +26,8 @@
           <div class="uk-form-controls">
             <div class="uk-form-select" data-uk-form-select>
                <span></span>
+
+               <!-- select from user's festivals -->
                   <%= f.select :festival_id, options_for_select(festivals, 0) %>
             </div>
           </div>

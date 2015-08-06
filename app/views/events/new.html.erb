@@ -1,5 +1,6 @@
 <%= render "events/form" %>
 
+<!-- uploading events via csv file form -->
 <div class="uk-grid">
   <div class="uk-container uk-container-center">
   <%= form_tag import_events_path, :class=>"uk-form uk-form-stacked", id: "import-form", multipart: true do %>
@@ -18,12 +19,13 @@
     <div class="uk-form-row">
         <div class="uk-form-controls">
             <a href="#loading-modal" data-uk-modal class="uk-button uk-button-primary import-form-btn">Submit</a>
-            <%# submit_tag "Submit", :class=>"uk-button uk-button-primary" %>
         </div>
     </div>
     <% end %>
 </div>
 </div>
+
+<!-- import loading modal -->
 
 <div id="loading-modal" class="uk-modal">
     <div class="uk-modal-dialog uk-text-center">

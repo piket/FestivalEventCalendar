@@ -12,17 +12,20 @@
   </div>
       <%= cl_image_tag @current_user.image, :class=>"prof-img", :width => 280, :height => 280, :crop => :thumb, :radius => :max, :gravity => :faces %>
 
+<!-- profile for consumer users -->
+
     <% if false && @current_user.user_type == 'consumer' %>
         <div class="uk-text-center">Gender: <%= @current_user.gender || "N/A" %></div>
         <div class="uk-text-center">Age: <%= @current_user.age || "N/A" %></div>
     <% end %>
 
+<!-- profile for host users -->
 
     <% if @current_user.user_type == 'host' %>
       <div class="uk-container uk-container-center"><%=@current_user.about %></div>
     <% end %>
 
-
+<!-- limits access unless account is activated -->
 
     <% if @current_user.user_type == 'host' && !@current_user.status%>
       <div>Your status is pending. You will have limited access until your status is confirmed.</div>
