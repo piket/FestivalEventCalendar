@@ -1,3 +1,5 @@
+<!-- create new event form -->
+
 <% def parse_datetime datetime %>
   <% date_str = datetime.strftime("%m.%d.%Y") %>
   <% time_str = datetime.strftime("%I:%M %p") %>
@@ -28,22 +30,9 @@
       <input type="radio" value="true" name="multiple" <%= 'checked' unless @event.new_record? || @event.event_occurrences.length == 1 %>>Yes
       <input type="radio" value="false" name="multiple" <%= 'checked' if @event.new_record? || @event.event_occurrences.length == 1 %>>No
     </div>
+
     <!-- Begin multiple entry section -->
     <div id="multiple">
-      <!-- <div class="uk-form-row">
-        <div class="uk-form-controls">
-          <input type="text" name="event[location]" placeholder="Enter event location" id="event_location">
-        </div>
-        <%# f.text_field :location, :placeholder => "Enter event location.", :wrapper =>"uk-form-controls" %>
-      </div>
-      <div class="uk-form-row">
-        <div class="uk-form-controls">
-          <i class="uk-icon-calendar"></i>
-          <input type="" data-uk-datepicker="{format:'MM.DD.YYYY'}" placeholder = "Select a date." name="event[date]">
-          <i class="uk-icon-clock-o"></i>
-          <input type="text" data-uk-timepicker="{format: '12h'}" placeholder = "Select a time." name="event[time]">
-        </div>
-      </div> -->
       <% if !@event.new_record? %>
         <% count = 0 %>
         <% occurrences = @event.event_occurrences.sort { |a,b| a.id - b.id } %>
@@ -74,7 +63,7 @@
     <div class="uk-form-row">
       <button class="uk-button uk-button-primary uk-button-mini" id="add-occurrence">Add Another Occurrence</button>
     </div>
-    <!-- End mulitple div -->
+    <!-- End mulitple entry div -->
 
     <div class="uk-form-row">
       <div class="uk-form-controls">
@@ -83,6 +72,7 @@
       </div>
     </div>
 
+    <!-- image upload -->
     <div class="uk-form-row">
         <div id="upload-drop" class="uk-placeholder uk-text-center">
             <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Upload a picture by dropping it here or
@@ -121,7 +111,7 @@
       </div>
     </div>
 
-
+    <!-- Event tagging section -->
     <div class="uk-form-row">
       <div class="uk-form-controls">
       <label>TAG YOUR EVENT (Tag wisely. These are terms your event will be searched by.)</label>

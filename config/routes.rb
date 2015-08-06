@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'site#index'
 
-
-
-
 #USERS
 
   patch '/addevent/:id' => 'users#addevent', as: "addevent"
@@ -27,7 +24,6 @@ Rails.application.routes.draw do
       resources :comments, except: [:edit, :update, :index, :show]
     end
   end
-
 
   resources :events do
     collection { post :import }
@@ -66,8 +62,6 @@ delete '/friends/delete/:id' => 'friends#destroy', as: 'friend_remove'
 get '/inbox' => 'comments#index'
 get '/inbox/message/:id' => 'comments#show', as: 'message'
 get '/message/new' => 'comments#new', as: 'new_message'
-
-
 
 
   # Example of regular route:

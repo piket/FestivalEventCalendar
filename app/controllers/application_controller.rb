@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
   before_action :unread_count
 
+#checks user authentication
   def is_authenticated?
     unless @current_user
       flash[:warning] ="You must be logged in to access this page."
@@ -16,11 +17,13 @@ class ApplicationController < ActionController::Base
     true
   end
 
+#current user 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
 
   end
 
+#checks for and counts unread messages
   def any_unread message
         puts "Checking unread: #{message.unread}"
         unread = false
@@ -46,6 +49,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+#checks for user type
   def host_user?
     if is_authenticated?
       unless @current_user.user_type == 'host' && @current_user.status

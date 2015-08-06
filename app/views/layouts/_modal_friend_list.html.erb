@@ -1,10 +1,8 @@
-
+<!-- friend list modal view to select message recipient -->
 
 <div id="message-list">WHO DO YOU WANT TO SEND A MESSAGE TO?</div>
-
        <div id="friend-list">
          <% friends.each do |friend| %>
-
             <li class="friend-list-item">
                 <a class="list-each-friend" href ="#" data=<%= friend.id %>><%= friend.name %></a>
             </li>

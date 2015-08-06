@@ -10,17 +10,11 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/search.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/search.almost-flat.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/search.gradient.min.css">
-  <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/uikit.gradient.min.css"> -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/datepicker.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/autocomplete.almost-flat.min.css">
   <link rel ="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/form-file.almost-flat.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/css/components/notify.almost-flat.min.css">
-
-
   <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
-  <!-- <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="small-device.css"> -->
-
-
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/uikit.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.20.3/js/core/core.min.js"></script>
@@ -37,13 +31,10 @@
 
   <%= javascript_include_tag 'application' %>
   <%= cloudinary_js_config %>
+  <!-- full calendar -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css">
-
-
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.js"></script>
-
-
 
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
@@ -55,17 +46,17 @@
 
   <%= favicon_link_tag 'favicon.ico' %>
 
-  <!-- Googel analytics -->
+  <!-- Google analytics -->
   <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-63085201-1', 'auto');
-  ga('send', 'pageview');
+    ga('create', 'UA-63085201-1', 'auto');
+    ga('send', 'pageview');
 
-</script>
+  </script>
 
 </head>
 
@@ -78,113 +69,110 @@
     <a class="uk-navbar-brand" href="/">FSTVL</a>
 
     <div class="uk-navbar-flip">
-   <ul class="uk-navbar-nav">
+       <ul class="uk-navbar-nav">
 
-   <% if @current_user %>
-
-
-             <% pending_count = @current_user.pending_invited_by.length %>
-    <li class="uk-parent" data-uk-dropdown>
-        <div class="user-menu">
-        <%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>
-        <span class="welcome-name">Welcome, <%=@current_user.name%></span>
-        <%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
-        </div>
-
-        <div class="uk-dropdown uk-dropdown-navbar">
-
-            <% if @current_user.user_type == 'consumer' %>
-          <ul class="uk-nav uk-nav-navbar">
-            <li>
-
-                <a class="sub-nav" href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
-            </li>
-
-
-
-
-          </ul>
-            <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
-              </li>
-            </ul>
-             <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
-              </li>
-            </ul>
-             <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
-              </li>
-            </ul>
-            <% else %>
-              <ul class="uk-nav uk-nav-navbar">
-            <li>
-                <a class="sub-nav" id="host-prof" href = "/users">PROFILE</a>
-            </li>
-          </ul>
-            <% end %>
-            <ul class="uk-nav uk-nav-navbar">
-            <li>
-                <a class="sub-nav" id="logout-btn" href = "/logout">LOGOUT</a>
-            </li>
-          </ul>
-        </div>
-
-    </li>
-    <% if @current_user.user_type == 'host' %>
+       <!-- alert badges for notifications -->
+       <% if @current_user %>
+                 <% pending_count = @current_user.pending_invited_by.length %>
         <li class="uk-parent" data-uk-dropdown>
-          <a href="#">EVENTS</a>
+            <div class="user-menu">
+            <%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>
+            <span class="welcome-name">Welcome, <%=@current_user.name%></span>
+            <%= cl_image_tag @current_user.image, :width=> 50, :height => 50, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon", :gravity=>:faces %>
+            </div>
 
-          <div class="uk-dropdown uk-dropdown-navbar">
-            <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/events">MY EVENTS</a>
-              </li>
-              <li>
-                  <a class="sub-nav" href="/events/new">ADD A NEW EVENT</a>
-              </li>
-            </ul>
-          </div>
+            <div class="uk-dropdown uk-dropdown-navbar">
+
+                <% if @current_user.user_type == 'consumer' %>
+                  <ul class="uk-nav uk-nav-navbar">
+                    <li>
+
+                        <a class="sub-nav" href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
+                    </li>
+
+                  </ul>
+                  <ul class="uk-nav uk-nav-navbar">
+                    <li>
+                        <a class="sub-nav" href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
+                    </li>
+                  </ul>
+                  <ul class="uk-nav uk-nav-navbar">
+                    <li>
+                        <a class="sub-nav" href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
+                    </li>
+                  </ul>
+                  <ul class="uk-nav uk-nav-navbar">
+                    <li>
+                        <a class="sub-nav" href="#message-modal" data-uk-modal>NEW MESSAGE</a>
+                    </li>
+                  </ul>
+                <% else %>
+                  <ul class="uk-nav uk-nav-navbar">
+                    <li>
+                        <a class="sub-nav" id="host-prof" href = "/users">PROFILE</a>
+                    </li>
+                  </ul>
+                <% end %>
+                  <ul class="uk-nav uk-nav-navbar">
+                    <li>
+                        <a class="sub-nav" id="logout-btn" href = "/logout">LOGOUT</a>
+                    </li>
+                  </ul>
+            </div>
 
         </li>
-    <% else %>
-        <!-- FOR CONSUMER  -->
 
-         <li class="uk-parent" data-uk-dropdown>
-          <a href="#">FESTIVALS</a>
+        <!-- checking for host user -->
+        <% if @current_user.user_type == 'host' %>
+            <li class="uk-parent" data-uk-dropdown>
+              <a href="#">EVENTS</a>
 
-          <div class="uk-dropdown uk-dropdown-navbar">
-            <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/festivals/myfestivals">MY FESTIVALS</a>
-              </li>
-            </ul>
-            <ul class="uk-nav uk-nav-navbar">
-              <li>
-                  <a class="sub-nav" href="/festivals">SEARCH FESTIVALS</a>
-              </li>
-            </ul>
+              <div class="uk-dropdown uk-dropdown-navbar">
+                <ul class="uk-nav uk-nav-navbar">
+                  <li>
+                      <a class="sub-nav" href="/events">MY EVENTS</a>
+                  </li>
+                  <li>
+                      <a class="sub-nav" href="/events/new">ADD A NEW EVENT</a>
+                  </li>
+                </ul>
+              </div>
+
+            </li>
+        <% else %>
+            <!-- for consumer user  -->
+
+             <li class="uk-parent" data-uk-dropdown>
+              <a href="#">FESTIVALS</a>
+
+              <div class="uk-dropdown uk-dropdown-navbar">
+                <ul class="uk-nav uk-nav-navbar">
+                  <li>
+                      <a class="sub-nav" href="/festivals/myfestivals">MY FESTIVALS</a>
+                  </li>
+                </ul>
+                <ul class="uk-nav uk-nav-navbar">
+                  <li>
+                      <a class="sub-nav" href="/festivals">SEARCH FESTIVALS</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </div>
-
         </li>
-
-
-
-          </div>
-
-        </li>
-
 
     <% end %>
 
-
-
    <% else %>
-    <li class="uk-parent"><a data-uk-modal="{target:'#signup-modal'}" data-href="/users/new" class="signup-link">SIGN UP</a></li>
-    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}" class="login-btn">LOGIN</a></li>
+      <li class="uk-parent">
+        <a data-uk-modal="{target:'#signup-modal'}" data-href="/users/new" class="signup-link">   SIGN UP
+        </a>
+      </li>
+      <li class="uk-parent">
+        <a data-uk-modal="{target:'#my-id'}" class="login-btn">
+          LOGIN
+        </a>
+      </li>
     <% end %>
 
    </ul>
@@ -192,9 +180,7 @@
   </nav>
 <body>
 
-  <!-- LOGIN MODAL -->
-
-
+<!-- LOGIN MODAL -->
 <!-- This is the modal -->
 <div id="my-id" class="uk-modal">
     <div class="uk-modal-dialog">
@@ -203,7 +189,6 @@
         <div class="uk-container uk-container-center">
           <%= form_for :user, html:{:class=>"uk-form uk-form-stacked", :id => "login-form"}, :url => login_path do |f|%>
             <div class="uk-text-center" id="login-with-fb-div">
-              <!-- <i class="uk-icon-facebook"></i> -->
               <%= link_to "LOGIN WITH FACEBOOK", "/auth/facebook", :class=>"uk-button login-with-fb", :type=>"button" %>
             </div>
 
@@ -229,34 +214,10 @@
                 <%= f.button "LOGIN", :class=>"uk-button login-btn", :type=>"submit" %>
               </div>
             </div>
-
-
-
             <% end %>
-
-
         </div>
-
-
-
-
-
-
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- MOBILE NAV -->
@@ -268,41 +229,39 @@
           <% if @current_user %>
             <li class="uk-parent">
               <a href="#"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger notify-badge'>#{@unread_count + pending_count}</span>".html_safe unless (@unread_count + pending_count) == 0 %>
-              <%= cl_image_tag @current_user.image, :width=> 40, :height => 40, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon-mobile", :gravity=>:faces %><%=@current_user.name.upcase%></a>
-            <!-- <div class="data-uk-dropdown"> -->
-              <!-- <div class="uk-dropdown uk-dropdown-navbar"> -->
-                <ul class="uk-nav-sub">
-                  <% if @current_user.user_type == 'host' %>
-                  <li>
-                      <a href="/users/:id">PROFILE</a>
-                  </li>
-                  <% else %>
-                  <li>
-                      <a href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
-                  </li>
-                  <li>
-                       <a href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
-                   </li>
-                   <li>
-                       <a href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
-                   </li>
-                  <li>
-                      <a href="#message-modal" data-uk-modal>NEW MESSAGE</a>
-                  </li>
-                  <% end %>
-                  <li>
-                      <a id="logout-btn" href = "/logout">LOGOUT</a>
-                  </li>
-                </ul>
+              <%= cl_image_tag @current_user.image, :width=> 40, :height => 40, :crop => :thumb, :radius => :max, :id=>"current-user-nav-icon-mobile", :gravity=>:faces %><%=@current_user.name.upcase%>
+              </a>
 
-            <!-- </div> -->
+              <!-- for host users -->
+              <ul class="uk-nav-sub">
+                <% if @current_user.user_type == 'host' %>
+                <li>
+                    <a href="/users/:id">PROFILE</a>
+                </li>
+                <% else %>
+                <li>
+                    <a href="/users/<%=@current_user.id%>/calendars">MY CALENDAR</a>
+                </li>
+                <li>
+                     <a href="/friends"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger invite-badge'>#{pending_count}</span>".html_safe unless pending_count == 0 %>MY DASHBOARD</a>
+                 </li>
+                 <li>
+                     <a href="/inbox"><%= "<span class='uk-badge uk-badge-notification uk-badge-danger msg-badge'>#{@unread_count}</span>".html_safe unless @unread_count == 0 %>MY INBOX</a>
+                 </li>
+                <li>
+                    <a href="#message-modal" data-uk-modal>NEW MESSAGE</a>
+                </li>
+                <% end %>
+                <li>
+                    <a id="logout-btn" href = "/logout">LOGOUT</a>
+                </li>
+              </ul>
             </li>
-             <!-- TO DO - MAKE ADD EVENTS FOR HOSTS ONLY -->
+
+             <!-- MAKE ADD EVENTS FOR HOSTS ONLY -->
              <% if @current_user.user_type == 'host' %>
             <li class="uk-parent">
                 <a href="#">MY EVENTS</a>
-              <!-- <div class="data-uk-dropdown"> -->
-                <!-- <div class="uk-dropdown uk-dropdown-navbar"> -->
                   <ul class="uk-nav-sub">
                     <li>
                         <a href="/events">MY EVENT</a>
@@ -311,8 +270,6 @@
                         <a href="/events/new">ADD A NEW EVENT</a>
                     </li>
                   </ul>
-                <!-- </div> -->
-              <!-- </div> -->
             </li>
             <% else %>
         <!-- FOR CONSUMER  -->
@@ -330,24 +287,32 @@
             </li>
             <% end %>
     <li class="uk-parent"></li>
-   <% else %>
-    <li class="uk-parent"><a href="/users/new" class="signup-link">SIGN UP</a></li>
-    <li class="uk-parent"><a data-uk-modal="{target:'#my-id'}" class="login-btn">LOGIN</a></li>
-    <% end %>
-
-
+       <% else %>
+       <!-- if not logged in, render signup and login buttons -->
+        <li class="uk-parent">
+          <a href="/users/new" class="signup-link">
+            SIGN UP
+          </a>
+        </li>
+        <li class="uk-parent">
+          <a data-uk-modal="{target:'#my-id'}" class="login-btn">
+            LOGIN
+          </a>
+        </li>
+        <% end %>
             </div>
         </ul>
     </div>
 </div>
 
+<!-- alerts -->
+<%= render "/layouts/alerts" %>
 
-
-  <%= render "/layouts/alerts" %>
+<!-- new message modal -->
 <%= render "/layouts/new_message_modal" %>
 
 
-
+<!-- body views -->
 <%= yield %>
 
 

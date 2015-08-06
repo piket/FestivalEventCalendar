@@ -1,20 +1,18 @@
-
 <div class="uk-grid">
     <div class=".uk-container .uk-container-center uk-width-1-1 prof-container">
 
-<!-- USER PROFILE -->
-    <div class="prof-container profile">
-    <%= render 'users/profile' %>
+    <!-- USER PROFILE -->
+        <div class="prof-container profile">
+            <%= render 'users/profile' %>
+        </div>
+        <!-- USER EDIT FORM -->
+        <div class="edit-container">
+            <%= render 'users/edit_form' %>
+        </div>
     </div>
-    <!-- USER EDIT FORM -->
-    <div class="edit-container">
-    <%= render 'users/edit_form' %>
-    </div>
-  </div>
-
 
 <!-- FRIEND DASHBOARD -->
-<div id="friends-dashboard">
-    <%= render 'friends_list' %>
-</div>
+    <div id="friends-dashboard">
+        <%= render 'friends_list' %>
+    </div>
 </div>

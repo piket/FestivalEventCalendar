@@ -1,7 +1,7 @@
+<!-- login view - no modal-->
 <%= form_for :user, html:{:class=>"uk-form uk-form-stacked"} do |f|%>
 
   <%= link_to "LOGIN WITH FACEBOOK", "/auth/facebook", :id=>"login-with-fb" %>
-
 
   <div class="uk-form-row">
     <div id="email-input-div" class="uk-form-controls">
@@ -19,7 +19,5 @@
     <%= f.submit "LOGIN", :class=>"login-btn uk-button" %>
     </div>
   </div>
-
-
 
 <% end %>

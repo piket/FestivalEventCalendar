@@ -83,10 +83,8 @@ class EventsController < ApplicationController
       # Create each occurrence
 
       occurrences = occurrence_params
-      # render json: {params:params,occurrences:occurrences}
       current_occurrences = @event.event_occurrences.sort {|a,b| a.id - b.id }
-      # render json: occurrences
-      # return
+
       for i in 0...occurrences.length
          if i < @event.event_occurrences.length
             if occurrences[i][:deleted]
@@ -110,8 +108,7 @@ class EventsController < ApplicationController
    def import
      rows = Event.import(params[:file])
      rows.each do |row|
-     # render json: row
-     # return
+
          event = Event.create({name:row['name'], description: row['description'], video: row['video'], link: row['link'], purchase: row['purchase'], price: row['price']})
 
          if row['dates'].length == row['times'].length && row['dates'].length == row['locations'].length
@@ -127,8 +124,6 @@ class EventsController < ApplicationController
                datetime = DateTime.new(row['dates'][x][2],row['dates'][x][0],row['dates'][x][1],hour,row['times'][0][1])
                event.event_occurrences.create({date: datetime, location: row['locations'][0]})
                puts "X=#{x}, Length=#{row['dates'].length}, DateTime=#{datetime}"
-               # render json: {title:row['name'],dates:row['dates'],times:row['times']}
-               # return
             end
          elsif row['times'].length >= row['dates'].length && row['times'].length >= row['locations'].length
             for x in 0...row['times'].length
@@ -165,7 +160,6 @@ class EventsController < ApplicationController
          event.save
          @current_user.hosted_events << event
       end
-      # render json: @current_user.hosted_events
      flash[:success] = "File imported and new events added"
      redirect_to users_path
    end

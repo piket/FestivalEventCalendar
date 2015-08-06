@@ -1,35 +1,43 @@
+<!-- Message show with shared calendar -->
+
 <div class="comment-content">
-<li class="comment-block">
-<div class="msg-from">
-<%= '<span class="uk-badge uk-badge-danger">!</span>'.html_safe if any_unread message %>
-<% if @current_user.id == message.original_id && @current_user.id != message.user_id %>
-    <% message.unread = false %>
-    <% message.save %>
-<% end %>
-From: <%= message.user.name %> <%= format_created_time message %>
-</div>
-<div class="msg-subject">
-Subject: <%= message.subject %>
-</div>
-<hr class="comment-break">
-<div class="msg-body">
-<%= message.body %>
-</div>
-<% if message.festival_id && message.festival_id > 0 %>
-    <div class="msg-share">
-        Shared Calendar: <%= link_to "My #{User.find(message.festival_id).name} Calendar", user_calendar_path(message.user_id,message.festival_id) %>
-    </div>
-    <% if @current_user.id != message.user_id %>
-        <div class="msg-compare">
-            <%= link_to "Compare Calendars", user_compare_calendars_path(message.user_id,message.festival_id,@current_user.id), :class => "uk-button compare-btn" %>
+    <li class="comment-block">
+        <div class="msg-from">
+            <%= '<span class="uk-badge uk-badge-danger">!</span>'.html_safe if any_unread message %>
+            <% if @current_user.id == message.original_id && @current_user.id != message.user_id %>
+                <% message.unread = false %>
+                <% message.save %>
+            <% end %>
+            From: <%= message.user.name %> <%= format_created_time message %>
         </div>
-    <% end %>
-<% end %>
-<%# link_to "REPLY", user_comment_comments_path(message.commentable, message), :class=>"uk-button uk-button-mini reply-btn" %>
-<% unless message.comments.empty? %>
-<ul class="comment-list">
-    <%= render partial: 'layouts/message', :collection => message.comments %>
-</ul>
-<% end %>
-</li>
+
+        <div class="msg-subject">
+        Subject: <%= message.subject %>
+        </div>
+
+        <hr class="comment-break">
+
+        <div class="msg-body">
+            <%= message.body %>
+        </div>
+
+        <!-- shared calendar logic -->
+
+        <% if message.festival_id && message.festival_id > 0 %>
+            <div class="msg-share">
+                Shared Calendar: <%= link_to "My #{User.find(message.festival_id).name} Calendar", user_calendar_path(message.user_id,message.festival_id) %>
+            </div>
+            <% if @current_user.id != message.user_id %>
+                <div class="msg-compare">
+                    <%= link_to "Compare Calendars", user_compare_calendars_path(message.user_id,message.festival_id,@current_user.id), :class => "uk-button compare-btn" %>
+                </div>
+            <% end %>
+        <% end %>
+
+        <% unless message.comments.empty? %>
+            <ul class="comment-list">
+                <%= render partial: 'layouts/message', :collection => message.comments %>
+            </ul>
+        <% end %>
+    </li>
 </div>

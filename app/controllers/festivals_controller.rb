@@ -76,12 +76,10 @@ class FestivalsController < ApplicationController
           end
       end
       @event_dates
-      # render json: @event_dates
     end
 
     def view
       @occurrences = @current_user.event_occurrences.joins(:event).where("events.host_id" => params[:id])
-      # render json: {occurrences:@occurrences,events:@occurrences.map{|eo| eo.event}}
       render partial: 'festivals/myfestival_events'
     end
 

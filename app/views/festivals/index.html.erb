@@ -1,16 +1,20 @@
+<!-- Search Festivals Page -->
+
 <div class="uk-grid">
 
 <div class="uk-text-center uk-container uk-container-center page-div">
 
-
+<!-- search form -->
   <div id = "festival-search uk-container uk-container-center">
-        <div class="uk-text-center festival-filter-header">
-        SEARCH FESTIVALS
-        </div>
+    <div class="uk-text-center festival-filter-header">
+      SEARCH FESTIVALS
+    </div>
     <form class="uk-search filter-form uk-container uk-container-center" data-uk-search>
         <input id="festival_filter" class="uk-container uk-container-center uk-search-field" type="search" placeholder="">
     </form>
   </div>
+
+<!-- all festivals -->
   <div id="festival-field" class="uk-container uk-container-center uk-text-center" data-uk-grid>
 
       <% @festival_details.each do |detail| %>
@@ -20,12 +24,9 @@
           <%= cl_image_tag detail[:image], :class => 'festival-img uk-width-1-4', width: "280", height: "280", crop: :fill %>
           <figcaption>
             <div class="name">
-            <%= link_to detail[:name], festival_path(detail[:id]), :class => 'festival-name' %><br>
-            <span class="location"><%= detail[:location] %></span>
-
+              <%= link_to detail[:name], festival_path(detail[:id]), :class => 'festival-name' %><br>
+              <span class="location"><%= detail[:location] %></span>
             </div>
-            <!-- <p class="location"></p> -->
-
           </figcaption>
          </figure>
         </div>
